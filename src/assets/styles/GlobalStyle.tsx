@@ -12,10 +12,6 @@ export const GlobalStyles = createGlobalStyle`
 	html{
 		font-size: 62.5%;
 		
-		*::selection {
-			background-color: white;
-		}
-
 		::-webkit-scrollbar-track {
 			background-color: blue;
 		}
@@ -37,5 +33,6 @@ export const GlobalStyles = createGlobalStyle`
 		padding: 0;
 		margin: 0;
 		font-size: ${({ theme }) => theme.fontSize.paragraph};
+		font-family: 'Roboto Flex', sans-serif;
 	}
 `;

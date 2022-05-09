@@ -2,19 +2,16 @@ import { DefaultTheme } from 'styled-components';
 
 export const theme: DefaultTheme = {
   colors: {
-    main: 'cyan',
-    secondary: 'magenta',
+    lightGrey: '#f5f5f7',
+    grey: '#dbdbdb',
+    dark: 'rgba(0, 0, 0, 0.8)',
   },
   fontSize: {
     heading: '3.6rem',
     headingMobile: '3rem',
     paragraph: '1.8rem',
-    caption: '1.35rem',
+    caption: '1.2rem',
   },
-  /* fontFamily: {
-    greatVibes: '"Great Vibes", cursiv',
-    noto: '"EB Garamond", serif',
-  }, */
   mq: {
     tablet: '@media (min-width: 768px)',
     desktop: '@media (min-width: 1024px)',

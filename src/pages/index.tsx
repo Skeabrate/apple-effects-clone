@@ -4,7 +4,7 @@ import HeadComponent from 'components/Head/Head';
 const Home: NextPage = () => {
   return (
     <main>
-      <HeadComponent title='Main page' />
+      <HeadComponent title='Apple effects clone' />
 
       <h2>Apple effects</h2>
       <p>deploy test</p>

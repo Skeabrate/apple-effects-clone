@@ -3,8 +3,9 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
-      main: string;
-      secondary: string;
+      lightGrey: string;
+      grey: string;
+      dark: string;
     };
     fontSize: {
       heading: string;
