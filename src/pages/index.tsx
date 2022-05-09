@@ -7,6 +7,7 @@ const Home: NextPage = () => {
       <HeadComponent title='Main page' />
 
       <h2>Apple effects</h2>
+      <p>deploy test</p>
     </main>
   );
 };
