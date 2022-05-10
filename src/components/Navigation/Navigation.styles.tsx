@@ -66,7 +66,7 @@ export const StyledList = styled.ul<NavProps>`
   overflow: hidden;
   height: ${({ $toggle }) => ($toggle ? 'calc(100% - 48px)' : '0')};
   transition: all ease-in-out;
-  transition-duration: ${({ $toggle }) => ($toggle ? '.45s' : '.55s')};
+  transition-duration: ${({ $toggle }) => ($toggle ? '.5s' : '.6s')};
 
   &::after {
     content: '';
@@ -74,11 +74,11 @@ export const StyledList = styled.ul<NavProps>`
     bottom: 0;
     width: 100%;
     height: 100%;
-    opacity: ${({ $toggle }) => ($toggle ? '0' : '1')};
-    visibility: ${({ $toggle }) => ($toggle ? 'hidden' : 'visible')};
+    opacity: ${({ $toggle }) => ($toggle ? '1' : '1')};
+    visibility: ${({ $toggle }) => ($toggle ? 'visible' : 'visible')};
     transition: opacity 0.1s ease-in-out;
     transition-delay: ${({ $toggle }) => ($toggle ? '.3s' : '0')};
-    box-shadow: inset 0px -300px 500px -200px rgba(0, 0, 0, 1);
+    box-shadow: inset 0px -300px 300px -250px rgba(0, 0, 0, 1);
   }
 
   li {
