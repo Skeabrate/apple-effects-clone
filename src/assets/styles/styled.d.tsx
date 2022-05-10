@@ -6,6 +6,8 @@ declare module 'styled-components' {
       lightGrey: string;
       grey: string;
       dark: string;
+      borderLight: string;
+      borderDark: string;
     };
     fontSize: {
       heading: string;
