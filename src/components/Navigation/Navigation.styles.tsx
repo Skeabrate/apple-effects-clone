@@ -78,7 +78,7 @@ export const StyledList = styled.ul<NavProps>`
     visibility: ${({ $toggle }) => ($toggle ? 'hidden' : 'visible')};
     transition: opacity 0.1s ease-in-out;
     transition-delay: ${({ $toggle }) => ($toggle ? '.3s' : '0')};
-    box-shadow: inset 0px -300px 300px -250px rgba(0, 0, 0, 1);
+    box-shadow: inset 0px -250px 300px -250px rgba(0, 0, 0, 1);
   }
 
   li {
