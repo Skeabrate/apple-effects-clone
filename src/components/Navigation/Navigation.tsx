@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useObserver } from 'hooks/useObserver';
 import {
   Hamburger,
   StyledBagButton,
   StyledBarInner,
+  StyledBarOpenButton,
+  StyledBarOptions,
   StyledBarOuter,
-  StyledList,
   StyledNavInner,
   StyledNavOuter,
   StyledSearch,
   StyledSupport,
+  StyledList,
   Wrapper,
+  StyledBarHideMenu,
 } from './Navigation.styles';
 
 const Navigation = () => {
   const [toggle, setToggle] = useState<boolean>(false);
+  const [barOptionsToggle, setBarOptionsToggle] = useState<boolean>(false);
 
-  const handleToggle = () => setToggle(!toggle);
+  const barRef = useRef<HTMLDivElement>(null);
+  const { isSticky } = useObserver(barRef);
+
+  const handleToggle = () => {
+    if (toggle) {
+      document.body.style.overflow = 'unset';
+      document.getElementsByTagName('html')[0].style.overflow = 'unset';
+    } else {
+      document.body.style.overflow = 'hidden';
+      document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    }
+    setToggle(!toggle);
+  };
+  const handleBarOptionsToggle = () => setBarOptionsToggle(!barOptionsToggle);
 
   return (
     <Wrapper>
-      <StyledNavOuter $toggle={toggle}>
+      <StyledNavOuter $toggle={toggle} ref={barRef}>
         <StyledNavInner>
           <Hamburger onClick={handleToggle}>
             <div>
@@ -93,14 +111,26 @@ const Navigation = () => {
         </StyledNavInner>
       </StyledNavOuter>
 
-      <StyledBarOuter>
-        <StyledBarInner>
+      <StyledBarOuter $isSticky={isSticky} $barOptionsToggle={barOptionsToggle}>
+        <StyledBarInner $barOptionsToggle={barOptionsToggle}>
           <h2>iPhone 13 Pro</h2>
-          <div>
-            <p>Przegląd</p>
-            <button>Dane techniczne</button>
+
+          <StyledBarOptions>
+            <StyledBarOpenButton
+              $barOptionsToggle={barOptionsToggle}
+              onClick={handleBarOptionsToggle}
+            >
+              <span></span>
+              <span></span>
+            </StyledBarOpenButton>
+
+            <StyledBarHideMenu $barOptionsToggle={barOptionsToggle}>
+              <p>Przegląd</p>
+              <button>Dane techniczne</button>
+            </StyledBarHideMenu>
+
             <button>Kup</button>
-          </div>
+          </StyledBarOptions>
         </StyledBarInner>
       </StyledBarOuter>
     </Wrapper>

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 interface NavProps {
-  readonly $toggle: boolean;
+  readonly $toggle?: boolean;
+  readonly $barOptionsToggle?: boolean;
+  readonly $isSticky?: boolean;
 }
 
 export const Wrapper = styled.div`
@@ -66,7 +68,8 @@ export const StyledList = styled.ul<NavProps>`
   overflow: hidden;
   height: ${({ $toggle }) => ($toggle ? 'calc(100% - 48px)' : '0')};
   transition: all ease-in-out;
-  transition-duration: ${({ $toggle }) => ($toggle ? '.5s' : '.6s')};
+  transition-duration: ${({ $toggle }) => ($toggle ? '.5s' : '.55s')};
+  z-index: 10;
 
   &::after {
     content: '';
@@ -85,7 +88,7 @@ export const StyledList = styled.ul<NavProps>`
     cursor: pointer;
     display: flex;
     padding: 0 44px;
-    transform: ${({ $toggle }) => ($toggle ? 'translateY(0)' : 'translateY(-45px)')};
+    transform: ${({ $toggle }) => ($toggle ? 'translateY(0)' : 'translateY(-55px)')};
     transition: all ease-in-out;
     transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')};
     transition-duration: ${({ $toggle }) => ($toggle ? '.25s' : '.4s')};
@@ -174,17 +177,18 @@ export const StyledSearch = styled.li<NavProps>`
 		transform: unset;
 
 		div {
-    background-color: transparent;
-    width:unset;
-    padding: 0
-    border-radius: 0;
+			background-color: transparent;
+			width:unset;
+			padding: 0
+			border-radius: 0;
 
-    p {
-      display: none;
-    }
+			p {
+				display: none;
+			}
 
-		svg path{
-			fill: ${({ theme }) => theme.colors.grey};
+			svg path{
+				fill: ${({ theme }) => theme.colors.grey};
+			}
 		}
   }
 `;
@@ -226,57 +230,144 @@ export const Hamburger = styled.button`
   }
 `;
 
-export const StyledBarOuter = styled.div`
+export const StyledBarOuter = styled.div<NavProps>`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderLight};
+  width: 100%;
+  position: ${({ $isSticky }) => ($isSticky ? 'absolute' : 'fixed')};
+  top: ${({ $isSticky }) => ($isSticky ? '48px' : '0')};
+  z-index: 5;
+  background-color: ${({ $barOptionsToggle }) =>
+    $barOptionsToggle ? 'white' : 'rgba(255, 255, 255, 0.7)'};
+  backdrop-filter: blur(2rem);
+
+  ${({ theme }) => theme.mq.tablet} {
+    top: ${({ $isSticky }) => ($isSticky ? '44px' : '0')};
+  }
 `;
 
-export const StyledBarInner = styled.div`
+export const StyledBarInner = styled.div<NavProps>`
   display: flex;
   justify-content: space-between;
   max-width: 980px;
   margin: 0 auto;
-  padding: 13px 20px;
+  padding: 0 20px;
+  height: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '160px' : '50px')};
+
+  transition: all 0.1s ease-in-out;
 
   h2 {
-    font-size: 2.3rem;
+    font-size: 2rem;
     letter-spacing: -0.4px;
+    padding: 13px 0;
   }
 
-  div {
-    font-size: 1.3rem;
+  ${({ theme }) => theme.mq.tablet} {
+    height: 50px;
+  }
+`;
+
+export const StyledBarOptions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  height: 50px;
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:nth-child(3) {
+      background-color: #0071e3;
+      border-radius: 100px;
+      padding: 5px 12px;
+      color: white;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #2787e7;
+      }
+    }
+  }
+`;
+
+export const StyledBarOpenButton = styled.button<NavProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 100%;
+  gap: 2px;
+
+  span {
+    display: block;
+    background-color: #999999;
+    width: 11px;
+    height: 2px;
+    border-radius: 100px;
+
+    &:first-child {
+      transform: rotate(40deg) translateX(3.5px);
+    }
+
+    &:last-child {
+      transform: rotate(-40deg) translateX(-3.5px);
+    }
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: none;
+  }
+`;
+
+export const StyledBarHideMenu = styled.div<NavProps>`
+  position: absolute;
+  top: 50px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.paragraph};
+  width: 100%;
+
+  p {
+    color: #b1b1b1;
+    cursor: default;
+    margin: 0 40px;
+    padding: 14px 0;
+  }
+
+  button {
     display: flex;
+    justify-content: flex-start;
+    color: #3d3d3d;
+    transition: color 0.2s ease-in-out;
+    font-size: ${({ theme }) => theme.fontSize.paragraph};
+    border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
+    margin: 0 40px;
+    padding: 14px 0;
+
+    &:hover {
+      color: #0071e3;
+    }
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    position: static;
+    flex-direction: row;
     align-items: center;
+    font-size: 1.3rem;
     gap: 25px;
 
     p {
-      color: #b1b1b1;
+      margin: 0;
+      padding: 0;
     }
 
     button {
+      font-size: 1.3rem;
       border: none;
-      background-color: transparent;
-      cursor: pointer;
-
-      &:first-of-type {
-        color: #3d3d3d;
-        transition: color 0.2s ease-in-out;
-
-        &:hover {
-          color: #0071e3;
-        }
-      }
-
-      &:last-child {
-        background-color: #0071e3;
-        border-radius: 100px;
-        padding: 5px 12px;
-        color: white;
-        transition: background-color 0.2s ease-in-out;
-
-        &:hover {
-          background-color: #2787e7;
-        }
-      }
+      margin: 0;
+      padding: 0;
     }
   }
 `;

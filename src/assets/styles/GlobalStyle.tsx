@@ -11,22 +11,6 @@ export const GlobalStyles = createGlobalStyle`
 
 	html{
 		font-size: 62.5%;
-		
-		::-webkit-scrollbar-track {
-			background-color: blue;
-		}
-
-		::-webkit-scrollbar {
-			width: 14px;
-			height: 8px;
-		}
-
-		::-webkit-scrollbar-thumb {
-			background: linear-gradient(0deg, rgba(153,138,116,1) 0%, rgba(219,196,161,1) 50%);
-			border-radius: 100px;
-			border: 3px solid blue;
-			background-clip: padding-box;
-		}
 	}
 
 	body {
