@@ -132,7 +132,7 @@ export const StyledVideo = styled.div`
     left: 0px;
     width: 100%;
     height: 20px;
-    background: white;
+    background: red;
     z-index: 10;
   }
 `;
