@@ -238,7 +238,8 @@ export const StyledBarOuter = styled.div<NavProps>`
   z-index: 5;
   background-color: ${({ $barOptionsToggle }) =>
     $barOptionsToggle ? 'white' : 'rgba(255, 255, 255, 0.7)'};
-  backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: ${({ $barOptionsToggle }) =>
+    $barOptionsToggle ? 'unset' : 'saturate(180%) blur(20px)'};
   transition: background-color 0.2s ease-in-out;
   transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.6s')};
 
