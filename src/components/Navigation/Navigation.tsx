@@ -25,16 +25,15 @@ const Navigation = () => {
 
   const handleToggle = () => {
     if (toggle) {
-      document.body.style.overflow = 'unset';
-      document.body.style.height = 'unset';
-      document.getElementsByTagName('html')[0].style.overflow = 'unset';
+      document.body.setAttribute('style', 'overflow:unset; height:unset');
+      document
+        .getElementsByTagName('html')[0]
+        .setAttribute('style', 'overflow:unset; height:unset');
     } else {
-      /*  document.body.style.overflow = 'hidden';
-      document.body.style.height = '100%';
-      document.getElementsByTagName('html')[0].style.overflow = 'hidden'; */
-      document.body.style.cssText = 'overflow:hidden !important; height:100vh !important';
-      document.getElementsByTagName('html')[0].style.cssText =
-        'overflow:hidden !important; height:100vh !important';
+      document.body.setAttribute('style', 'overflow:hidden !important; height:100vh !important');
+      document
+        .getElementsByTagName('html')[0]
+        .setAttribute('style', 'overflow:hidden !important; height:100vh !important');
     }
     setToggle(!toggle);
   };
