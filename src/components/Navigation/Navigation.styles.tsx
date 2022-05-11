@@ -3,7 +3,7 @@ import styled from 'styled-components';
 interface NavProps {
   readonly $toggle?: boolean;
   readonly $barOptionsToggle?: boolean;
-  readonly $isSticky?: boolean;
+  readonly $isSticky?: number;
 }
 
 export const Wrapper = styled.div`
@@ -233,15 +233,16 @@ export const Hamburger = styled.button`
 export const StyledBarOuter = styled.div<NavProps>`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderLight};
   width: 100%;
-  position: ${({ $isSticky }) => ($isSticky ? 'absolute' : 'fixed')};
-  top: ${({ $isSticky }) => ($isSticky ? '48px' : '0')};
+  position: ${({ $isSticky = 0 }) => ($isSticky < 48 ? 'absolute' : 'fixed')};
+  top: ${({ $isSticky = 0 }) => ($isSticky < 48 ? '48px' : '0')};
   z-index: 5;
   background-color: ${({ $barOptionsToggle }) =>
     $barOptionsToggle ? 'white' : 'rgba(255, 255, 255, 0.7)'};
   backdrop-filter: saturate(180%) blur(20px);
 
   ${({ theme }) => theme.mq.tablet} {
-    top: ${({ $isSticky }) => ($isSticky ? '44px' : '0')};
+    position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
+    top: ${({ $isSticky = 0 }) => ($isSticky < 44 ? '44px' : '0')};
   }
 `;
 

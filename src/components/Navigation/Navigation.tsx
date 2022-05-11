@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useObserver } from 'hooks/useObserver';
 import {
   Hamburger,
@@ -19,9 +19,10 @@ import {
 const Navigation = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [barOptionsToggle, setBarOptionsToggle] = useState<boolean>(false);
+  const [isSticky, setIsSticky] = useState<number>(0);
 
   const barRef = useRef<HTMLDivElement>(null);
-  const { isSticky } = useObserver(barRef);
+  /* const { isSticky } = useObserver(barRef); */
 
   const handleToggle = () => {
     if (toggle) {
@@ -37,7 +38,12 @@ const Navigation = () => {
     }
     setToggle(!toggle);
   };
+
   const handleBarOptionsToggle = () => setBarOptionsToggle(!barOptionsToggle);
+
+  useEffect(() => {
+    document.addEventListener('scroll', (e) => setIsSticky(window.scrollY));
+  }, []);
 
   return (
     <Wrapper>
