@@ -362,32 +362,31 @@ export const StyledBarHideMenu = styled.div<NavProps>`
   font-size: ${({ theme }) => theme.fontSize.paragraph};
   width: 100%;
 
-  p,
   button {
+    display: flex;
+    justify-content: flex-start;
     margin: 0 40px;
     padding: 14px 0;
     transform: ${({ $barOptionsToggle }) =>
       $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
     opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
-    /*  visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')}; */
-    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out;
-  }
-
-  p {
-    color: #b1b1b1;
-    cursor: default;
-    transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3s' : '0s')};
-  }
-
-  button {
-    display: flex;
-    justify-content: flex-start;
-    color: #3d3d3d;
+    /* visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')}; */
+    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out, color 0s 0.1s ease-in-out;
     font-size: ${({ theme }) => theme.fontSize.paragraph};
-    border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
-    transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.2s' : '0.1s')};
 
-    &:hover {
+    &:first-child {
+      color: #b1b1b1;
+      cursor: default;
+      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3s' : '0s')};
+    }
+
+    &:last-child {
+      color: #3d3d3d;
+      border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
+      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.2s' : '0.1s')};
+    }
+
+    &:hover:last-child {
       color: #0071e3;
     }
   }
@@ -396,21 +395,16 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     position: static;
     flex-direction: row;
     align-items: center;
-    font-size: 1.3rem;
     gap: 25px;
 
-    p,
     button {
       margin: 0;
       padding: 0;
       transform: unset;
       visibility: visible;
       opacity: 1;
-    }
-
-    button {
       font-size: 1.3rem;
-      border: none;
+      border: none !important;
     }
   }
 `;

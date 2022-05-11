@@ -140,7 +140,7 @@ const Navigation = () => {
               </StyledBarOpenButton>
 
               <StyledBarHideMenu $barOptionsToggle={barOptionsToggle}>
-                <p>Overview</p>
+                <button>Overview</button>
                 <button>Tech Specs</button>
               </StyledBarHideMenu>
 
