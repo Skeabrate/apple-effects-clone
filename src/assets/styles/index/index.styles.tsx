@@ -128,11 +128,11 @@ export const StyledVideo = styled.div`
   &::after {
     content: '';
     position: absolute;
-    top: -10px;
+    top: -20px;
     left: 0px;
     width: 100%;
-    height: 20px;
-    background: red;
+    height: 40px;
+    background: white;
     z-index: 10;
   }
 `;

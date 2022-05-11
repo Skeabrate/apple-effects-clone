@@ -241,7 +241,7 @@ export const StyledBarOuter = styled.div<NavProps>`
   backdrop-filter: ${({ $barOptionsToggle }) =>
     $barOptionsToggle ? 'unset' : 'saturate(180%) blur(20px)'};
   transition: background-color 0.2s ease-in-out;
-  transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.6s')};
+  transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.7s')};
 
   ${({ theme }) => theme.mq.tablet} {
     position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
