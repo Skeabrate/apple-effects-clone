@@ -129,3 +129,45 @@ export const StyledFirstVideo = styled.div`
     }
   }
 `;
+
+export const SecondSection = styled.section`
+  position: relative;
+
+  /* div {
+    height: 100px;
+    width: 0;
+  } */
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  ul {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+
+    li {
+      color: #f5f5f7;
+      font-size: ${({ theme }) => theme.fontSize.headingMobile};
+      font-weight: bold;
+
+      &:first-child {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    ul {
+      li {
+        font-size: ${({ theme }) => theme.fontSize.heading};
+      }
+    }
+  }
+`;

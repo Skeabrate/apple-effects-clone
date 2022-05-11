@@ -1,6 +1,11 @@
 import type { NextPage } from 'next';
 import HeadComponent from 'components/Head/Head';
-import { FirstSection, StyledFirstVideo, Wrapper } from 'assets/styles/index/index.styles';
+import {
+  FirstSection,
+  SecondSection,
+  StyledFirstVideo,
+  Wrapper,
+} from 'assets/styles/index/index.styles';
 
 const Home: NextPage = () => {
   return (
@@ -29,7 +34,31 @@ const Home: NextPage = () => {
         </StyledFirstVideo>
       </FirstSection>
 
-      <div style={{ width: '100%', height: '200px', background: 'yellow' }}></div>
+      <SecondSection>
+        <div></div>
+
+        <video autoPlay loop muted playsInline preload='auto'>
+          <source src='/images/section2.mp4' type='video/mp4' />
+        </video>
+
+        <ul>
+          <li>A dramatically more powerful camera system.</li>
+          <li>A display so responsive, every interaction feels new again.</li>
+          <li>The world’s fastest smartphone chip.</li>
+          <li>Exceptional durability.</li>
+          <li>And a huge leap in battery life.</li>
+          <li>
+            Let’s Pro.
+            <div>
+              From £39.54/mo. or £949 before trade‑in*
+              <div>
+                <button>Watch the film</button>
+                <button>Watch the event</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </SecondSection>
     </Wrapper>
   );
 };
