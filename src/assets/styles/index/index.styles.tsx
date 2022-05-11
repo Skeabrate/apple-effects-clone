@@ -85,30 +85,54 @@ export const FirstSection = styled.section`
       }
     }
   }
+`;
+
+export const StyledVideo = styled.div`
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+
+  ${({ theme }) => theme.mq.tablet} {
+    width: 1200px;
+    bottom: -300px;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: 1500px;
+    bottom: -400px;
+  }
+
+  ${({ theme }) => theme.mq.huge} {
+    width: 2000px;
+    bottom: -600px;
+  }
 
   video {
-    position: absolute;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 800px;
-    border: none;
-    outline: none;
-    background: transparent;
 
     ${({ theme }) => theme.mq.tablet} {
       width: 1200px;
-      bottom: -300px;
     }
 
     ${({ theme }) => theme.mq.desktop} {
       width: 1500px;
-      bottom: -400px;
     }
 
     ${({ theme }) => theme.mq.huge} {
       width: 2000px;
-      bottom: -600px;
     }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+    background: white;
+    z-index: 10;
   }
 `;
