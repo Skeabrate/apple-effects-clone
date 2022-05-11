@@ -16,8 +16,14 @@ const Home: NextPage = () => {
           </div>
         </header>
 
-        <video autoPlay muted poster='/images/hero_startframe__tjgmpy97igqy_xlarge'>
-          <source src='/images/medium.mp4'></source>
+        <video
+          autoPlay
+          muted
+          playsInline
+          poster='/images/hero_startframe__tjgmpy97igqy_xlarge'
+          preload='auto'
+        >
+          <source src='/images/medium.mp4' type='video/mp4' />
         </video>
       </FirstSection>
     </Wrapper>
