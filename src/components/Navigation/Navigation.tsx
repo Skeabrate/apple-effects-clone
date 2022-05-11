@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useObserver } from 'hooks/useObserver';
 import {
   Hamburger,
   StyledBagButton,
@@ -22,7 +21,6 @@ const Navigation = () => {
   const [isSticky, setIsSticky] = useState<number>(0);
 
   const barRef = useRef<HTMLDivElement>(null);
-  /* const { isSticky } = useObserver(barRef); */
 
   const handleToggle = () => {
     if (toggle) {
