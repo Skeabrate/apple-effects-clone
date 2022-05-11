@@ -238,7 +238,7 @@ export const StyledBarOuter = styled.div<NavProps>`
   z-index: 5;
   background-color: ${({ $barOptionsToggle }) =>
     $barOptionsToggle ? 'white' : 'rgba(255, 255, 255, 0.7)'};
-  backdrop-filter: blur(2rem);
+  backdrop-filter: saturate(180%) blur(20px);
 
   ${({ theme }) => theme.mq.tablet} {
     top: ${({ $isSticky }) => ($isSticky ? '44px' : '0')};

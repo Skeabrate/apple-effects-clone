@@ -26,9 +26,11 @@ const Navigation = () => {
   const handleToggle = () => {
     if (toggle) {
       document.body.style.overflow = 'unset';
+      document.body.style.height = 'unset';
       document.getElementsByTagName('html')[0].style.overflow = 'unset';
     } else {
       document.body.style.overflow = 'hidden';
+      document.body.style.height = '100%';
       document.getElementsByTagName('html')[0].style.overflow = 'hidden';
     }
     setToggle(!toggle);
