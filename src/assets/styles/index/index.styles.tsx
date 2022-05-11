@@ -24,89 +24,107 @@ const appearDiv = keyframes`
 
 export const FirstSection = styled.section`
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 50px;
   overflow: hidden;
   height: 600px;
 
+  ${({ theme }) => theme.mq.tablet} {
+    height: 700px;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    height: 900px;
+  }
+`;
+
+export const StyledFirstVideo = styled.div`
   header {
+    width: fit-content;
     text-align: center;
+    position: absolute;
+    bottom: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 
     h1 {
-      width: fit-content;
       position: absolute;
-      top: 50px;
+      font-size: 2rem;
+      opacity: 0;
+      top: 10%;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1;
-      opacity: 0;
-      font-size: 3rem;
       animation: ${appearH1} 3s forwards;
       animation-delay: 0.5s;
     }
 
     div {
-      width: fit-content;
-      position: absolute;
-      bottom: 400px;
-      left: 50%;
-      z-index: 1;
-      transform: translateX(-50%);
       opacity: 0;
       animation: ${appearDiv} 1s forwards;
       animation-delay: 3.6s;
-      background: transparent;
 
       p {
-        font-weight: bold;
         font-size: 2rem;
-
-        ${({ theme }) => theme.mq.tablet} {
-          font-size: 3rem;
-        }
+        font-weight: bold;
       }
 
       h2 {
         font-size: ${({ theme }) => theme.fontSize.headingMobile};
       }
     }
+  }
 
-    ${({ theme }) => theme.mq.tablet} {
-      height: 1200px !important;
+  video {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    header {
+      bottom: 400px;
 
       h1 {
-        font-size: ${({ theme }) => theme.fontSize.headingMobile};
+        font-size: 3rem;
       }
 
       div {
+        p {
+          font-size: 3rem;
+        }
+
         h2 {
           font-size: ${({ theme }) => theme.fontSize.heading};
         }
       }
     }
-  }
-`;
 
-export const StyledFirstVideo = styled.video`
-  position: absolute;
-  bottom: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  ${({ theme }) => theme.mq.tablet} {
-    width: 1200px;
-    bottom: -300px;
+    video {
+      width: 1200px;
+      bottom: -300px;
+    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    width: 1500px;
-    bottom: -400px;
+    header {
+      bottom: 500px;
+    }
+
+    video {
+      width: 1800px;
+      bottom: -500px;
+    }
   }
 
   ${({ theme }) => theme.mq.huge} {
-    width: 2000px;
-    bottom: -600px;
+    header {
+      bottom: 600px;
+    }
+
+    video {
+      width: 2200px;
+      bottom: -600px;
+    }
   }
 `;

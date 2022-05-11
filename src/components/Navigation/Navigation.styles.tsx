@@ -270,7 +270,7 @@ export const StyledDarkBackground = styled.div<NavProps>`
   background-color: black;
   opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3' : '0')};
   visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
-  z-index: 1;
+  z-index: 3;
   transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
 `;
 
@@ -287,7 +287,6 @@ export const StyledBarInner = styled.div<NavProps>`
 
   h2 {
     font-size: 2rem;
-    letter-spacing: -0.4px;
     padding: 13px 0;
   }
 
