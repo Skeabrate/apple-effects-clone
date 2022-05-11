@@ -128,7 +128,7 @@ export const StyledVideo = styled.div`
   &::after {
     content: '';
     position: absolute;
-    top: -20px;
+    top: -10px;
     left: 0px;
     width: 100%;
     height: 20px;
