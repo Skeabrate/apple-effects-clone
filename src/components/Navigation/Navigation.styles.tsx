@@ -239,8 +239,8 @@ export const StyledBarOuter = styled.div<NavProps>`
   background-color: ${({ $barOptionsToggle }) =>
     $barOptionsToggle ? 'white' : 'rgba(255, 255, 255, 0.7)'};
   backdrop-filter: saturate(180%) blur(20px);
-  transition: background-color 0.3s ease-in-out;
-  transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.5s')};
+  transition: background-color 0.2s ease-in-out;
+  transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.6s')};
 
   ${({ theme }) => theme.mq.tablet} {
     position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
@@ -357,7 +357,7 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
     visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
 
-    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out, visibility 0.6s 0s ease-in-out;
   }
 
   p {
@@ -414,7 +414,6 @@ export const StyledBagButton = styled.button<NavProps>`
   opacity: ${({ $toggle }) => ($toggle ? 0 : 1)};
 
   transition: all 0.4s ease-in-out;
-
   transition-delay: ${({ $toggle }) => ($toggle ? '0' : '0.3s')};
 
   ${({ theme }) => theme.mq.tablet} {

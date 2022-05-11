@@ -92,6 +92,9 @@ export const FirstSection = styled.section`
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
+    border: none;
+    outline: none;
+    background: transparent;
 
     ${({ theme }) => theme.mq.tablet} {
       width: 1200px;
