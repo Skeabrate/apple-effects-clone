@@ -9,8 +9,8 @@ export const theme: DefaultTheme = {
     borderDark: '#4b4b4b',
   },
   fontSize: {
-    heading: '3.6rem',
-    headingMobile: '3rem',
+    heading: '8rem',
+    headingMobile: '5.6rem',
     paragraph: '1.6rem',
     caption: '1.2rem',
   },

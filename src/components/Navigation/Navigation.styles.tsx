@@ -242,23 +242,25 @@ export const StyledBarOuter = styled.div<NavProps>`
   transition: background-color 0.3s ease-in-out;
   transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.5s')};
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3' : '0')};
-    z-index: -1;
-    transition: opacity 0.6s ease-in-out;
-  }
-
   ${({ theme }) => theme.mq.tablet} {
     position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
     top: ${({ $isSticky = 0 }) => ($isSticky < 44 ? '44px' : '0')};
   }
+`;
+
+export const StyledDarkBackground = styled.div<NavProps>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3' : '0')};
+  visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
+  z-index: 1;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
 `;
 
 export const StyledBarInner = styled.div<NavProps>`
@@ -346,16 +348,21 @@ export const StyledBarHideMenu = styled.div<NavProps>`
   font-size: ${({ theme }) => theme.fontSize.paragraph};
   width: 100%;
 
-  p {
-    color: #b1b1b1;
-    cursor: default;
+  p,
+  button {
     margin: 0 40px;
     padding: 14px 0;
     transform: ${({ $barOptionsToggle }) =>
       $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
     opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
+    visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
 
-    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out;
+    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+  }
+
+  p {
+    color: #b1b1b1;
+    cursor: default;
     transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3s' : '0s')};
   }
 
@@ -363,16 +370,8 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     display: flex;
     justify-content: flex-start;
     color: #3d3d3d;
-    transition: color 0.2s ease-in-out;
     font-size: ${({ theme }) => theme.fontSize.paragraph};
     border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
-    margin: 0 40px;
-    padding: 14px 0;
-    transform: ${({ $barOptionsToggle }) =>
-      $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
-    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
-
-    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out;
     transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.2s' : '0.1s')};
 
     &:hover {
@@ -387,16 +386,18 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     font-size: 1.3rem;
     gap: 25px;
 
-    p {
+    p,
+    button {
       margin: 0;
       padding: 0;
+      transform: unset;
+      visibility: visible;
+      opacity: 1;
     }
 
     button {
       font-size: 1.3rem;
       border: none;
-      margin: 0;
-      padding: 0;
     }
   }
 `;
