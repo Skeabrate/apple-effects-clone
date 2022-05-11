@@ -57,6 +57,7 @@ export const FirstSection = styled.section`
       opacity: 0;
       animation: ${appearDiv} 1s forwards;
       animation-delay: 3.6s;
+      background: transparent;
 
       p {
         font-weight: bold;
