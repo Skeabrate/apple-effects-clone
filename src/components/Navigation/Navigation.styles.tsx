@@ -261,17 +261,21 @@ export const StyledBarOuter = styled.div<NavProps>`
 
 export const StyledDarkBackground = styled.div<NavProps>`
   position: fixed;
-  top: 0;
+  top: 48px;
   left: 0;
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 48px);
   background-color: black;
   opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3' : '0')};
   visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
   z-index: 3;
   transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: none;
+  }
 `;
 
 export const StyledBarInner = styled.div<NavProps>`
