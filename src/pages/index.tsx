@@ -1,19 +1,26 @@
 import type { NextPage } from 'next';
-import { useEffect, useRef } from 'react';
 import HeadComponent from 'components/Head/Head';
-import { StyledFirstSection } from 'assets/styles/index/index.styles';
+import { FirstSection, Wrapper } from 'assets/styles/index/index.styles';
 
 const Home: NextPage = () => {
   return (
-    <main>
+    <Wrapper>
       <HeadComponent title='Apple effects clone' />
 
-      <StyledFirstSection>
-        <video id='vid' autoPlay muted controls>
+      <FirstSection>
+        <header>
+          <h1>iPhone 13 Pro</h1>
+          <div>
+            <p>iPhone 13 Pro</p>
+            <h2>Every inch a pro.</h2>
+          </div>
+        </header>
+
+        <video autoPlay muted poster='/images/hero_startframe__tjgmpy97igqy_xlarge'>
           <source src='/images/medium.mp4'></source>
         </video>
-      </StyledFirstSection>
-    </main>
+      </FirstSection>
+    </Wrapper>
   );
 };
 
