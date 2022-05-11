@@ -239,6 +239,21 @@ export const StyledBarOuter = styled.div<NavProps>`
   background-color: ${({ $barOptionsToggle }) =>
     $barOptionsToggle ? 'white' : 'rgba(255, 255, 255, 0.7)'};
   backdrop-filter: saturate(180%) blur(20px);
+  transition: background-color 0.3s ease-in-out;
+  transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0s' : '0.5s')};
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3' : '0')};
+    z-index: -1;
+    transition: opacity 0.6s ease-in-out;
+  }
 
   ${({ theme }) => theme.mq.tablet} {
     position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
@@ -254,7 +269,8 @@ export const StyledBarInner = styled.div<NavProps>`
   padding: 0 20px;
   height: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '160px' : '50px')};
 
-  transition: all 0.1s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0' : '.6s')};
 
   h2 {
     font-size: 2rem;
@@ -335,6 +351,12 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     cursor: default;
     margin: 0 40px;
     padding: 14px 0;
+    transform: ${({ $barOptionsToggle }) =>
+      $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
+    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
+
+    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out;
+    transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3s' : '0s')};
   }
 
   button {
@@ -346,6 +368,12 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
     margin: 0 40px;
     padding: 14px 0;
+    transform: ${({ $barOptionsToggle }) =>
+      $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
+    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
+
+    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out;
+    transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.2s' : '0.1s')};
 
     &:hover {
       color: #0071e3;

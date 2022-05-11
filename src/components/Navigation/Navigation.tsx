@@ -40,7 +40,12 @@ const Navigation = () => {
   const handleBarOptionsToggle = () => setBarOptionsToggle(!barOptionsToggle);
 
   useEffect(() => {
-    document.addEventListener('scroll', (e) => setIsSticky(window.scrollY));
+    document.addEventListener('scroll', () => {
+      let lastScroll;
+      if (barOptionsToggle) lastScroll = isSticky;
+      if (isSticky !== lastScroll) setBarOptionsToggle(false);
+      setIsSticky(window.scrollY);
+    });
   }, []);
 
   return (
