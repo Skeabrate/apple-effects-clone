@@ -33,9 +33,8 @@ const Navigation = () => {
       document.body.style.height = '100%';
       document.getElementsByTagName('html')[0].style.overflow = 'hidden'; */
       document.body.style.cssText = 'overflow:hidden !important; height:100vh !important';
-      /* document.body.style.cssText = ''; */
-      /* document.getElementsByTagName('html')[0].style.cssText = 'overflow:hidden !important';
-      document.getElementsByTagName('html')[0].style.cssText = 'height:100vh !important'; */
+      document.getElementsByTagName('html')[0].style.cssText =
+        'overflow:hidden !important; height:100vh !important';
     }
     setToggle(!toggle);
   };
