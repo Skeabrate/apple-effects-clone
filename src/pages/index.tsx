@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import HeadComponent from 'components/Head/Head';
-import { FirstSection, StyledVideo, Wrapper } from 'assets/styles/index/index.styles';
+import { FirstSection, StyledFirstVideo, Wrapper } from 'assets/styles/index/index.styles';
 
 const Home: NextPage = () => {
   return (
@@ -16,18 +16,18 @@ const Home: NextPage = () => {
           </div>
         </header>
 
-        <StyledVideo>
-          <video
-            autoPlay
-            muted
-            playsInline
-            poster='/images/hero_startframe__tjgmpy97igqy_xlarge'
-            preload='auto'
-          >
-            <source src='/images/medium.mp4' type='video/mp4' />
-          </video>
-        </StyledVideo>
+        <StyledFirstVideo
+          autoPlay
+          muted
+          playsInline
+          poster='/images/hero_startframe__tjgmpy97igqy_xlarge'
+          preload='auto'
+        >
+          <source src='/images/medium.mp4' type='video/mp4' />
+        </StyledFirstVideo>
       </FirstSection>
+
+      <div style={{ width: '100%', height: '200px', background: 'yellow' }}></div>
     </Wrapper>
   );
 };

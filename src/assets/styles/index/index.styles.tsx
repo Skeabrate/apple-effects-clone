@@ -28,8 +28,8 @@ export const FirstSection = styled.section`
   justify-content: center;
   align-items: flex-end;
   margin-top: 50px;
-  height: calc(100vh - 94px);
   overflow: hidden;
+  height: 600px;
 
   header {
     text-align: center;
@@ -50,7 +50,7 @@ export const FirstSection = styled.section`
     div {
       width: fit-content;
       position: absolute;
-      top: 50px;
+      bottom: 400px;
       left: 50%;
       z-index: 1;
       transform: translateX(-50%);
@@ -74,6 +74,8 @@ export const FirstSection = styled.section`
     }
 
     ${({ theme }) => theme.mq.tablet} {
+      height: 1200px !important;
+
       h1 {
         font-size: ${({ theme }) => theme.fontSize.headingMobile};
       }
@@ -87,13 +89,12 @@ export const FirstSection = styled.section`
   }
 `;
 
-export const StyledVideo = styled.div`
+export const StyledFirstVideo = styled.video`
   position: absolute;
-  bottom: -100px;
+  bottom: -200px;
   left: 50%;
   transform: translateX(-50%);
   width: 800px;
-
   ${({ theme }) => theme.mq.tablet} {
     width: 1200px;
     bottom: -300px;
@@ -107,32 +108,5 @@ export const StyledVideo = styled.div`
   ${({ theme }) => theme.mq.huge} {
     width: 2000px;
     bottom: -600px;
-  }
-
-  video {
-    width: 800px;
-
-    ${({ theme }) => theme.mq.tablet} {
-      width: 1200px;
-    }
-
-    ${({ theme }) => theme.mq.desktop} {
-      width: 1500px;
-    }
-
-    ${({ theme }) => theme.mq.huge} {
-      width: 2000px;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 0px;
-    width: 100%;
-    height: 40px;
-    background: white;
-    z-index: 10;
   }
 `;
