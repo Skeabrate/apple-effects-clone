@@ -369,7 +369,7 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     transform: ${({ $barOptionsToggle }) =>
       $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
     opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
-    visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
+    /* visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')}; */
 
     transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out, visibility 0.6s 0s ease-in-out;
   }
