@@ -174,11 +174,11 @@ export const StyledSearch = styled.li<NavProps>`
     order: unset;
     border: unset;
 		padding: 0 !important;
-		transform: unset;
+		transform: unset !important;
 
 		div {
 			background-color: transparent;
-			width:unset;
+			width: unset;
 			padding: 0
 			border-radius: 0;
 
@@ -338,13 +338,20 @@ export const StyledBarOpenButton = styled.button<NavProps>`
     width: 11px;
     height: 2px;
     border-radius: 100px;
+    transition: all 0.9s cubic-bezier(0.86, 0, 0.07, 1);
 
     &:first-child {
-      transform: rotate(40deg) translateX(3.5px);
+      transform: ${({ $barOptionsToggle }) =>
+        $barOptionsToggle
+          ? 'rotate(-40deg) translateX(0px) translateY(4px)'
+          : 'rotate(40deg) translateX(3.5px)'};
     }
 
     &:last-child {
-      transform: rotate(-40deg) translateX(-3.5px);
+      transform: ${({ $barOptionsToggle }) =>
+        $barOptionsToggle
+          ? 'rotate(40deg) translateX(0px) translateY(4px)'
+          : 'rotate(-40deg) translateX(-3.5px)'};
     }
   }
 
