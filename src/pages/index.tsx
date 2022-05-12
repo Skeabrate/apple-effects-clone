@@ -41,13 +41,13 @@ const Home: NextPage = () => {
           <source src='/images/section2.mp4' type='video/mp4' />
         </video>
 
-        <ul>
-          <li>A dramatically more powerful camera system.</li>
-          <li>A display so responsive, every interaction feels new again.</li>
-          <li>The world’s fastest smartphone chip.</li>
-          <li>Exceptional durability.</li>
-          <li>And a huge leap in battery life.</li>
-          <li>
+        <div>
+          <span>A dramatically more powerful camera system. </span>
+          <span>A display so responsive, every interaction feels new again. </span>
+          <span>The world’s fastest smartphone chip. </span>
+          <span>Exceptional durability. </span>
+          <span>And a huge leap in battery life. </span>
+          <span>
             Let’s Pro.
             <div>
               From £39.54/mo. or £949 before trade‑in*
@@ -55,9 +55,9 @@ const Home: NextPage = () => {
                 <button>Watch the film</button>
                 <button>Watch the event</button>
               </div>
-            </div>
-          </li>
-        </ul>
+            </div>{' '}
+          </span>
+        </div>
       </SecondSection>
     </Wrapper>
   );

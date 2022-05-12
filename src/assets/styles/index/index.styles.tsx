@@ -133,40 +133,68 @@ export const StyledFirstVideo = styled.div`
 export const SecondSection = styled.section`
   position: relative;
 
-  /* div {
-    height: 100px;
-    width: 0;
-  } */
-
   video {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
+    left: 0;
+    top: 0;
+    object-fit: fill;
   }
 
-  ul {
+  div {
     position: relative;
+    top: 30px;
+    list-style: none;
     z-index: 1;
-    max-width: 900px;
+    max-width: 850px;
+    margin: 0 auto;
+    /* background: red; */
+    padding: 0 20px;
 
-    li {
+    span {
       color: #f5f5f7;
-      font-size: ${({ theme }) => theme.fontSize.headingMobile};
+      font-size: 3rem;
       font-weight: bold;
+      opacity: 0.25;
 
-      &:first-child {
-        opacity: 0.25;
+      &:last-child {
+        margin-top: 3rem;
+        display: block;
+
+        div {
+          font-size: 24px;
+          display: flex;
+        }
       }
     }
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    ul {
-      li {
+    div {
+      top: 5.6rem;
+
+      span {
+        font-size: ${({ theme }) => theme.fontSize.headingMobile};
+
+        &:last-child {
+          margin-top: 5.6rem;
+        }
+      }
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    div {
+      top: 8rem;
+
+      span {
         font-size: ${({ theme }) => theme.fontSize.heading};
+
+        &:last-child {
+          margin-top: 8rem;
+        }
       }
     }
   }
