@@ -141,10 +141,10 @@ export const StyledSearch = styled.li<NavProps>`
   order: -1;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderDark};
   padding: 0 14px 20px 14px !important;
-	transform-origin: top;
-	transform: ${({ $toggle }) => ($toggle ? ' scaleY(100%)' : ' scaleY(0)')} !important;
-	transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')} !important;
-	transition-duration: ${({ $toggle }) => ($toggle ? '.25s' : '.35s')} !important;
+  transform-origin: top;
+  transform: ${({ $toggle }) => ($toggle ? ' scaleY(100%)' : ' scaleY(0)')} !important;
+  transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')} !important;
+  transition-duration: ${({ $toggle }) => ($toggle ? '.25s' : '.35s')} !important;
 
   div {
     background-color: #202020;
@@ -156,40 +156,40 @@ export const StyledSearch = styled.li<NavProps>`
 
     p {
       color: ${({ $toggle }) => ($toggle ? '#666666' : '#202020')};
-			transition: all ease-in-out;
-			transition-duration: .2s;
-			transition-delay: ${({ $toggle }) => ($toggle ? '0.1s' : '0.2s')};
+      transition: all ease-in-out;
+      transition-duration: 0.2s;
+      transition-delay: ${({ $toggle }) => ($toggle ? '0.1s' : '0.2s')};
       margin-left: 6px;
     }
 
-		svg path{
-			fill: ${({ $toggle }) => ($toggle ? '#666666' : '#202020')};
-			transition: all ease-in-out;
-			transition-duration: .2s;
-			transition-delay: ${({ $toggle }) => ($toggle ? '0.1s' : '0.2s')};
-		}
+    svg path {
+      fill: ${({ $toggle }) => ($toggle ? '#666666' : '#202020')};
+      transition: all ease-in-out;
+      transition-duration: 0.2s;
+      transition-delay: ${({ $toggle }) => ($toggle ? '0.1s' : '0.2s')};
+    }
   }
 
   ${({ theme }) => theme.mq.tablet} {
     order: unset;
     border: unset;
-		padding: 0 !important;
-		transform: unset !important;
+    padding: 0 !important;
+    transform: unset !important;
 
-		div {
-			background-color: transparent;
-			width: unset;
-			padding: 0
-			border-radius: 0;
+    div {
+      background-color: transparent;
+      width: unset;
+      padding: 0;
+      border-radius: 0;
 
-			p {
-				display: none;
-			}
+      p {
+        display: none;
+      }
 
-			svg path{
-				fill: ${({ theme }) => theme.colors.grey};
-			}
-		}
+      svg path {
+        fill: ${({ theme }) => theme.colors.grey};
+      }
+    }
   }
 `;
 
