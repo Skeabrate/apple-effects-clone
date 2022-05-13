@@ -193,11 +193,7 @@ export const StyledSearch = styled.li<NavProps>`
   }
 `;
 
-export const Hamburger = styled.button`
-  ${({ theme }) => theme.mq.tablet} {
-    display: none;
-  }
-
+export const Hamburger = styled.button<NavProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,11 +218,24 @@ export const Hamburger = styled.button`
       width: 18px;
       background-color: ${({ theme }) => theme.colors.grey};
       transition: all 0.25s ease-in-out;
+      transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')};
+
+      &:first-child {
+        transform: ${({ $toggle }) => ($toggle ? 'rotate(45deg) translateY(5px)' : 'unset')};
+      }
+
+      &:last-child {
+        transform: ${({ $toggle }) => ($toggle ? 'rotate(-45deg) translateY(-5px)' : 'unset')};
+      }
     }
   }
 
   &:hover div span {
     background-color: ${({ theme }) => theme.colors.lightGrey};
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: none;
   }
 `;
 

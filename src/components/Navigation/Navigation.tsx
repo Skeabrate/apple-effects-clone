@@ -54,7 +54,7 @@ const Navigation = () => {
       <Wrapper>
         <StyledNavOuter $toggle={toggle} ref={barRef}>
           <StyledNavInner>
-            <Hamburger onClick={handleToggle}>
+            <Hamburger onClick={handleToggle} $toggle={toggle}>
               <div>
                 <span></span>
                 <span></span>
