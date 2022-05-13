@@ -149,7 +149,7 @@ export const SecondSection = styled.section`
   video {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: calc(100% + 60px);
     z-index: -1;
     left: 0;
     top: 0;
@@ -163,7 +163,7 @@ export const SecondSection = styled.section`
     z-index: 1;
     max-width: 850px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 
     span {
       color: #f5f5f7;
@@ -172,12 +172,18 @@ export const SecondSection = styled.section`
       opacity: 0.25;
 
       &:last-child {
-        margin-top: 3rem;
+        margin-block: 3rem;
         display: block;
 
-        div {
-          font-size: 24px;
+        p {
+          font-size: 20px;
           display: flex;
+          flex-direction: column;
+          margin-block: 20px;
+
+          &:first-child {
+            margin-top: 3rem;
+          }
         }
       }
     }
@@ -185,6 +191,10 @@ export const SecondSection = styled.section`
 
   ${({ theme }) => theme.mq.tablet} {
     margin-top: 750px;
+
+    video {
+      height: calc(100% + 11.2rem);
+    }
 
     div {
       top: 5.6rem;
@@ -194,6 +204,14 @@ export const SecondSection = styled.section`
 
         &:last-child {
           margin-top: 5.6rem;
+
+          p {
+            font-size: 24px;
+
+            &:first-child {
+              margin-top: 5.6rem;
+            }
+          }
         }
       }
     }
@@ -201,6 +219,10 @@ export const SecondSection = styled.section`
 
   ${({ theme }) => theme.mq.desktop} {
     margin-top: 950px;
+
+    video {
+      height: calc(100% + 16rem);
+    }
 
     div {
       top: 8rem;
@@ -210,6 +232,12 @@ export const SecondSection = styled.section`
 
         &:last-child {
           margin-top: 8rem;
+
+          p {
+            &:first-child {
+              margin-top: 8rem;
+            }
+          }
         }
       }
     }

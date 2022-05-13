@@ -14,6 +14,7 @@ const Home: NextPage = () => {
   const { isSticky } = useContext(ScrollContext);
 
   const secondSectionRef = useRef<HTMLDivElement>(null);
+  console.log(secondSectionRef.current?.scrollHeight, isSticky);
 
   return (
     <Wrapper>
@@ -35,14 +36,12 @@ const Home: NextPage = () => {
         </StyledFirstVideo>
       </FirstSection>
 
-      <SecondSection>
-        <div></div>
-
+      <SecondSection ref={secondSectionRef}>
         <video autoPlay loop muted playsInline preload='auto'>
           <source src='/images/section2.mp4' type='video/mp4' />
         </video>
 
-        <div ref={secondSectionRef}>
+        <div>
           <span>A dramatically more powerful camera system. </span>
           <span>A display so responsive, every interaction feels new again. </span>
           <span>The world’s fastest smartphone chip. </span>
@@ -50,13 +49,8 @@ const Home: NextPage = () => {
           <span>And a huge leap in battery life. </span>
           <span>
             Let’s Pro.
-            <div>
-              From £39.54/mo. or £949 before trade‑in*
-              <div>
-                <button>Watch the film</button>
-                <button>Watch the event</button>
-              </div>
-            </div>
+            <p>From £39.54/mo. or £949 before trade‑in*</p>
+            <p>Watch the film Watch the event</p>
           </span>
         </div>
       </SecondSection>
