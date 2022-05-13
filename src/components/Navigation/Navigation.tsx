@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import ScrollContext from 'context/ScrollContext';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import {
   Hamburger,
   StyledBagButton,
@@ -19,35 +20,23 @@ import {
 const Navigation = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [barOptionsToggle, setBarOptionsToggle] = useState<boolean>(false);
-  const [isSticky, setIsSticky] = useState<number>(0);
+
+  const { isSticky } = useContext(ScrollContext);
 
   const barRef = useRef<HTMLDivElement>(null);
 
   const handleToggle = () => {
-    if (toggle) {
-      document.body.setAttribute('style', 'overflow:unset; height:unset');
-      document
-        .getElementsByTagName('html')[0]
-        .setAttribute('style', 'overflow:unset; height:unset');
-    } else {
-      document.body.setAttribute('style', 'overflow:hidden !important; height:100vh !important');
-      document
-        .getElementsByTagName('html')[0]
-        .setAttribute('style', 'overflow:hidden !important; height:100vh !important');
-    }
+    if (toggle) document.body.setAttribute('style', 'overflow:unset; height:unset');
+    else document.body.setAttribute('style', 'overflow:hidden !important; height:100vh !important');
+
     setToggle(!toggle);
   };
 
   const handleBarOptionsToggle = () => setBarOptionsToggle(!barOptionsToggle);
 
   useEffect(() => {
-    document.addEventListener('scroll', () => {
-      let lastScroll;
-      if (barOptionsToggle) lastScroll = isSticky;
-      if (isSticky !== lastScroll) setBarOptionsToggle(false);
-      setIsSticky(window.scrollY);
-    });
-  }, []);
+    setBarOptionsToggle(false);
+  }, [isSticky]);
 
   return (
     <>

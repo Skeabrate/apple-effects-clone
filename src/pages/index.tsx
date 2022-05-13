@@ -1,18 +1,25 @@
 import type { NextPage } from 'next';
+import { useContext, useRef } from 'react';
 import HeadComponent from 'components/Head/Head';
 import {
   FirstSection,
   SecondSection,
   StyledFirstVideo,
+  ThirdSection,
   Wrapper,
 } from 'assets/styles/index/index.styles';
+import ScrollContext from 'context/ScrollContext';
 
 const Home: NextPage = () => {
+  const secondSectionRef = useRef<HTMLDivElement>(null);
+
+  const { isSticky } = useContext(ScrollContext);
+
   return (
     <Wrapper>
       <HeadComponent title='Apple effects clone' />
 
-      <FirstSection>
+      <FirstSection $isSticky={isSticky}>
         <StyledFirstVideo>
           <header>
             <h1>iPhone 13 Pro</h1>
@@ -41,7 +48,7 @@ const Home: NextPage = () => {
           <source src='/images/section2.mp4' type='video/mp4' />
         </video>
 
-        <div>
+        <div ref={secondSectionRef}>
           <span>A dramatically more powerful camera system. </span>
           <span>A display so responsive, every interaction feels new again. </span>
           <span>The world’s fastest smartphone chip. </span>
@@ -55,10 +62,12 @@ const Home: NextPage = () => {
                 <button>Watch the film</button>
                 <button>Watch the event</button>
               </div>
-            </div>{' '}
+            </div>
           </span>
         </div>
       </SecondSection>
+
+      <ThirdSection></ThirdSection>
     </Wrapper>
   );
 };

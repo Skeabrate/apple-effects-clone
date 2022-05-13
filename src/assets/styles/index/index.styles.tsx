@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
+interface IndexProps {
+  $isSticky: number;
+}
+
 export const Wrapper = styled.main`
   max-width: 2000px;
   margin: 0 auto;
@@ -22,12 +26,18 @@ const appearDiv = keyframes`
 	}
 `;
 
-export const FirstSection = styled.section`
-  position: relative;
+export const FirstSection = styled.section<IndexProps>`
+  position: ${({ $isSticky = 0 }) => ($isSticky < 48 ? 'absolute' : 'fixed')};
+  top: ${({ $isSticky = 0 }) => ($isSticky < 48 ? '98px' : '50px')};
+  left: 0;
   overflow: hidden;
   height: 600px;
+  width: 100%;
+  z-index: -1;
 
   ${({ theme }) => theme.mq.tablet} {
+    position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
+    top: ${({ $isSticky = 0 }) => ($isSticky < 44 ? '94px' : '50px')};
     height: 700px;
   }
 
@@ -132,6 +142,9 @@ export const StyledFirstVideo = styled.div`
 
 export const SecondSection = styled.section`
   position: relative;
+  z-index: 1;
+  margin-top: 650px;
+  background: white;
 
   video {
     position: absolute;
@@ -150,7 +163,6 @@ export const SecondSection = styled.section`
     z-index: 1;
     max-width: 850px;
     margin: 0 auto;
-    /* background: red; */
     padding: 0 20px;
 
     span {
@@ -172,6 +184,8 @@ export const SecondSection = styled.section`
   }
 
   ${({ theme }) => theme.mq.tablet} {
+    margin-top: 750px;
+
     div {
       top: 5.6rem;
 
@@ -186,6 +200,8 @@ export const SecondSection = styled.section`
   }
 
   ${({ theme }) => theme.mq.desktop} {
+    margin-top: 950px;
+
     div {
       top: 8rem;
 
@@ -198,4 +214,10 @@ export const SecondSection = styled.section`
       }
     }
   }
+`;
+
+export const ThirdSection = styled.section`
+  width: 100%;
+  height: 100vh;
+  background: white;
 `;
