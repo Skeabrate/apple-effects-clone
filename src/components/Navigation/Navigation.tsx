@@ -43,7 +43,7 @@ const Navigation = () => {
       <Wrapper>
         <StyledNavOuter $toggle={toggle} ref={barRef}>
           <StyledNavInner>
-            <Hamburger onClick={handleToggle} $toggle={toggle}>
+            <Hamburger onClick={handleToggle} $toggle={toggle} aria-label='open menu'>
               <div>
                 <span></span>
                 <span></span>

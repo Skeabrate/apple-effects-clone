@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useEffect, useState } from 'react';
 import HeadComponent from 'components/Head/Head';
 import {
   FirstSection,
@@ -11,9 +11,9 @@ import {
 import ScrollContext from 'context/ScrollContext';
 
 const Home: NextPage = () => {
-  const secondSectionRef = useRef<HTMLDivElement>(null);
-
   const { isSticky } = useContext(ScrollContext);
+
+  const secondSectionRef = useRef<HTMLDivElement>(null);
 
   return (
     <Wrapper>
@@ -29,13 +29,7 @@ const Home: NextPage = () => {
             </div>
           </header>
 
-          <video
-            autoPlay
-            muted
-            playsInline
-            poster='/images/hero_startframe__tjgmpy97igqy_xlarge'
-            preload='auto'
-          >
+          <video autoPlay muted playsInline preload='auto'>
             <source src='/images/medium.mp4' type='video/mp4' />
           </video>
         </StyledFirstVideo>

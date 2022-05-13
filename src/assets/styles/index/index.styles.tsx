@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 interface IndexProps {
-  $isSticky: number;
+  $isSticky?: number;
 }
 
 export const Wrapper = styled.main`
@@ -46,7 +46,7 @@ export const FirstSection = styled.section<IndexProps>`
   }
 `;
 
-export const StyledFirstVideo = styled.div`
+export const StyledFirstVideo = styled.div<IndexProps>`
   header {
     width: fit-content;
     text-align: center;
