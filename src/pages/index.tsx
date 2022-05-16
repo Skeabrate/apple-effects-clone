@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const thirdSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-height: 820px)');
+    const mediaQuery = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
 
     if (mediaQuery.matches && firstSectionRef.current && thirdSectionRef.current) {
       const refTable = [thirdSectionRef, firstSectionRef];
