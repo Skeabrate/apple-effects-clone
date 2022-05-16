@@ -1,19 +1,51 @@
 import type { NextPage } from 'next';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
+
 import HeadComponent from 'components/Head/Head';
+import ScrollContext from 'context/ScrollContext';
 import {
   FirstSection,
+  FourthSection,
   SecondSection,
   StyledFirstVideo,
+  ThirdFooter,
+  ThirdInner,
+  ThirdLeft,
+  ThirdRight,
   ThirdSection,
   Wrapper,
 } from 'styles/index/index.styles';
-import ScrollContext from 'context/ScrollContext';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const Home: NextPage = () => {
   const [isHighlighted, setIsHighlighted] = useState<number>(0);
 
   const { isSticky } = useContext(ScrollContext);
+
+  const tl = useRef(null);
+  const firstSectionRef = useRef<HTMLDivElement>(null);
+  const thirdSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-height: 820px)');
+
+    if (mediaQuery.matches && firstSectionRef.current && thirdSectionRef.current) {
+      const refTable = [thirdSectionRef, firstSectionRef];
+      refTable.forEach((ref) => {
+        ScrollTrigger.create({
+          trigger: ref.current,
+          start: 'top top',
+          pin: true,
+          pinSpacing: false,
+        });
+      });
+    }
+  }, [firstSectionRef, thirdSectionRef]);
 
   useEffect(() => {
     document.querySelectorAll('.spans').forEach((item, index) => {
@@ -27,7 +59,7 @@ const Home: NextPage = () => {
     <Wrapper>
       <HeadComponent title='Apple effects clone' />
 
-      <FirstSection $isSticky={isSticky}>
+      <FirstSection ref={firstSectionRef}>
         <StyledFirstVideo>
           <header>
             <h1>iPhone 13 Pro</h1>
@@ -64,7 +96,27 @@ const Home: NextPage = () => {
         </div>
       </SecondSection>
 
-      <ThirdSection></ThirdSection>
+      <ThirdSection ref={thirdSectionRef}>
+        <ThirdInner>
+          <ThirdLeft>
+            <h2>
+              iPhone 13 Pro Max
+              <span>6.7”</span>
+            </h2>
+            <img src='/images/section2_2.png' alt='' /> {/* 321 x 650 */}
+          </ThirdLeft>
+          <ThirdRight>
+            <h2>
+              iPhone 13 Pro
+              <span>6.1”</span>
+            </h2>
+            <img src='/images/section2_1.png' alt='' /> {/* 292 x 588 */}
+          </ThirdRight>
+        </ThirdInner>
+        <ThirdFooter>Super Retina XDR display1 with ProMotion</ThirdFooter>
+      </ThirdSection>
+
+      <FourthSection>test2</FourthSection>
     </Wrapper>
   );
 };

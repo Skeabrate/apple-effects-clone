@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
 interface IndexProps {
-  $isSticky?: number;
   $isHighlighted?: number;
 }
 
@@ -28,22 +27,23 @@ const appearDiv = keyframes`
 `;
 
 export const FirstSection = styled.section<IndexProps>`
-  position: ${({ $isSticky = 0 }) => ($isSticky < 48 ? 'absolute' : 'fixed')};
-  top: ${({ $isSticky = 0 }) => ($isSticky < 48 ? '98px' : '50px')};
-  left: 0;
+  position: relative;
   overflow: hidden;
-  height: 600px;
+  min-height: 600px;
+  max-height: 1000px;
   width: 100%;
   z-index: -1;
 
   ${({ theme }) => theme.mq.tablet} {
-    position: ${({ $isSticky = 0 }) => ($isSticky < 44 ? 'absolute' : 'fixed')};
-    top: ${({ $isSticky = 0 }) => ($isSticky < 44 ? '94px' : '50px')};
-    height: 700px;
+    min-height: 700px;
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    height: 900px;
+    min-height: 800px;
+  }
+
+  ${({ theme }) => theme.mq.huge} {
+    min-height: 900px;
   }
 `;
 
@@ -144,8 +144,8 @@ export const StyledFirstVideo = styled.div<IndexProps>`
 export const SecondSection = styled.section<IndexProps>`
   position: relative;
   z-index: 1;
-  margin-top: 650px;
   background: white;
+  margin-bottom: 12rem;
 
   video {
     position: absolute;
@@ -199,7 +199,7 @@ export const SecondSection = styled.section<IndexProps>`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    margin-top: 750px;
+    margin-bottom: 30rem;
 
     video {
       height: calc(100% + 30rem);
@@ -229,8 +229,6 @@ export const SecondSection = styled.section<IndexProps>`
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    margin-top: 950px;
-
     div {
       max-width: 930px;
 
@@ -253,6 +251,141 @@ export const SecondSection = styled.section<IndexProps>`
 
 export const ThirdSection = styled.section`
   width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 0 20px;
+
+  ${({ theme }) => theme.mq.desktop} {
+    height: 900px;
+  }
+`;
+
+export const ThirdInner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    h2 {
+      display: flex;
+      flex-direction: column;
+      font-size: ${({ theme }) => theme.fontSize.paragraph};
+
+      span {
+        font-size: 3rem;
+      }
+    }
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    div {
+      justify-content: flex-end;
+
+      h2 {
+        font-size: 2rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    div {
+      height: 650px;
+    }
+  }
+`;
+
+export const ThirdLeft = styled.div`
+  margin-right: -40px;
+
+  img {
+    width: 200px;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    text-align: right;
+    margin-right: -50px;
+
+    img {
+      width: 250px;
+    }
+
+    h2 {
+      left: -200px;
+      z-index: -1;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin-right: -70px;
+
+    img {
+      width: unset;
+    }
+  }
+`;
+
+export const ThirdRight = styled.div`
+  margin-left: -40px;
+  text-align: right;
+
+  img {
+    width: 171px;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    text-align: left;
+    margin-left: -50px;
+
+    img {
+      width: 221px;
+    }
+
+    h2 {
+      right: -180px;
+      z-index: -1;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin-left: -70px;
+
+    img {
+      width: unset;
+    }
+  }
+`;
+
+export const ThirdFooter = styled.div`
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fontSize.paragraph};
+  text-align: center;
+
+  ${({ theme }) => theme.mq.tablet} {
+    font-size: 2rem;
+  }
+`;
+
+export const FourthSection = styled.section`
+  position: relative;
+  z-index: 1;
+  width: 100%;
   height: 100vh;
-  background: white;
+  background: red;
 `;
