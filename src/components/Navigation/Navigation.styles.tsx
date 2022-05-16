@@ -293,7 +293,7 @@ export const StyledBarInner = styled.div<NavProps>`
   max-width: 980px;
   margin: 0 auto;
   padding: 0 20px;
-  height: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '160px' : '50px')};
+  height: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '200px' : '50px')};
 
   transition: all 0.15s ease-in-out;
   transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0' : '.6s')};
@@ -316,19 +316,85 @@ export const StyledBarOptions = styled.div`
 
   button {
     border: none;
-    background-color: transparent;
     cursor: pointer;
+  }
+`;
 
-    &:nth-child(3) {
-      background-color: #0071e3;
-      border-radius: 100px;
-      padding: 5px 12px;
-      color: white;
-      transition: background-color 0.2s ease-in-out;
+export const StyledBuyButton = styled.button`
+  background-color: #0071e3;
+  border-radius: 100px;
+  padding: 5px 12px;
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #2787e7;
+  }
+`;
+
+export const StyledBarHideMenu = styled.div<NavProps>`
+  position: absolute;
+  top: 50px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.paragraph};
+  width: 100%;
+
+  button {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 40px;
+    padding: 14px 0;
+    transform: ${({ $barOptionsToggle }) =>
+      $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
+    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
+    visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
+    transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out, color 0s 0.1s ease-in-out,
+      visibility 0.6s ease-in-out;
+    font-size: ${({ theme }) => theme.fontSize.paragraph};
+    color: #333333;
+    border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
+    background: transparent;
+
+    &:first-child {
+      color: #727171;
+      cursor: default;
+      border: none;
+      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.35s' : '0s')};
 
       &:hover {
-        background-color: #2787e7;
+        color: #727171;
       }
+    }
+
+    &:nth-child(2) {
+      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.25s' : '0.1s')};
+    }
+
+    &:nth-child(3) {
+      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.15s' : '0.2s')};
+    }
+
+    &:hover {
+      color: #0071e3;
+    }
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+
+    button {
+      margin: 0;
+      padding: 0;
+      transform: unset;
+      visibility: visible;
+      opacity: 1;
+      font-size: 1.3rem;
+      border: none !important;
     }
   }
 `;
@@ -340,6 +406,7 @@ export const StyledBarOpenButton = styled.button<NavProps>`
   width: 30px;
   height: 100%;
   gap: 2px;
+  background: transparent;
 
   span {
     display: block;
@@ -366,63 +433,6 @@ export const StyledBarOpenButton = styled.button<NavProps>`
 
   ${({ theme }) => theme.mq.tablet} {
     display: none;
-  }
-`;
-
-export const StyledBarHideMenu = styled.div<NavProps>`
-  position: absolute;
-  top: 50px;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  font-size: ${({ theme }) => theme.fontSize.paragraph};
-  width: 100%;
-
-  button {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 40px;
-    padding: 14px 0;
-    transform: ${({ $barOptionsToggle }) =>
-      $barOptionsToggle ? 'translateY(0px)' : 'translateY(-20px)'};
-    opacity: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '1' : '0')};
-    visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
-    transition: transform 0.4s ease-in-out, opacity 0.6s ease-in-out, color 0s 0.1s ease-in-out,
-      visibility 0.6s ease-in-out;
-    font-size: ${({ theme }) => theme.fontSize.paragraph};
-
-    &:first-child {
-      color: #b1b1b1;
-      cursor: default;
-      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.3s' : '0s')};
-    }
-
-    &:last-child {
-      color: #3d3d3d;
-      border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
-      transition-delay: ${({ $barOptionsToggle }) => ($barOptionsToggle ? '0.2s' : '0.1s')};
-    }
-
-    &:hover:last-child {
-      color: #0071e3;
-    }
-  }
-
-  ${({ theme }) => theme.mq.tablet} {
-    position: static;
-    flex-direction: row;
-    align-items: center;
-    gap: 25px;
-
-    button {
-      margin: 0;
-      padding: 0;
-      transform: unset;
-      visibility: visible;
-      opacity: 1;
-      font-size: 1.3rem;
-      border: none !important;
-    }
   }
 `;
 

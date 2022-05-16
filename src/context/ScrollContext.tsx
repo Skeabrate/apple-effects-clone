@@ -1,6 +1,10 @@
 import React from 'react';
 
-const ScrollContext = React.createContext({
+interface Ctx {
+  isSticky: number;
+}
+
+const ScrollContext = React.createContext<Ctx>({
   isSticky: 0,
 });
 

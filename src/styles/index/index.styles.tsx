@@ -174,7 +174,7 @@ export const SecondSection = styled.section<IndexProps>`
       opacity: 0.25;
       transition: opacity 0.3s ease-out;
       display: block;
-      padding-block: 0.5rem;
+      padding-block: 0.2rem;
 
       &:nth-child(${({ $isHighlighted = 0 }) => $isHighlighted + 1}) {
         opacity: 1;

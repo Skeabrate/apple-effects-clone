@@ -7,7 +7,7 @@ import {
   StyledFirstVideo,
   ThirdSection,
   Wrapper,
-} from 'assets/styles/index/index.styles';
+} from 'styles/index/index.styles';
 import ScrollContext from 'context/ScrollContext';
 
 const Home: NextPage = () => {

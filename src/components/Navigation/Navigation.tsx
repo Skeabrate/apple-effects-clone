@@ -15,6 +15,7 @@ import {
   Wrapper,
   StyledBarHideMenu,
   StyledDarkBackground,
+  StyledBuyButton,
 } from './Navigation.styles';
 
 const Navigation = () => {
@@ -130,10 +131,11 @@ const Navigation = () => {
 
               <StyledBarHideMenu $barOptionsToggle={barOptionsToggle}>
                 <button>Overview</button>
+                <button>Switching to iPhone</button>
                 <button>Tech Specs</button>
               </StyledBarHideMenu>
 
-              <button>Buy</button>
+              <StyledBuyButton>Buy</StyledBuyButton>
             </StyledBarOptions>
           </StyledBarInner>
         </StyledBarOuter>

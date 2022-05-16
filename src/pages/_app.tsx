@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
-import { GlobalStyles } from 'assets/styles/GlobalStyle';
-import { theme } from 'assets/styles/theme';
+import { GlobalStyles } from 'styles/GlobalStyle';
+import { theme } from 'styles/theme';
 import { ThemeProvider } from 'styled-components';
 import Navigation from 'components/Navigation/Navigation';
 import { useScrollPosition } from 'hooks/useScrollPosition';
