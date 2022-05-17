@@ -8,6 +8,7 @@ import {
   FirstSection,
   FourthInner,
   FourthSection,
+  FourtInnerDiv,
   SecondSection,
   SixthSection,
   StyledFirstVideo,
@@ -182,47 +183,56 @@ const Home: NextPage = () => {
       </ThirdSection>
 
       <FourthSection>
-        <FourthInner>
-          <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
-        </FourthInner>
         <FourthInner $sliderIndex={sliderIndex}>
-          <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
-          <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
-          <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
-          <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
-          <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
+          <FourtInnerDiv>
+            <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
+          </FourtInnerDiv>
+
+          <FourtInnerDiv>
+            <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
+            <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
+            <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
+            <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
+            <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
+          </FourtInnerDiv>
         </FourthInner>
 
         <FourthInner>
-          <img
-            src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
-            alt='Surgical-grade stainless steel'
-          />
-          <StyledH3>
-            Surgical-grade <span>stainless steel</span>
-          </StyledH3>
-        </FourthInner>
-        <FourthInner>
-          <img
-            src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
-            alt=''
-            aria-hidden='true'
-          />
+          <FourtInnerDiv>
+            <img
+              src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
+              alt='Surgical-grade stainless steel'
+            />
+            <StyledH3>
+              Surgical-grade <span>stainless steel</span>
+            </StyledH3>
+          </FourtInnerDiv>
+
+          <FourtInnerDiv>
+            <img
+              src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
+              alt=''
+              aria-hidden='true'
+            />
+          </FourtInnerDiv>
         </FourthInner>
 
         <FourthInner>
-          <img
-            src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
-            alt='Ceramic Shield, tougher than any smartphone glass'
-          />
-          <StyledH3>
-            Ceramic Shield, tougher than <span>any smartphone glass</span>
-          </StyledH3>
-        </FourthInner>
-        <FourthInner>
-          <video ref={fourthSectVideo} muted playsInline preload='auto'>
-            <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
-          </video>
+          <FourtInnerDiv>
+            <img
+              src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
+              alt='Ceramic Shield, tougher than any smartphone glass'
+            />
+            <StyledH3>
+              Ceramic Shield, tougher than <span>any smartphone glass</span>
+            </StyledH3>
+          </FourtInnerDiv>
+
+          <FourtInnerDiv>
+            <video ref={fourthSectVideo} muted playsInline preload='auto'>
+              <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
+            </video>
+          </FourtInnerDiv>
         </FourthInner>
       </FourthSection>
 
