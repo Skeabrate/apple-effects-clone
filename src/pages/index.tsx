@@ -33,22 +33,39 @@ const Home: NextPage = () => {
   const { isSticky } = useContext(ScrollContext);
 
   const firstSectionRef = useRef<HTMLDivElement>(null);
-  const thirdSectionRef = useRef<HTMLDivElement>(null);
-  const tSectLeftH2 = useRef<HTMLDivElement>(null);
-  const tSectLeftImg = useRef<HTMLImageElement>(null);
-  const tSectRightH2 = useRef<HTMLDivElement>(null);
-  const tSectRightImg = useRef<HTMLImageElement>(null);
 
-  const fourthSectVideo = useRef<HTMLVideoElement>(null);
+  const thirdSectionRef = useRef<HTMLDivElement>(null);
+  const tSectLeftH2Ref = useRef<HTMLDivElement>(null);
+  const tSectLeftImgRef = useRef<HTMLImageElement>(null);
+  const tSectRightH2Ref = useRef<HTMLDivElement>(null);
+  const tSectRightImgRef = useRef<HTMLImageElement>(null);
+
+  const fourthSectVideoRef = useRef<HTMLVideoElement>(null);
+  const fourthSectionFirstRef = useRef<HTMLDivElement>(null);
+  const fourthSectionSecondRef = useRef<HTMLDivElement>(null);
+  const fourthSectionThirdRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mediaQueryFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
     const mediaQueryAnimations = window.matchMedia('(min-width: 768px)');
-    const mediaQueryFourthSection = window.matchMedia('(min-height: 675px)');
 
     /* Sticky Backgound */
-    if (mediaQueryFixed.matches && firstSectionRef.current && thirdSectionRef.current) {
-      const refTable = [thirdSectionRef, firstSectionRef];
+    if (
+      mediaQueryFixed.matches &&
+      firstSectionRef.current &&
+      thirdSectionRef.current &&
+      fourthSectionFirstRef.current &&
+      fourthSectionSecondRef.current &&
+      fourthSectionThirdRef.current
+    ) {
+      const refTable = [
+        thirdSectionRef,
+        firstSectionRef,
+        fourthSectionFirstRef,
+        fourthSectionSecondRef,
+        fourthSectionThirdRef,
+      ];
       refTable.forEach((ref) => {
         ScrollTrigger.create({
           trigger: ref.current,
@@ -63,8 +80,8 @@ const Home: NextPage = () => {
     if (
       mediaQueryAnimations.matches &&
       thirdSectionRef.current &&
-      tSectLeftImg.current &&
-      tSectRightImg.current
+      tSectLeftImgRef.current &&
+      tSectRightImgRef.current
     ) {
       gsap
         .timeline({
@@ -75,10 +92,10 @@ const Home: NextPage = () => {
             scrub: true,
           },
         })
-        .to(tSectLeftImg.current, { x: -60 }, 0)
-        .to(tSectLeftH2.current, { x: -200, opacity: 1 }, 0)
-        .to(tSectRightImg.current, { x: 60 }, 0)
-        .to(tSectRightH2.current, { x: 200, opacity: 1 }, 0);
+        .to(tSectLeftImgRef.current, { x: -60 }, 0)
+        .to(tSectLeftH2Ref.current, { x: -200, opacity: 1 }, 0)
+        .to(tSectRightImgRef.current, { x: 60 }, 0)
+        .to(tSectRightH2Ref.current, { x: 200, opacity: 1 }, 0);
 
       gsap
         .timeline({
@@ -88,28 +105,44 @@ const Home: NextPage = () => {
             scrub: true,
           },
         })
-        .to(tSectLeftImg.current, { x: 0 }, 0)
-        .to(tSectLeftH2.current, { x: 0, opacity: 0 }, 0)
-        .to(tSectRightImg.current, { x: 0 }, 0)
-        .to(tSectRightH2.current, { x: 0, opacity: 0 }, 0);
+        .to(tSectLeftImgRef.current, { x: 0 }, 0)
+        .to(tSectLeftH2Ref.current, { x: 0, opacity: 0 }, 0)
+        .to(tSectRightImgRef.current, { x: 0 }, 0)
+        .to(tSectRightH2Ref.current, { x: 0, opacity: 0 }, 0);
     }
 
     /* Fourth section video start on scroll */
-    if (fourthSectVideo.current) {
+    if (fourthSectVideoRef.current) {
       ScrollTrigger.create({
-        trigger: fourthSectVideo.current,
+        trigger: fourthSectVideoRef.current,
         start: 'top center',
-        onEnter: () => fourthSectVideo.current && fourthSectVideo.current.play(),
+        onEnter: () => fourthSectVideoRef.current && fourthSectVideoRef.current.play(),
       });
     }
+
+    /* if (sliderRef.current) {
+      gsap.to(sliderRef.current, {
+        yPercent: -100,
+        ease: 'none',
+        scrollTrigger: {
+          // trigger: fourthSectionFirstRef.current,
+          // start: "top bottom", // the default values
+          // end: "bottom top",
+          scrub: true,
+        },
+      });
+    } */
   }, [
     firstSectionRef,
     thirdSectionRef,
-    tSectLeftImg,
-    tSectLeftH2,
-    tSectRightH2,
-    tSectRightImg,
-    fourthSectVideo,
+    tSectLeftImgRef,
+    tSectLeftH2Ref,
+    tSectRightH2Ref,
+    tSectRightImgRef,
+    fourthSectVideoRef,
+    fourthSectionFirstRef,
+    fourthSectionSecondRef,
+    fourthSectionThirdRef,
   ]);
 
   useEffect(() => {
@@ -165,27 +198,29 @@ const Home: NextPage = () => {
       <ThirdSection ref={thirdSectionRef}>
         <ThirdInner>
           <ThirdLeft>
-            <h2 ref={tSectLeftH2}>
+            <h2 ref={tSectLeftH2Ref}>
               iPhone 13 Pro Max
               <span>6.7”</span>
             </h2>
-            <img ref={tSectLeftImg} src='/images/section2_2.png' alt='iPhone 13 Pro Max 6.7”' />
+            <img ref={tSectLeftImgRef} src='/images/section2_2.png' alt='iPhone 13 Pro Max 6.7”' />
           </ThirdLeft>
           <ThirdRight>
-            <h2 ref={tSectRightH2}>
+            <h2 ref={tSectRightH2Ref}>
               iPhone 13 Pro
               <span>6.1”</span>
             </h2>
-            <img ref={tSectRightImg} src='/images/section2_1.png' alt='iPhone 13 Pro 6.1”' />
+            <img ref={tSectRightImgRef} src='/images/section2_1.png' alt='iPhone 13 Pro 6.1”' />
           </ThirdRight>
         </ThirdInner>
         <StyledH3>Super Retina XDR display1 with ProMotion</StyledH3>
       </ThirdSection>
 
       <FourthSection>
-        <FourthInner $sliderIndex={sliderIndex}>
+        <FourthInner ref={fourthSectionFirstRef} $sliderIndex={sliderIndex}>
           <FourtInnerDiv>
-            <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
+            <div ref={sliderRef} style={{ width: '100%', height: '100%' }}>
+              <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
+            </div>
           </FourtInnerDiv>
 
           <FourtInnerDiv>
@@ -197,7 +232,7 @@ const Home: NextPage = () => {
           </FourtInnerDiv>
         </FourthInner>
 
-        <FourthInner>
+        <FourthInner ref={fourthSectionSecondRef}>
           <FourtInnerDiv>
             <img
               src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
@@ -217,7 +252,7 @@ const Home: NextPage = () => {
           </FourtInnerDiv>
         </FourthInner>
 
-        <FourthInner>
+        <FourthInner ref={fourthSectionThirdRef}>
           <FourtInnerDiv>
             <img
               src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
@@ -229,7 +264,7 @@ const Home: NextPage = () => {
           </FourtInnerDiv>
 
           <FourtInnerDiv>
-            <video ref={fourthSectVideo} muted playsInline preload='auto'>
+            <video ref={fourthSectVideoRef} muted playsInline preload='auto'>
               <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
             </video>
           </FourtInnerDiv>

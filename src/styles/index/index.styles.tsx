@@ -376,9 +376,7 @@ export const ThirdRight = styled.div`
   }
 `;
 
-export const FourthSection = styled.section`
-  z-index: 1;
-`;
+export const FourthSection = styled.section``;
 
 export const FourtInnerDiv = styled.div`
   position: relative;
@@ -509,6 +507,9 @@ export const FifthSection = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
+  background: white;
   gap: 3rem;
   padding: 4rem 2rem;
 
@@ -541,4 +542,6 @@ export const FifthSection = styled.section`
 export const SixthSection = styled.section`
   height: 100vh;
   background-color: #fbfbfd;
+  position: relative;
+  z-index: 1;
 `;
