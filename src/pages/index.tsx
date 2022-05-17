@@ -164,11 +164,11 @@ const Home: NextPage = () => {
           <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
         </FourthInner>
         <FourthInner $sliderIndex={sliderIndex}>
-          <img src='/images/green-huge.jpg' alt='' />
-          <img src='/images/silver-huge.jpg' alt='' />
-          <img src='/images/gold-huge.jpg' alt='' />
-          <img src='/images/black-huge.jpg' alt='' />
-          <img src='/images/blue-huge.jpg' alt='' />
+          <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
+          <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
+          <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
+          <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
+          <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
         </FourthInner>
 
         <FourthInner>3</FourthInner>

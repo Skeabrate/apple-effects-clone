@@ -411,6 +411,11 @@ export const FourthInner = styled.div<IndexProps>`
       position: absolute;
       bottom: 0;
       left: 10%;
+      transition: opacity 1.2s ease;
+
+      &:not(:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1})) {
+        opacity: 0;
+      }
 
       &:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1}) {
         z-index: 1;
