@@ -27,8 +27,12 @@ const Navigation = () => {
   const barRef = useRef<HTMLDivElement>(null);
 
   const handleToggle = () => {
-    if (toggle) document.body.setAttribute('style', 'overflow:unset; height:unset');
-    else document.body.setAttribute('style', 'overflow:hidden !important; height:100vh !important');
+    if (toggle) document.body.setAttribute('style', '');
+    else
+      document.body.setAttribute(
+        'style',
+        'overflow:hidden !important; height:100vh !important; position: fixed !important'
+      );
 
     setToggle(!toggle);
   };
