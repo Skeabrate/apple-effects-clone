@@ -375,16 +375,6 @@ export const ThirdRight = styled.div`
   }
 `;
 
-export const ThirdFooter = styled.div`
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.fontSize.paragraph};
-  text-align: center;
-
-  ${({ theme }) => theme.mq.tablet} {
-    font-size: 2rem;
-  }
-`;
-
 export const FourthSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -405,4 +395,47 @@ export const FourthSection = styled.section`
       background-color: black;
     }
   }
+`;
+
+export const FifthSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 4rem 2rem;
+
+  span {
+    display: block;
+  }
+
+  img {
+    width: 300px;
+    height: auto;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    height: 650px;
+    overflow: hidden;
+
+    img {
+      width: 600px;
+      height: auto;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    height: 900px;
+
+    img {
+      width: unset;
+    }
+  }
+`;
+
+export const SixthSection = styled.section`
+  height: 100vh;
+  background-color: #fbfbfd;
 `;

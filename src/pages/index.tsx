@@ -1,14 +1,15 @@
 import type { NextPage } from 'next';
 import { useContext, useEffect, useState, useRef } from 'react';
-
+import Image from 'next/image';
 import HeadComponent from 'components/Head/Head';
 import ScrollContext from 'context/ScrollContext';
 import {
+  FifthSection,
   FirstSection,
   FourthSection,
   SecondSection,
+  SixthSection,
   StyledFirstVideo,
-  ThirdFooter,
   ThirdInner,
   ThirdLeft,
   ThirdRight,
@@ -17,6 +18,7 @@ import {
 } from 'styles/index/index.styles';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { StyledH3 } from 'styles/GlobalStyledComponents.styles';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -28,7 +30,6 @@ const Home: NextPage = () => {
   const { isSticky } = useContext(ScrollContext);
 
   const firstSectionRef = useRef<HTMLDivElement>(null);
-
   const thirdSectionRef = useRef<HTMLDivElement>(null);
   const tSectLeftH2 = useRef<HTMLDivElement>(null);
   const tSectLeftImg = useRef<HTMLImageElement>(null);
@@ -84,7 +85,7 @@ const Home: NextPage = () => {
         .to(tSectRightImg.current, { x: 0 }, 0)
         .to(tSectRightH2.current, { x: 0, opacity: 0 }, 0);
     }
-  }, [firstSectionRef, thirdSectionRef, tSectLeftImg]);
+  }, [firstSectionRef, thirdSectionRef, tSectLeftImg, tSectLeftH2, tSectRightH2, tSectRightImg]);
 
   useEffect(() => {
     document.querySelectorAll('.spans').forEach((item, index) => {
@@ -152,7 +153,7 @@ const Home: NextPage = () => {
             <img ref={tSectRightImg} src='/images/section2_1.png' alt='iPhone 13 Pro 6.1”' />
           </ThirdRight>
         </ThirdInner>
-        <ThirdFooter>Super Retina XDR display1 with ProMotion</ThirdFooter>
+        <StyledH3>Super Retina XDR display1 with ProMotion</StyledH3>
       </ThirdSection>
 
       <FourthSection>
@@ -165,6 +166,16 @@ const Home: NextPage = () => {
         <div>5</div>
         <div>6</div>
       </FourthSection>
+
+      <FifthSection>
+        <img src='/images/water_resistant__ddhg6jxs53yq_large.jpg' width='884' height='1394' />
+
+        <StyledH3>
+          Industry-leading IP68 <span>water resistance&#178;</span>
+        </StyledH3>
+      </FifthSection>
+
+      <SixthSection></SixthSection>
     </Wrapper>
   );
 };
