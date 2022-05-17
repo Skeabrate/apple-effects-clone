@@ -68,12 +68,14 @@ const Home: NextPage = () => {
         fourthSectionSecondRef,
         fourthSectionThirdRef,
       ];
-      refTable.forEach((ref) => {
+
+      refTable.forEach((ref, index) => {
         ScrollTrigger.create({
           trigger: ref.current,
           start: 'top top',
+          end: index > 1 ? '+=40%' : '',
           pin: true,
-          pinSpacing: false,
+          pinSpacing: index > 1 ? true : false,
         });
       });
     }
@@ -123,18 +125,17 @@ const Home: NextPage = () => {
     }
 
     /* Fourth section content paralax */
-    if (mediaQueryFixed.matches && sliderRef.current) {
+    /* if (mediaQueryFixed.matches && sliderRef.current) {
       gsap.to(sliderRef.current, {
-        yPercent: -100,
+        yPercent: -50,
         ease: 'none',
         scrollTrigger: {
           trigger: fourthSectionFirstRef.current,
-          start: 'bottom center', // the default values
-          // end: "bottom top",
+          start: '60% 65%',
           scrub: true,
         },
       });
-    }
+    } */
   }, [
     firstSectionRef,
     thirdSectionRef,
@@ -220,13 +221,11 @@ const Home: NextPage = () => {
 
       <FourthSection>
         <FourthInner ref={fourthSectionFirstRef} $sliderIndex={sliderIndex}>
-          <FourtInnerFirstDiv $sliderIndex={sliderIndex}>
-            <div ref={sliderRef} style={{ width: '100%', height: '100%' }}>
-              <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
-            </div>
+          <FourtInnerFirstDiv>
+            <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
           </FourtInnerFirstDiv>
 
-          <FourtInnerFirstDiv>
+          <FourtInnerFirstDiv $sliderIndex={sliderIndex} /* ref={} */>
             <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
             <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
             <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
