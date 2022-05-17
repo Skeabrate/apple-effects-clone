@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 interface IndexProps {
   $isHighlighted?: number;
+  $sliderIndex?: number;
 }
 
 export const Wrapper = styled.main`
@@ -385,23 +386,46 @@ export const FourthSection = styled.section`
   }
 `;
 
-export const FourthInner = styled.div`
+export const FourthInner = styled.div<IndexProps>`
   min-height: 700px;
   height: 100vh;
   max-height: 1000px;
   background-color: ${({ theme }) => theme.colors.lightGrey};
 
+  &:nth-child(even) {
+    background-color: black;
+  }
+
+  /* Slider */
   &:first-child {
     overflow: hidden;
     width: 100%;
   }
 
-  &:nth-child(even) {
-    background-color: black;
+  &:nth-child(2) {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 700px;
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+
+      &:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1}) {
+        z-index: 1;
+      }
+    }
   }
 
   ${({ theme }) => theme.mq.tablet} {
     height: 100vh;
+
+    &:nth-child(2) {
+      img {
+        width: 700px;
+      }
+    }
 
     &:nth-child(3) {
       grid-column: 2;
@@ -410,6 +434,15 @@ export const FourthInner = styled.div`
     &:nth-child(4) {
       grid-column: 1;
       grid-row: 2;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    &:nth-child(2) {
+      img {
+        top: 15%;
+        width: 1000px;
+      }
     }
   }
 `;

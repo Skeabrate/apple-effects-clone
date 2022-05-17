@@ -27,6 +27,7 @@ if (typeof window !== 'undefined') {
 
 const Home: NextPage = () => {
   const [isHighlighted, setIsHighlighted] = useState<number>(0);
+  const [sliderIndex, setSliderIndex] = useState<number>(0);
 
   const { isSticky } = useContext(ScrollContext);
 
@@ -160,9 +161,15 @@ const Home: NextPage = () => {
 
       <FourthSection>
         <FourthInner>
-          <ImageSlider />
+          <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
         </FourthInner>
-        <FourthInner>2</FourthInner>
+        <FourthInner $sliderIndex={sliderIndex}>
+          <img src='/images/green-huge.jpg' alt='' />
+          <img src='/images/silver-huge.jpg' alt='' />
+          <img src='/images/gold-huge.jpg' alt='' />
+          <img src='/images/black-huge.jpg' alt='' />
+          <img src='/images/blue-huge.jpg' alt='' />
+        </FourthInner>
 
         <FourthInner>3</FourthInner>
         <FourthInner>4</FourthInner>
