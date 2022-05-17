@@ -27,14 +27,19 @@ const Home: NextPage = () => {
 
   const { isSticky } = useContext(ScrollContext);
 
-  const tl = useRef(null);
   const firstSectionRef = useRef<HTMLDivElement>(null);
+
   const thirdSectionRef = useRef<HTMLDivElement>(null);
+  const tSectLeftH2 = useRef<HTMLDivElement>(null);
+  const tSectLeftImg = useRef<HTMLImageElement>(null);
+  const tSectRightH2 = useRef<HTMLDivElement>(null);
+  const tSectRightImg = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
+    const mediaQueryFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
+    const mediaQueryAnimations = window.matchMedia('(min-width: 768px)');
 
-    if (mediaQuery.matches && firstSectionRef.current && thirdSectionRef.current) {
+    if (mediaQueryFixed.matches && firstSectionRef.current && thirdSectionRef.current) {
       const refTable = [thirdSectionRef, firstSectionRef];
       refTable.forEach((ref) => {
         ScrollTrigger.create({
@@ -45,7 +50,41 @@ const Home: NextPage = () => {
         });
       });
     }
-  }, [firstSectionRef, thirdSectionRef]);
+
+    if (
+      mediaQueryAnimations.matches &&
+      thirdSectionRef.current &&
+      tSectLeftImg.current &&
+      tSectRightImg.current
+    ) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: thirdSectionRef.current,
+            start: '20% bottom',
+            end: '45% 45%',
+            scrub: true,
+          },
+        })
+        .to(tSectLeftImg.current, { x: -60 }, 0)
+        .to(tSectLeftH2.current, { x: -200, opacity: 1 }, 0)
+        .to(tSectRightImg.current, { x: 60 }, 0)
+        .to(tSectRightH2.current, { x: 200, opacity: 1 }, 0);
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: thirdSectionRef.current,
+            start: '60% 60%',
+            scrub: true,
+          },
+        })
+        .to(tSectLeftImg.current, { x: 0 }, 0)
+        .to(tSectLeftH2.current, { x: 0, opacity: 0 }, 0)
+        .to(tSectRightImg.current, { x: 0 }, 0)
+        .to(tSectRightH2.current, { x: 0, opacity: 0 }, 0);
+    }
+  }, [firstSectionRef, thirdSectionRef, tSectLeftImg]);
 
   useEffect(() => {
     document.querySelectorAll('.spans').forEach((item, index) => {
@@ -99,24 +138,33 @@ const Home: NextPage = () => {
       <ThirdSection ref={thirdSectionRef}>
         <ThirdInner>
           <ThirdLeft>
-            <h2>
+            <h2 ref={tSectLeftH2}>
               iPhone 13 Pro Max
               <span>6.7”</span>
             </h2>
-            <img src='/images/section2_2.png' alt='' /> {/* 321 x 650 */}
+            <img ref={tSectLeftImg} src='/images/section2_2.png' alt='iPhone 13 Pro Max 6.7”' />
           </ThirdLeft>
           <ThirdRight>
-            <h2>
+            <h2 ref={tSectRightH2}>
               iPhone 13 Pro
               <span>6.1”</span>
             </h2>
-            <img src='/images/section2_1.png' alt='' /> {/* 292 x 588 */}
+            <img ref={tSectRightImg} src='/images/section2_1.png' alt='iPhone 13 Pro 6.1”' />
           </ThirdRight>
         </ThirdInner>
         <ThirdFooter>Super Retina XDR display1 with ProMotion</ThirdFooter>
       </ThirdSection>
 
-      <FourthSection>test2</FourthSection>
+      <FourthSection>
+        <div>1</div>
+        <div>2</div>
+
+        <div>3</div>
+        <div>4</div>
+
+        <div>5</div>
+        <div>6</div>
+      </FourthSection>
     </Wrapper>
   );
 };

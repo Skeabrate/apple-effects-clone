@@ -256,7 +256,7 @@ export const ThirdSection = styled.section`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
   padding: 0 20px;
 
   ${({ theme }) => theme.mq.desktop} {
@@ -280,9 +280,10 @@ export const ThirdInner = styled.div`
       display: flex;
       flex-direction: column;
       font-size: ${({ theme }) => theme.fontSize.paragraph};
+      opacity: 1;
 
       span {
-        font-size: 3rem;
+        font-size: 4rem;
       }
     }
 
@@ -300,6 +301,8 @@ export const ThirdInner = styled.div`
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        width: 200px;
+        opacity: 0;
       }
     }
   }
@@ -327,7 +330,7 @@ export const ThirdLeft = styled.div`
     }
 
     h2 {
-      left: -200px;
+      left: -100px;
       z-index: -1;
     }
   }
@@ -351,20 +354,20 @@ export const ThirdRight = styled.div`
 
   ${({ theme }) => theme.mq.tablet} {
     text-align: left;
-    margin-left: -50px;
+    margin-left: -200px;
 
     img {
       width: 221px;
     }
 
     h2 {
-      right: -180px;
+      right: -100px;
       z-index: -1;
     }
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    margin-left: -70px;
+    margin-left: -200px;
 
     img {
       width: unset;
@@ -383,9 +386,23 @@ export const ThirdFooter = styled.div`
 `;
 
 export const FourthSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   position: relative;
   z-index: 1;
-  width: 100%;
-  height: 100vh;
-  background: red;
+
+  div {
+    height: 100vh;
+    background-color: white;
+    color: white;
+
+    &:nth-child(4n + 2) {
+      background-color: black;
+    }
+
+    &:nth-child(4n + 3) {
+      grid-auto-flow: dense;
+      background-color: black;
+    }
+  }
 `;
