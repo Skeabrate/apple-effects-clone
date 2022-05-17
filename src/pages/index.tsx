@@ -38,11 +38,14 @@ const Home: NextPage = () => {
   const tSectRightH2 = useRef<HTMLDivElement>(null);
   const tSectRightImg = useRef<HTMLImageElement>(null);
 
+  const fourthSectVideo = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     const mediaQueryFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
     const mediaQueryAnimations = window.matchMedia('(min-width: 768px)');
-    const mediaQueryFifthSection = window.matchMedia('(min-height: 675px)');
+    const mediaQueryFourthSection = window.matchMedia('(min-height: 675px)');
 
+    /* Sticky Backgound */
     if (mediaQueryFixed.matches && firstSectionRef.current && thirdSectionRef.current) {
       const refTable = [thirdSectionRef, firstSectionRef];
       refTable.forEach((ref) => {
@@ -55,6 +58,7 @@ const Home: NextPage = () => {
       });
     }
 
+    /* Third section animations */
     if (
       mediaQueryAnimations.matches &&
       thirdSectionRef.current &&
@@ -88,9 +92,27 @@ const Home: NextPage = () => {
         .to(tSectRightImg.current, { x: 0 }, 0)
         .to(tSectRightH2.current, { x: 0, opacity: 0 }, 0);
     }
-  }, [firstSectionRef, thirdSectionRef, tSectLeftImg, tSectLeftH2, tSectRightH2, tSectRightImg]);
+
+    /* Fourth section video start on scroll */
+    if (fourthSectVideo.current) {
+      ScrollTrigger.create({
+        trigger: fourthSectVideo.current,
+        start: 'top center',
+        onEnter: () => fourthSectVideo.current && fourthSectVideo.current.play(),
+      });
+    }
+  }, [
+    firstSectionRef,
+    thirdSectionRef,
+    tSectLeftImg,
+    tSectLeftH2,
+    tSectRightH2,
+    tSectRightImg,
+    fourthSectVideo,
+  ]);
 
   useEffect(() => {
+    /* Second section highlited items */
     document.querySelectorAll('.spans').forEach((item, index) => {
       if (item.getBoundingClientRect().top <= window.innerHeight / 2) {
         setIsHighlighted(index);
@@ -171,11 +193,37 @@ const Home: NextPage = () => {
           <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
         </FourthInner>
 
-        <FourthInner>3</FourthInner>
-        <FourthInner>4</FourthInner>
+        <FourthInner>
+          <img
+            src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
+            alt='Surgical-grade stainless steel'
+          />
+          <StyledH3>
+            Surgical-grade <span>stainless steel</span>
+          </StyledH3>
+        </FourthInner>
+        <FourthInner>
+          <img
+            src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
+            alt=''
+            aria-hidden='true'
+          />
+        </FourthInner>
 
-        <FourthInner>5</FourthInner>
-        <FourthInner>6</FourthInner>
+        <FourthInner>
+          <img
+            src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
+            alt='Ceramic Shield, tougher than any smartphone glass'
+          />
+          <StyledH3>
+            Ceramic Shield, tougher than <span>any smartphone glass</span>
+          </StyledH3>
+        </FourthInner>
+        <FourthInner>
+          <video ref={fourthSectVideo} muted playsInline preload='auto'>
+            <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
+          </video>
+        </FourthInner>
       </FourthSection>
 
       <FifthSection>

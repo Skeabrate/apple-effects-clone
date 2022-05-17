@@ -394,6 +394,16 @@ export const FourthInner = styled.div<IndexProps>`
 
   &:nth-child(even) {
     background-color: black;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &:nth-child(2n + 3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
   }
 
   /* Slider */
@@ -403,9 +413,6 @@ export const FourthInner = styled.div<IndexProps>`
   }
 
   &:nth-child(2) {
-    position: relative;
-    overflow: hidden;
-
     img {
       width: 700px;
       position: absolute;
@@ -423,14 +430,40 @@ export const FourthInner = styled.div<IndexProps>`
     }
   }
 
+  &:nth-child(3) {
+    img {
+      min-width: 32px;
+      width: 5.5vh;
+    }
+  }
+
+  &:nth-child(4) {
+    img {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &:nth-child(5) {
+    img {
+      min-width: 200px;
+      width: 30vh;
+    }
+  }
+
+  &:nth-child(6) {
+    video {
+      position: absolute;
+      bottom: 0;
+      left: 100px;
+      width: 400px;
+    }
+  }
+
   ${({ theme }) => theme.mq.tablet} {
     height: 100vh;
-
-    &:nth-child(2) {
-      img {
-        width: 700px;
-      }
-    }
 
     &:nth-child(3) {
       grid-column: 2;
@@ -449,6 +482,15 @@ export const FourthInner = styled.div<IndexProps>`
         width: 1000px;
       }
     }
+
+    &:nth-child(6) {
+      video {
+        top: 10%;
+        left: 55%;
+        transform: translateX(-50%);
+        width: unset;
+      }
+    }
   }
 `;
 
@@ -459,10 +501,6 @@ export const FifthSection = styled.section`
   flex-direction: column;
   gap: 3rem;
   padding: 4rem 2rem;
-
-  span {
-    display: block;
-  }
 
   img {
     width: 300px;
