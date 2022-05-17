@@ -377,22 +377,39 @@ export const ThirdRight = styled.div`
 
 export const FourthSection = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   position: relative;
   z-index: 1;
 
-  div {
-    height: 100vh;
-    background-color: white;
-    color: white;
+  ${({ theme }) => theme.mq.tablet} {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
-    &:nth-child(4n + 2) {
-      background-color: black;
+export const FourthInner = styled.div`
+  min-height: 700px;
+  height: 100vh;
+  max-height: 1000px;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+
+  &:first-child {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &:nth-child(even) {
+    background-color: black;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    height: 100vh;
+
+    &:nth-child(3) {
+      grid-column: 2;
     }
 
-    &:nth-child(4n + 3) {
-      grid-auto-flow: dense;
-      background-color: black;
+    &:nth-child(4) {
+      grid-column: 1;
+      grid-row: 2;
     }
   }
 `;

@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import { useContext, useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
 import HeadComponent from 'components/Head/Head';
 import ScrollContext from 'context/ScrollContext';
+import ImageSlider from 'components/ImageSlider/ImageSlider';
 import {
   FifthSection,
   FirstSection,
+  FourthInner,
   FourthSection,
   SecondSection,
   SixthSection,
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     const mediaQueryFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
     const mediaQueryAnimations = window.matchMedia('(min-width: 768px)');
+    const mediaQueryFifthSection = window.matchMedia('(min-height: 675px)');
 
     if (mediaQueryFixed.matches && firstSectionRef.current && thirdSectionRef.current) {
       const refTable = [thirdSectionRef, firstSectionRef];
@@ -157,14 +159,16 @@ const Home: NextPage = () => {
       </ThirdSection>
 
       <FourthSection>
-        <div>1</div>
-        <div>2</div>
+        <FourthInner>
+          <ImageSlider />
+        </FourthInner>
+        <FourthInner>2</FourthInner>
 
-        <div>3</div>
-        <div>4</div>
+        <FourthInner>3</FourthInner>
+        <FourthInner>4</FourthInner>
 
-        <div>5</div>
-        <div>6</div>
+        <FourthInner>5</FourthInner>
+        <FourthInner>6</FourthInner>
       </FourthSection>
 
       <FifthSection>

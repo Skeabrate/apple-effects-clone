@@ -44,6 +44,16 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&display=swap'
             rel='stylesheet'
           />
+          <link
+            rel='stylesheet'
+            type='text/css'
+            href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
+          />
+          <link
+            rel='stylesheet'
+            type='text/css'
+            href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
+          />
         </Head>
         <body>
           <Main />
