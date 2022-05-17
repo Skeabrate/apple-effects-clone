@@ -78,7 +78,7 @@ const Home: NextPage = () => {
         .timeline({
           scrollTrigger: {
             trigger: thirdSectionRef.current,
-            start: '60% 60%',
+            start: '60% 65%',
             scrub: true,
           },
         })
