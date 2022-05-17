@@ -8,7 +8,9 @@ import {
   FirstSection,
   FourthInner,
   FourthSection,
-  FourtInnerDiv,
+  FourtInnerFirstDiv,
+  FourtInnerSecondDiv,
+  FourtInnerThirdDiv,
   SecondSection,
   SixthSection,
   StyledFirstVideo,
@@ -47,10 +49,10 @@ const Home: NextPage = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mediaQueryFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
+    const mediaQueryFixed = window.matchMedia('(min-height: 800px) and (min-width: 768px)');
     const mediaQueryAnimations = window.matchMedia('(min-width: 768px)');
 
-    /* Sticky Backgound */
+    /* Sticky Backgounds */
     if (
       mediaQueryFixed.matches &&
       firstSectionRef.current &&
@@ -120,18 +122,19 @@ const Home: NextPage = () => {
       });
     }
 
-    /* if (sliderRef.current) {
+    /* Fourth section content paralax */
+    if (mediaQueryFixed.matches && sliderRef.current) {
       gsap.to(sliderRef.current, {
         yPercent: -100,
         ease: 'none',
         scrollTrigger: {
-          // trigger: fourthSectionFirstRef.current,
-          // start: "top bottom", // the default values
+          trigger: fourthSectionFirstRef.current,
+          start: 'bottom center', // the default values
           // end: "bottom top",
           scrub: true,
         },
       });
-    } */
+    }
   }, [
     firstSectionRef,
     thirdSectionRef,
@@ -217,23 +220,23 @@ const Home: NextPage = () => {
 
       <FourthSection>
         <FourthInner ref={fourthSectionFirstRef} $sliderIndex={sliderIndex}>
-          <FourtInnerDiv>
+          <FourtInnerFirstDiv $sliderIndex={sliderIndex}>
             <div ref={sliderRef} style={{ width: '100%', height: '100%' }}>
               <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
             </div>
-          </FourtInnerDiv>
+          </FourtInnerFirstDiv>
 
-          <FourtInnerDiv>
+          <FourtInnerFirstDiv>
             <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
             <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
             <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
             <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
             <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
-          </FourtInnerDiv>
+          </FourtInnerFirstDiv>
         </FourthInner>
 
         <FourthInner ref={fourthSectionSecondRef}>
-          <FourtInnerDiv>
+          <FourtInnerSecondDiv>
             <img
               src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
               alt='Surgical-grade stainless steel'
@@ -241,19 +244,19 @@ const Home: NextPage = () => {
             <StyledH3>
               Surgical-grade <span>stainless steel</span>
             </StyledH3>
-          </FourtInnerDiv>
+          </FourtInnerSecondDiv>
 
-          <FourtInnerDiv>
+          <FourtInnerSecondDiv>
             <img
               src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
               alt=''
               aria-hidden='true'
             />
-          </FourtInnerDiv>
+          </FourtInnerSecondDiv>
         </FourthInner>
 
         <FourthInner ref={fourthSectionThirdRef}>
-          <FourtInnerDiv>
+          <FourtInnerThirdDiv>
             <img
               src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
               alt='Ceramic Shield, tougher than any smartphone glass'
@@ -261,13 +264,13 @@ const Home: NextPage = () => {
             <StyledH3>
               Ceramic Shield, tougher than <span>any smartphone glass</span>
             </StyledH3>
-          </FourtInnerDiv>
+          </FourtInnerThirdDiv>
 
-          <FourtInnerDiv>
+          <FourtInnerThirdDiv>
             <video ref={fourthSectVideoRef} muted playsInline preload='auto'>
               <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
             </video>
-          </FourtInnerDiv>
+          </FourtInnerThirdDiv>
         </FourthInner>
       </FourthSection>
 
