@@ -46,7 +46,8 @@ const Home: NextPage = () => {
   const fourthSectionFirstRef = useRef<HTMLDivElement>(null);
   const fourthSectionSecondRef = useRef<HTMLDivElement>(null);
   const fourthSectionThirdRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const fourthSectionSliderLeftRef = useRef<HTMLDivElement>(null);
+  const fourthSectionSliderRightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mediaQueryFixed = window.matchMedia('(min-height: 800px) and (min-width: 768px)');
@@ -125,8 +126,8 @@ const Home: NextPage = () => {
     }
 
     /* Fourth section content paralax */
-    /* if (mediaQueryFixed.matches && sliderRef.current) {
-      gsap.to(sliderRef.current, {
+    if (mediaQueryFixed.matches && fourthSectionSliderRightRef.current) {
+      /* gsap.to(fourthSectionSliderRightRef.current, {
         yPercent: -50,
         ease: 'none',
         scrollTrigger: {
@@ -134,8 +135,8 @@ const Home: NextPage = () => {
           start: '60% 65%',
           scrub: true,
         },
-      });
-    } */
+      }); */
+    }
   }, [
     firstSectionRef,
     thirdSectionRef,
@@ -147,6 +148,7 @@ const Home: NextPage = () => {
     fourthSectionFirstRef,
     fourthSectionSecondRef,
     fourthSectionThirdRef,
+    fourthSectionSliderRightRef,
   ]);
 
   useEffect(() => {
@@ -225,12 +227,14 @@ const Home: NextPage = () => {
             <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
           </FourtInnerFirstDiv>
 
-          <FourtInnerFirstDiv $sliderIndex={sliderIndex} /* ref={} */>
-            <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
-            <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
-            <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
-            <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
-            <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
+          <FourtInnerFirstDiv $sliderIndex={sliderIndex}>
+            <div ref={fourthSectionSliderRightRef}>
+              <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
+              <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
+              <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
+              <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
+              <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
+            </div>
           </FourtInnerFirstDiv>
         </FourthInner>
 

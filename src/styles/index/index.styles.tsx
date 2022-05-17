@@ -404,28 +404,35 @@ const FourthInnerDivHelper = css`
 export const FourtInnerFirstDiv = styled.div<IndexProps>`
   ${FourthInnerDivHelper};
   &:nth-child(2) {
-    img {
-      width: 700px;
-      position: absolute;
-      bottom: 0;
-      left: 10%;
-      transition: opacity 1.2s ease;
+    div {
+      width: 100%;
+      height: 100%;
 
-      &:not(:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1})) {
-        opacity: 0;
-      }
+      img {
+        width: 700px;
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        transition: opacity 1.2s ease;
 
-      &:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1}) {
-        z-index: 1;
+        &:not(:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1})) {
+          opacity: 0;
+        }
+
+        &:nth-child(${({ $sliderIndex = 0 }) => $sliderIndex + 1}) {
+          z-index: 1;
+        }
       }
     }
   }
 
   ${({ theme }) => theme.mq.desktop} {
     &:nth-child(2) {
-      img {
-        top: 15%;
-        width: 1000px;
+      div {
+        img {
+          top: 15%;
+          width: 1000px;
+        }
       }
     }
   }
