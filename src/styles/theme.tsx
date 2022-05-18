@@ -10,7 +10,8 @@ export const theme: DefaultTheme = {
   },
   fontSize: {
     heading: '8.5rem',
-    headingMobile: '5.6rem',
+    headingTablet: '5.6rem',
+    headingMobile: '3rem',
     paragraph: '1.6rem',
     caption: '1.2rem',
   },

@@ -5,8 +5,12 @@ interface IndexProps {
   $sliderIndex?: number;
 }
 
-export const Wrapper = styled.main`
+const wrapperHelper = css`
   max-width: 2000px;
+  margin: 0 auto;
+`;
+
+export const Wrapper = styled.main`
   margin: 0 auto;
 `;
 
@@ -170,7 +174,7 @@ export const SecondSection = styled.section<IndexProps>`
 
     span {
       color: #f5f5f7;
-      font-size: 3rem;
+      font-size: ${({ theme }) => theme.fontSize.headingMobile};
       font-weight: bold;
       opacity: 0.25;
       transition: opacity 0.3s ease-out;
@@ -211,7 +215,7 @@ export const SecondSection = styled.section<IndexProps>`
 
       span {
         display: initial;
-        font-size: ${({ theme }) => theme.fontSize.headingMobile};
+        font-size: ${({ theme }) => theme.fontSize.headingTablet};
         padding-block: 0;
 
         &:last-child {
@@ -252,6 +256,7 @@ export const SecondSection = styled.section<IndexProps>`
 `;
 
 export const ThirdSection = styled.section`
+  ${wrapperHelper};
   width: 100%;
   height: 700px;
   display: flex;
@@ -379,6 +384,7 @@ export const ThirdRight = styled.div`
 `;
 
 export const FourthSection = styled.section`
+  ${wrapperHelper};
   position: relative;
 `;
 
@@ -409,8 +415,15 @@ const FourthInnerDivHelper = css`
   width: 100%;
   min-height: 670px;
   height: 100vh;
-  max-height: 1000px;
   background-color: ${({ theme }) => theme.colors.lightGrey};
+
+  img,
+  video {
+    bottom: 0px;
+    min-height: 500px;
+    height: 75vh;
+    max-height: 1000px;
+  }
 
   &:nth-child(2) {
     background-color: black;
@@ -422,7 +435,8 @@ const FourthSecondandThirdHelper = css`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 30px;
+  padding: 70px 0 30px;
+  gap: 20px;
 
   div {
     display: flex;
@@ -444,9 +458,7 @@ export const FourtInnerFirstDiv = styled.div<IndexProps>`
       height: 100%;
 
       img {
-        width: 700px;
         position: absolute;
-        bottom: 0;
         left: 10%;
         transition: opacity 1.2s ease;
 
@@ -461,12 +473,14 @@ export const FourtInnerFirstDiv = styled.div<IndexProps>`
     }
   }
 
-  ${({ theme }) => theme.mq.desktop} {
+  @media screen and (min-width: 1024px) and (max-height: 1000px) {
     &:nth-child(2) {
       div {
         img {
+          height: 95vh;
+          max-height: unset;
+          bottom: unset;
           top: 15%;
-          width: 1000px;
         }
       }
     }
@@ -478,15 +492,13 @@ export const FourtInnerSecondDiv = styled.div`
   &:nth-child(1) {
     ${FourthSecondandThirdHelper};
     img {
-      min-width: 35px;
-      width: 5.5vh;
+      max-height: 600px;
     }
   }
 
   &:nth-child(2) {
     img {
       position: absolute;
-      top: 100px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -508,28 +520,24 @@ export const FourtInnerThirdDiv = styled.div`
   ${FourthInnerDivHelper};
   &:nth-child(1) {
     ${FourthSecondandThirdHelper};
+
     img {
-      min-width: 200px;
-      width: 30vh;
+      max-height: 550px;
     }
   }
 
   &:nth-child(2) {
     video {
       position: absolute;
-      bottom: 0;
-      left: 100px;
-      width: 400px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
-  ${({ theme }) => theme.mq.desktop} {
+  ${({ theme }) => theme.mq.tablet} {
     &:nth-child(2) {
       video {
-        top: 10%;
-        left: 55%;
-        transform: translateX(-50%);
-        width: unset;
+        left: 300px;
       }
     }
   }
@@ -573,17 +581,17 @@ export const FifthSection = styled.section`
 `;
 
 export const SixthSection = styled.section`
-  height: 100vh;
   background-color: #fbfbfd;
   color: #86868b;
   position: relative;
   z-index: 1;
-  padding: 0 20px;
+  padding: 30rem 4rem 0;
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
   font-weight: bold;
+  overflow: hidden;
 
   div {
-    width: 980px;
+    max-width: 690px;
     margin: 0 auto;
 
     span {
@@ -592,12 +600,23 @@ export const SixthSection = styled.section`
   }
 
   img {
-    max-width: 100vw;
+    position: absolute;
+    left: 200px;
+    top: 300px;
+    z-index: 1;
   }
 
   ${({ theme }) => theme.mq.tablet} {
+    font-size: ${({ theme }) => theme.fontSize.headingTablet};
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
     font-size: ${({ theme }) => theme.fontSize.heading};
-    line-height: 1.1;
+    line-height: ${({ theme }) => theme.lineHeight.heading};
     letter-spacing: -1.5px;
+
+    div {
+      max-width: 980px;
+    }
   }
 `;

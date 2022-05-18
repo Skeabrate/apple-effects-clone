@@ -19,8 +19,9 @@ export const SliderItem = styled.div`
   align-items: center;
 
   img {
-    min-width: 200px;
-    width: 30vh;
+    padding-top: 50px;
+    min-height: 450px !important;
+    max-height: 600px !important;
   }
 
   &:focus {
@@ -39,6 +40,7 @@ export const StyledDots = styled.div<Props>`
   justify-content: center;
   align-items: center;
   gap: 15px;
+  padding-bottom: 60px;
 
   ul {
     li {

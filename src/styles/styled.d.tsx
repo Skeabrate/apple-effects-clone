@@ -11,6 +11,7 @@ declare module 'styled-components' {
     };
     fontSize: {
       heading: string;
+      headingTablet: string;
       headingMobile: string;
       paragraph: string;
       caption: string;
