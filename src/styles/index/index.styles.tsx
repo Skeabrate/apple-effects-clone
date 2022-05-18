@@ -231,10 +231,11 @@ export const SecondSection = styled.section<IndexProps>`
 
   ${({ theme }) => theme.mq.desktop} {
     div {
-      max-width: 930px;
+      max-width: 970px;
 
       span {
         font-size: ${({ theme }) => theme.fontSize.heading};
+        line-height: ${({ theme }) => theme.lineHeight.heading};
 
         &:last-child {
           margin-top: 8rem;
@@ -574,6 +575,29 @@ export const FifthSection = styled.section`
 export const SixthSection = styled.section`
   height: 100vh;
   background-color: #fbfbfd;
+  color: #86868b;
   position: relative;
   z-index: 1;
+  padding: 0 20px;
+  font-size: ${({ theme }) => theme.fontSize.headingMobile};
+  font-weight: bold;
+
+  div {
+    width: 980px;
+    margin: 0 auto;
+
+    span {
+      color: #1d1d1f;
+    }
+  }
+
+  img {
+    max-width: 100vw;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    font-size: ${({ theme }) => theme.fontSize.heading};
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+  }
 `;

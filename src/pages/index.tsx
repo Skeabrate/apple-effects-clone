@@ -361,7 +361,16 @@ const Home: NextPage = () => {
         </StyledH3>
       </FifthSection>
 
-      <SixthSection></SixthSection>
+      <SixthSection>
+        <div>
+          Our <span>Pro camera system</span> gets its biggest upgrade ever. With{' '}
+          <span>next-level hardware</span> that captures so much more detail.{' '}
+          <span>Super-intelligent software</span> for new photo and filmmaking techniques. And a{' '}
+          <span>mind-blowingly fast chip</span> that makes it all possible.{' '}
+          <span>It’ll change the way you shoot.</span>
+        </div>
+        <img src='/images/SixthSection.png' alt='Pro camera system' />
+      </SixthSection>
     </Wrapper>
   );
 };

@@ -15,10 +15,10 @@ declare module 'styled-components' {
       paragraph: string;
       caption: string;
     };
-    /* fontFamily: {
-			greatVibes: '"Great Vibes", cursiv',
-			noto: '"EB Garamond", serif',
-		}, */
+    lineHeight: {
+      heading: string;
+      default: string;
+    };
     mq: {
       tablet: string;
       desktop: string;

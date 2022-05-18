@@ -9,10 +9,14 @@ export const theme: DefaultTheme = {
     borderDark: '#4b4b4b',
   },
   fontSize: {
-    heading: '8rem',
+    heading: '8.5rem',
     headingMobile: '5.6rem',
     paragraph: '1.6rem',
     caption: '1.2rem',
+  },
+  lineHeight: {
+    heading: '1',
+    default: '1.15',
   },
   mq: {
     tablet: '@media (min-width: 768px)',

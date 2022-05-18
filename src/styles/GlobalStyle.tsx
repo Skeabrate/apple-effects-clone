@@ -11,6 +11,8 @@ export const GlobalStyles = createGlobalStyle`
 
 	html{
 		font-size: 62.5%;
+		letter-spacing: -0.5px;
+		line-height: ${({ theme }) => theme.lineHeight.default};
 	}
 
 	body {
