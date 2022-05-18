@@ -10,11 +10,13 @@ interface Props {
 const ImageSlider: React.FC<Props> = ({ sliderIndex, setSliderIndex }) => {
   const settings = {
     arrows: false,
+    swipe: false,
     dots: true,
     infinite: false,
-    speed: 600,
+    speed: 750,
     slidesToShow: 1,
     slidesToScroll: 1,
+    cssEase: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
     appendDots: (dots: any) => {
       return (
         <StyledDots $sliderIndex={sliderIndex}>

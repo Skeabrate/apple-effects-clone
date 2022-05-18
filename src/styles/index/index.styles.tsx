@@ -259,6 +259,7 @@ export const ThirdSection = styled.section`
   align-items: center;
   gap: 50px;
   padding: 0 20px;
+  background: white;
 
   ${({ theme }) => theme.mq.desktop} {
     height: 900px;
@@ -332,7 +333,7 @@ export const ThirdLeft = styled.div`
 
     h2 {
       left: -100px;
-      z-index: -1;
+      z-index: 0;
     }
   }
 
@@ -363,7 +364,7 @@ export const ThirdRight = styled.div`
 
     h2 {
       right: -100px;
-      z-index: -1;
+      z-index: 0;
     }
   }
 
@@ -376,11 +377,25 @@ export const ThirdRight = styled.div`
   }
 `;
 
-export const FourthSection = styled.section``;
+export const FourthSection = styled.section`
+  position: relative;
+`;
 
 export const FourthInner = styled.div<IndexProps>`
   display: grid;
   grid-template-columns: 1fr;
+
+  /* After element to extend scrolling */
+  @media screen and (min-height: 670px) and (min-width: 768px) {
+    &::after {
+      content: '';
+      position: relative;
+      left: 0;
+      height: 500px;
+      width: 100%;
+      z-index: -1;
+    }
+  }
 
   ${({ theme }) => theme.mq.tablet} {
     grid-template-columns: 1fr 1fr;
@@ -456,7 +471,7 @@ export const FourtInnerSecondDiv = styled.div`
   &:nth-child(2) {
     img {
       position: absolute;
-      top: 60px;
+      top: 100px;
       left: 50%;
       transform: translateX(-50%);
     }
