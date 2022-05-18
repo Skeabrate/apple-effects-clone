@@ -45,7 +45,6 @@ const Home: NextPage = () => {
 
   /* Fourth Section */
   const fourthSectFirstRef = useRef<HTMLDivElement>(null);
-  const fourthSectFirstLeftRef = useRef<HTMLDivElement>(null);
   const fourthSectFirstRightRef = useRef<HTMLDivElement>(null);
 
   const fourthSectSecondRef = useRef<HTMLDivElement>(null);
@@ -120,9 +119,8 @@ const Home: NextPage = () => {
       mqFourthSection.matches &&
       fourthSectFirstRef.current &&
       fourthSectSecondRef.current &&
-      fourthSectThirdRef.current &&
-      fourthSectFirstRightRef.current &&
       fourthSectSecondLeftRef.current &&
+      fourthSectThirdRef.current &&
       fourthSectThirdRightRef.current &&
       fifthSectRef.current
     ) {
@@ -181,7 +179,6 @@ const Home: NextPage = () => {
     thirdSectRightH2Ref,
     thirdSectRightImgRef,
     fourthSectFirstRef,
-    fourthSectFirstLeftRef,
     fourthSectFirstRightRef,
     fourthSectSecondRef,
     fourthSectSecondLeftRef,
@@ -284,10 +281,12 @@ const Home: NextPage = () => {
 
         <FourthInner ref={fourthSectSecondRef}>
           <FourtInnerSecondDiv>
-            <img
-              src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
-              alt='Surgical-grade stainless steel'
-            />
+            <div>
+              <img
+                src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
+                alt='Surgical-grade stainless steel'
+              />
+            </div>
             <StyledH3>
               Surgical-grade <span>stainless steel</span>
             </StyledH3>
@@ -305,10 +304,12 @@ const Home: NextPage = () => {
 
         <FourthInner ref={fourthSectThirdRef}>
           <FourtInnerThirdDiv>
-            <img
-              src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
-              alt='Ceramic Shield, tougher than any smartphone glass'
-            />
+            <div>
+              <img
+                src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
+                alt='Ceramic Shield, tougher than any smartphone glass'
+              />
+            </div>
             <StyledH3>
               Ceramic Shield, tougher than <span>any smartphone glass</span>
             </StyledH3>

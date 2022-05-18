@@ -406,13 +406,32 @@ const FourthInnerDivHelper = css`
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 700px;
+  min-height: 670px;
   height: 100vh;
   max-height: 1000px;
   background-color: ${({ theme }) => theme.colors.lightGrey};
 
   &:nth-child(2) {
     background-color: black;
+  }
+`;
+
+const FourthSecondandThirdHelper = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  img {
+    object-fit: contain;
   }
 `;
 
@@ -456,14 +475,9 @@ export const FourtInnerFirstDiv = styled.div<IndexProps>`
 export const FourtInnerSecondDiv = styled.div`
   ${FourthInnerDivHelper};
   &:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-
+    ${FourthSecondandThirdHelper};
     img {
-      min-width: 32px;
+      min-width: 35px;
       width: 5.5vh;
     }
   }
@@ -492,12 +506,7 @@ export const FourtInnerSecondDiv = styled.div`
 export const FourtInnerThirdDiv = styled.div`
   ${FourthInnerDivHelper};
   &:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-
+    ${FourthSecondandThirdHelper};
     img {
       min-width: 200px;
       width: 30vh;

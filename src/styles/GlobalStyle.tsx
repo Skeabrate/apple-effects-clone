@@ -18,5 +18,6 @@ export const GlobalStyles = createGlobalStyle`
 		margin: 0;
 		font-size: ${({ theme }) => theme.fontSize.paragraph};
 		font-family: 'Roboto Flex', sans-serif;
+		overflow-x: hidden !important;
 	}
 `;
