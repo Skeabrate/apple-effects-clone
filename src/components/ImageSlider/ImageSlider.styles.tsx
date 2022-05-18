@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  margin: 20px 0 50px;
 `;
 
 export const SliderItem = styled.div`
@@ -33,7 +34,6 @@ export const SliderItem = styled.div`
 
 export const StyledDots = styled.div<Props>`
   position: relative;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,5 +105,9 @@ export const StyledDots = styled.div<Props>`
     div {
       font-size: 2rem;
     }
+  }
+
+  @media screen and (min-width: 1024px) and (min-height: 700px) {
+    margin-top: 40px;
   }
 `;

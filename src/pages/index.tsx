@@ -49,10 +49,10 @@ const Home: NextPage = () => {
 
   const fourthSectSecondRef = useRef<HTMLDivElement>(null);
   const fourthSectSecondLeftRef = useRef<HTMLImageElement>(null);
-  const fourthSectSecondRightRef = useRef<HTMLDivElement>(null);
+  const fourthSectSecondRightRef = useRef<HTMLImageElement>(null);
 
   const fourthSectThirdRef = useRef<HTMLDivElement>(null);
-  const fourthSectThirdLeftRef = useRef<HTMLDivElement>(null);
+  const fourthSectThirdLeftRef = useRef<HTMLImageElement>(null);
   const fourthSectThirdRightRef = useRef<HTMLVideoElement>(null);
 
   /* Fifth Section */
@@ -120,12 +120,13 @@ const Home: NextPage = () => {
       fourthSectFirstRef.current &&
       fourthSectSecondRef.current &&
       fourthSectSecondLeftRef.current &&
+      fourthSectSecondRightRef.current &&
       fourthSectThirdRef.current &&
       fourthSectThirdRightRef.current &&
       fifthSectRef.current
     ) {
       const refTable = [fourthSectFirstRef, fourthSectSecondRef, fourthSectThirdRef];
-      const paralaxRefTable = [
+      const paralaxBigTable = [
         {
           to: fourthSectFirstRightRef,
           trigger: fourthSectSecondRef,
@@ -136,6 +137,16 @@ const Home: NextPage = () => {
         },
         {
           to: fourthSectThirdRightRef,
+          trigger: fifthSectRef,
+        },
+      ];
+      const paralaxSmallTable = [
+        {
+          to: fourthSectSecondRightRef,
+          trigger: fourthSectThirdRef,
+        },
+        {
+          to: fourthSectThirdLeftRef,
           trigger: fifthSectRef,
         },
       ];
@@ -150,9 +161,21 @@ const Home: NextPage = () => {
         });
       });
 
-      paralaxRefTable.forEach(({ to, trigger }) => {
+      paralaxBigTable.forEach(({ to, trigger }) => {
         gsap.to(to.current, {
           yPercent: -80,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: trigger.current,
+            start: '0% bottom',
+            scrub: true,
+          },
+        });
+      });
+
+      paralaxSmallTable.forEach(({ to, trigger }) => {
+        gsap.to(to.current, {
+          yPercent: -60,
           ease: 'none',
           scrollTrigger: {
             trigger: trigger.current,
@@ -285,6 +308,7 @@ const Home: NextPage = () => {
               <img
                 src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
                 alt='Surgical-grade stainless steel'
+                ref={fourthSectSecondRightRef}
               />
             </div>
             <StyledH3>
@@ -308,6 +332,7 @@ const Home: NextPage = () => {
               <img
                 src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
                 alt='Ceramic Shield, tougher than any smartphone glass'
+                ref={fourthSectThirdLeftRef}
               />
             </div>
             <StyledH3>
