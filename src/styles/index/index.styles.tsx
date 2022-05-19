@@ -545,6 +545,8 @@ export const FifthSection = styled.section`
 
   ${({ theme }) => theme.mq.desktop} {
     height: 900px;
+    gap: 5rem;
+    padding: 10rem 2rem;
 
     img {
       width: unset;
