@@ -36,6 +36,8 @@ const Home: NextPage = () => {
   const { isSticky } = useContext(ScrollContext);
 
   /* First Section */
+  const firstSectHeaderRef = useRef<HTMLDivElement>(null);
+  const firstSectDivRef = useRef<HTMLDivElement>(null);
   const firstSectRef = useRef<HTMLDivElement>(null);
   const firstSectVidRef = useRef<HTMLVideoElement>(null);
 
@@ -61,11 +63,37 @@ const Home: NextPage = () => {
   /* Fifth Section */
   const fifthSectRef = useRef<HTMLDivElement>(null);
 
+  /* Animations */
   useEffect(() => {
-    if (firstSectVidRef.current && firstSectVidRef.current.readyState === 4) {
-      setIsVideoLoaded(true);
+    /* First Section */
+    if (firstSectVidRef.current) {
+      firstSectVidRef.current.addEventListener('loadeddata', () => {
+        setIsVideoLoaded(true);
+      });
     }
-  }, [firstSectVidRef?.current?.readyState]);
+
+    return () => {
+      if (firstSectVidRef.current)
+        firstSectVidRef.current.removeEventListener('loadeddata', () => {});
+    };
+  }, [firstSectVidRef]);
+
+  useEffect(() => {
+    /* First Section */
+    if (firstSectHeaderRef.current && firstSectDivRef.current) {
+      let tl = gsap.timeline({ paused: !isVideoLoaded });
+
+      tl.to(firstSectHeaderRef.current, {
+        opacity: 0,
+        duration: 1,
+        delay: 1.5,
+      }).to(firstSectDivRef.current, {
+        opacity: 1,
+        duration: 1.5,
+        delay: 0.5,
+      });
+    }
+  }, [isVideoLoaded, firstSectHeaderRef, firstSectDivRef]);
 
   useEffect(() => {
     const mqFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
@@ -221,7 +249,7 @@ const Home: NextPage = () => {
   ]);
 
   useEffect(() => {
-    /* Second section highlited items */
+    /* Second section */
     document.querySelectorAll('.spans').forEach((item, index) => {
       if (item.getBoundingClientRect().top <= window.innerHeight / 2) {
         setIsHighlighted(index);
@@ -236,10 +264,10 @@ const Home: NextPage = () => {
       <FirstSection ref={firstSectRef}>
         <StyledFirstVideo $isVideoLoaded={isVideoLoaded}>
           <header>
-            <h1>iPhone 13 Pro</h1>
-            <div>
+            <h1 ref={firstSectHeaderRef}>iPhone 13 Pro</h1>
+            <div ref={firstSectDivRef}>
               <p>iPhone 13 Pro</p>
-              <h2>Every inch a pro.</h2>
+              <h2>Oh. So. Pro.</h2>
             </div>
           </header>
 

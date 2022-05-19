@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface IndexProps {
   $isHighlighted?: number;
@@ -13,23 +13,6 @@ const wrapperHelper = css`
 
 export const Wrapper = styled.main`
   margin: 0 auto;
-`;
-
-const appearH1 = keyframes`
-	0% {
-		opacity: 0;
-	} 50% {
-		opacity:1;
-	} 100% {
-		opacity: 0;
-	}
-`;
-const appearDiv = keyframes`
-	from {
-		opacity:0;
-	} to {
-		opacity:1;
-	}
 `;
 
 export const FirstSection = styled.section<IndexProps>`
@@ -53,16 +36,6 @@ export const FirstSection = styled.section<IndexProps>`
   }
 `;
 
-const headerAnimationHelper = css`
-  animation: ${appearH1} 3s forwards;
-  animation-delay: 0.5s;
-`;
-
-const divAnimationHelper = css`
-  animation: ${appearDiv} 1s forwards;
-  animation-delay: 3.6s;
-`;
-
 export const StyledFirstVideo = styled.div<IndexProps>`
   header {
     width: fit-content;
@@ -76,18 +49,15 @@ export const StyledFirstVideo = styled.div<IndexProps>`
 
     h1 {
       position: absolute;
-      font-size: 2rem;
-      opacity: 0;
+      font-size: 3rem;
+      width: fit-content;
       top: 10%;
       left: 50%;
       transform: translateX(-50%);
-
-      ${({ $isVideoLoaded }) => ($isVideoLoaded ? headerAnimationHelper : null)};
     }
 
     div {
       opacity: 0;
-      ${({ $isVideoLoaded }) => ($isVideoLoaded ? divAnimationHelper : null)};
 
       p {
         font-size: 2rem;
@@ -95,7 +65,7 @@ export const StyledFirstVideo = styled.div<IndexProps>`
       }
 
       h2 {
-        font-size: ${({ theme }) => theme.fontSize.headingMobile};
+        font-size: 5rem;
       }
     }
   }
@@ -113,7 +83,7 @@ export const StyledFirstVideo = styled.div<IndexProps>`
       bottom: 400px;
 
       h1 {
-        font-size: 3rem;
+        font-size: 6rem;
       }
 
       div {
