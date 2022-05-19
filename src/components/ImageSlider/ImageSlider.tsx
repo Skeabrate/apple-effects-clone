@@ -36,22 +36,36 @@ const ImageSlider: React.FC<Props> = ({ sliderIndex, setSliderIndex }) => {
     <Wrapper>
       <Slider {...settings}>
         <SliderItem>
-          <img src='/images/section3_green1.jpg' alt='iPhone 13 Pro Alpine Green' />
-        </SliderItem>
-        <SliderItem>
-          <img src='/images/section3_white1.jpg' alt='iPhone 13 Pro Silver' />
-        </SliderItem>
-        <SliderItem>
-          <img src='/images/section3_gold1.jpg' alt='iPhone 13 Pro Gold' />
+          <img
+            height='543'
+            width='271'
+            src='/images/section3_green1.jpg'
+            alt='iPhone 13 Pro Alpine Green'
+          />
         </SliderItem>
         <SliderItem>
           <img
+            height='543'
+            width='271'
+            src='/images/section3_white1.jpg'
+            alt='iPhone 13 Pro Silver'
+          />
+        </SliderItem>
+        <SliderItem>
+          <img height='543' width='271' src='/images/section3_gold1.jpg' alt='iPhone 13 Pro Gold' />
+        </SliderItem>
+        <SliderItem>
+          <img
+            height='543'
+            width='271'
             src='/images/finishes_1_graphite__cjq97aaf2yfm_large.jpg'
             alt='iPhone 13 Pro Graphite'
           />
         </SliderItem>
         <SliderItem>
           <img
+            height='543'
+            width='271'
             src='/images/finishes_1_sierra_blue__cn414556pbv6_large.jpg'
             alt='iPhone 13 Pro Sierra Blue'
           />

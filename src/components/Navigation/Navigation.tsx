@@ -106,7 +106,7 @@ const Navigation = () => {
               </StyledSearch>
             </StyledList>
 
-            <StyledBagButton $toggle={toggle}>
+            <StyledBagButton $toggle={toggle} aria-label='Your bag'>
               <svg
                 width='24'
                 height='24'

@@ -307,6 +307,7 @@ export const ThirdLeft = styled.div`
 
   img {
     width: 200px;
+    height: auto;
   }
 
   ${({ theme }) => theme.mq.tablet} {
@@ -338,6 +339,7 @@ export const ThirdRight = styled.div`
 
   img {
     width: 171px;
+    height: auto;
   }
 
   ${({ theme }) => theme.mq.tablet} {
@@ -403,6 +405,7 @@ const FourthInnerDivHelper = css`
     min-height: 500px;
     height: 75vh;
     max-height: 1000px;
+    width: auto;
   }
 
   &:nth-child(2) {
@@ -562,12 +565,22 @@ export const SixthSection = styled.section`
   overflow: hidden;
 `;
 
+export const SixthSectionHelper = styled.div`
+  position: absolute;
+  top: 580px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: red;
+  z-index: 10;
+`;
+
 export const SixthSectionText = styled.div`
-  padding: 30rem 4rem 0;
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
   font-weight: bold;
   max-width: 690px;
   margin: 0 auto;
+  padding: 20rem 4rem 650px 0px;
 
   span {
     color: #1d1d1f;
@@ -588,10 +601,14 @@ export const SixthSectionText = styled.div`
 
 export const SixthSectionImg = styled.div`
   width: 100%;
+  position: relative;
+  bottom: 0px;
+  left: 0;
+
   img {
     position: relative;
     margin-left: -791px;
-    bottom: 0;
+    top: 300px;
     left: 50%;
     z-index: 1;
   }

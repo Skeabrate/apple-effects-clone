@@ -13,6 +13,7 @@ import {
   FourtInnerThirdDiv,
   SecondSection,
   SixthSection,
+  SixthSectionHelper,
   SixthSectionImg,
   SixthSectionText,
   StyledFirstVideo,
@@ -64,6 +65,11 @@ const Home: NextPage = () => {
 
   /* Fifth Section */
   const fifthSectRef = useRef<HTMLDivElement>(null);
+
+  /* Sixth Section */
+  const sixthSectionRef = useRef<HTMLDivElement>(null);
+  const sixthSectionHelperRef = useRef<HTMLDivElement>(null);
+  const sixthSectionImageRef = useRef<HTMLDivElement>(null);
 
   /* Animations */
   useEffect(() => {
@@ -243,6 +249,28 @@ const Home: NextPage = () => {
         onEnter: () => fourthSectThirdRightRef.current && fourthSectThirdRightRef.current.play(),
       });
     }
+
+    /* Sixth section */
+    if (sixthSectionRef.current && sixthSectionImageRef.current) {
+      /* gsap.to(sixthSectionDivRef.current, {
+        scrollTrigger: {
+          trigger: sixthSectionRef.current,
+          scrub: true,
+          pin: true,
+          start: '20% bottom',
+          end: 'bottom top',
+        },
+      }); */
+      gsap.to(sixthSectionImageRef.current, {
+        scrollTrigger: {
+          trigger: sixthSectionRef.current,
+          scrub: true,
+          start: '20% bottom',
+          /* end: 'bottom top', */
+        },
+        y: '-20%',
+      });
+    }
   }, [
     firstSectRef,
     thirdSectRef,
@@ -267,7 +295,10 @@ const Home: NextPage = () => {
         setIsHighlighted(index);
       }
     });
-  }, [isSticky]);
+
+    if (sixthSectionRef.current)
+      console.log(window.innerHeight, sixthSectionRef.current.getBoundingClientRect().top);
+  }, [isSticky, sixthSectionRef, sixthSectionImageRef]);
 
   return (
     <Wrapper>
@@ -321,6 +352,8 @@ const Home: NextPage = () => {
               ref={thirdSectLeftImgRef}
               src='/images/section2_2.png'
               alt='iPhone 13 Pro Max 6.7”'
+              height='650'
+              width='321'
             />
           </ThirdLeft>
           <ThirdRight>
@@ -328,7 +361,13 @@ const Home: NextPage = () => {
               iPhone 13 Pro
               <span>6.1”</span>
             </h2>
-            <img ref={thirdSectRightImgRef} src='/images/section2_1.png' alt='iPhone 13 Pro 6.1”' />
+            <img
+              height='588'
+              width='292'
+              ref={thirdSectRightImgRef}
+              src='/images/section2_1.png'
+              alt='iPhone 13 Pro 6.1”'
+            />
           </ThirdRight>
         </ThirdInner>
         <StyledH3>Super Retina XDR display1 with ProMotion</StyledH3>
@@ -342,11 +381,41 @@ const Home: NextPage = () => {
 
           <FourtInnerFirstDiv $sliderIndex={sliderIndex}>
             <div ref={fourthSectFirstRightRef}>
-              <img src='/images/green-huge.jpg' alt='' aria-hidden='true' />
-              <img src='/images/silver-huge.jpg' alt='' aria-hidden='true' />
-              <img src='/images/gold-huge.jpg' alt='' aria-hidden='true' />
-              <img src='/images/black-huge.jpg' alt='' aria-hidden='true' />
-              <img src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
+              <img
+                width='1042'
+                height='935'
+                src='/images/green-huge.jpg'
+                alt=''
+                aria-hidden='true'
+              />
+              <img
+                width='1042'
+                height='935'
+                src='/images/silver-huge.jpg'
+                alt=''
+                aria-hidden='true'
+              />
+              <img
+                width='1042'
+                height='935'
+                src='/images/gold-huge.jpg'
+                alt=''
+                aria-hidden='true'
+              />
+              <img
+                width='1042'
+                height='935'
+                src='/images/black-huge.jpg'
+                alt=''
+                aria-hidden='true'
+              />
+              <img
+                width='1042'
+                height='935'
+                src='/images/blue-huge.jpg'
+                alt=''
+                aria-hidden='true'
+              />
             </div>
           </FourtInnerFirstDiv>
         </FourthInner>
@@ -358,6 +427,8 @@ const Home: NextPage = () => {
                 src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
                 alt='Surgical-grade stainless steel'
                 ref={fourthSectSecondRightRef}
+                height='657'
+                width='53'
               />
             </div>
             <StyledH3>
@@ -370,6 +441,8 @@ const Home: NextPage = () => {
               src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
               alt=''
               aria-hidden='true'
+              height='960'
+              width='201'
               ref={fourthSectSecondLeftRef}
             />
           </FourtInnerSecondDiv>
@@ -382,6 +455,8 @@ const Home: NextPage = () => {
                 src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
                 alt='Ceramic Shield, tougher than any smartphone glass'
                 ref={fourthSectThirdLeftRef}
+                height='543'
+                width='270'
               />
             </div>
             <StyledH3>
@@ -390,7 +465,14 @@ const Home: NextPage = () => {
           </FourtInnerThirdDiv>
 
           <FourtInnerThirdDiv>
-            <video ref={fourthSectThirdRightRef} muted playsInline preload='auto'>
+            <video
+              height='866'
+              width='652'
+              ref={fourthSectThirdRightRef}
+              muted
+              playsInline
+              preload='auto'
+            >
               <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
             </video>
           </FourtInnerThirdDiv>
@@ -410,7 +492,11 @@ const Home: NextPage = () => {
         </StyledH3>
       </FifthSection>
 
-      <SixthSection>
+      <SixthSection ref={sixthSectionRef}>
+        <SixthSectionHelper ref={sixthSectionHelperRef} />
+        <SixthSectionImg ref={sixthSectionImageRef}>
+          <img src='/images/SixthSection.png' alt='Pro camera system' />
+        </SixthSectionImg>
         <SixthSectionText>
           Our <span>Pro camera system</span> gets its biggest upgrade ever. With{' '}
           <span>next-level hardware</span> that captures so much more detail.{' '}
@@ -418,9 +504,6 @@ const Home: NextPage = () => {
           <span>mind-blowingly fast chip</span> that makes it all possible.{' '}
           <span>It’ll change the way you shoot.</span>
         </SixthSectionText>
-        <SixthSectionImg>
-          <img src='/images/SixthSection.png' alt='Pro camera system' />
-        </SixthSectionImg>
       </SixthSection>
     </Wrapper>
   );
