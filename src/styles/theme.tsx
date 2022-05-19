@@ -16,7 +16,7 @@ export const theme: DefaultTheme = {
     caption: '1.2rem',
   },
   lineHeight: {
-    heading: '1',
+    heading: '1.05',
     default: '1.15',
   },
   mq: {

@@ -378,7 +378,7 @@ export const FourthInner = styled.div<IndexProps>`
       content: '';
       position: relative;
       left: 0;
-      height: 500px;
+      height: 300px;
       width: 100%;
       z-index: -1;
     }
@@ -559,25 +559,18 @@ export const SixthSection = styled.section`
   color: #86868b;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+`;
+
+export const SixthSectionText = styled.div`
   padding: 30rem 4rem 0;
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
   font-weight: bold;
-  overflow: hidden;
+  max-width: 690px;
+  margin: 0 auto;
 
-  div {
-    max-width: 690px;
-    margin: 0 auto;
-
-    span {
-      color: #1d1d1f;
-    }
-  }
-
-  img {
-    position: absolute;
-    left: 200px;
-    top: 300px;
-    z-index: 1;
+  span {
+    color: #1d1d1f;
   }
 
   ${({ theme }) => theme.mq.tablet} {
@@ -589,8 +582,17 @@ export const SixthSection = styled.section`
     line-height: ${({ theme }) => theme.lineHeight.heading};
     letter-spacing: -1.5px;
 
-    div {
-      max-width: 980px;
-    }
+    max-width: 980px;
+  }
+`;
+
+export const SixthSectionImg = styled.div`
+  width: 100%;
+  img {
+    position: relative;
+    margin-left: -791px;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
   }
 `;

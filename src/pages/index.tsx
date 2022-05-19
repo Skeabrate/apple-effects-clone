@@ -13,6 +13,8 @@ import {
   FourtInnerThirdDiv,
   SecondSection,
   SixthSection,
+  SixthSectionImg,
+  SixthSectionText,
   StyledFirstVideo,
   ThirdInner,
   ThirdLeft,
@@ -130,7 +132,8 @@ const Home: NextPage = () => {
       thirdSectLeftImgRef.current &&
       thirdSectRightImgRef.current &&
       thirdSectRightH2Ref.current &&
-      thirdSectLeftH2Ref.current
+      thirdSectLeftH2Ref.current &&
+      fourthSectFirstRef.current
     ) {
       gsap
         .timeline({
@@ -149,8 +152,8 @@ const Home: NextPage = () => {
       gsap
         .timeline({
           scrollTrigger: {
-            trigger: thirdSectRef.current,
-            start: '60% 65%',
+            trigger: fourthSectFirstRef.current,
+            start: '20% bottom',
             scrub: true,
           },
         })
@@ -408,14 +411,16 @@ const Home: NextPage = () => {
       </FifthSection>
 
       <SixthSection>
-        <div>
+        <SixthSectionText>
           Our <span>Pro camera system</span> gets its biggest upgrade ever. With{' '}
           <span>next-level hardware</span> that captures so much more detail.{' '}
           <span>Super-intelligent software</span> for new photo and filmmaking techniques. And a{' '}
           <span>mind-blowingly fast chip</span> that makes it all possible.{' '}
           <span>It’ll change the way you shoot.</span>
-        </div>
-        <img src='/images/SixthSection.png' alt='Pro camera system' />
+        </SixthSectionText>
+        <SixthSectionImg>
+          <img src='/images/SixthSection.png' alt='Pro camera system' />
+        </SixthSectionImg>
       </SixthSection>
     </Wrapper>
   );
