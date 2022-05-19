@@ -67,14 +67,23 @@ const Home: NextPage = () => {
   useEffect(() => {
     /* First Section */
     if (firstSectVidRef.current) {
-      firstSectVidRef.current.addEventListener('loadeddata', () => {
-        setIsVideoLoaded(true);
+      firstSectVidRef.current.addEventListener('playing', () => {
+        if (firstSectVidRef?.current?.readyState == 4) {
+          setIsVideoLoaded(true);
+        }
+      });
+      firstSectVidRef.current.addEventListener('suspend', () => {
+        if (firstSectVidRef?.current?.readyState == 4) {
+          setIsVideoLoaded(true);
+        }
       });
     }
 
     return () => {
-      if (firstSectVidRef.current)
+      if (firstSectVidRef.current) {
         firstSectVidRef.current.removeEventListener('loadeddata', () => {});
+        firstSectVidRef.current.removeEventListener('suspend', () => {});
+      }
     };
   }, [firstSectVidRef]);
 
