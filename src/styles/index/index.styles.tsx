@@ -509,16 +509,8 @@ export const FourtInnerThirdDiv = styled.div`
   &:nth-child(2) {
     video {
       position: absolute;
-      left: 50%;
+      left: 55%;
       transform: translateX(-50%);
-    }
-  }
-
-  ${({ theme }) => theme.mq.tablet} {
-    &:nth-child(2) {
-      video {
-        left: 300px;
-      }
     }
   }
 `;
