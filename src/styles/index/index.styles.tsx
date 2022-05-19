@@ -3,6 +3,7 @@ import styled, { keyframes, css } from 'styled-components';
 interface IndexProps {
   $isHighlighted?: number;
   $sliderIndex?: number;
+  $isVideoLoaded?: boolean;
 }
 
 const wrapperHelper = css`
@@ -52,6 +53,16 @@ export const FirstSection = styled.section<IndexProps>`
   }
 `;
 
+const headerAnimationHelper = css`
+  animation: ${appearH1} 3s forwards;
+  animation-delay: 0.5s;
+`;
+
+const divAnimationHelper = css`
+  animation: ${appearDiv} 1s forwards;
+  animation-delay: 3.6s;
+`;
+
 export const StyledFirstVideo = styled.div<IndexProps>`
   header {
     width: fit-content;
@@ -70,14 +81,13 @@ export const StyledFirstVideo = styled.div<IndexProps>`
       top: 10%;
       left: 50%;
       transform: translateX(-50%);
-      animation: ${appearH1} 3s forwards;
-      animation-delay: 0.5s;
+
+      ${({ $isVideoLoaded }) => ($isVideoLoaded ? headerAnimationHelper : null)};
     }
 
     div {
       opacity: 0;
-      animation: ${appearDiv} 1s forwards;
-      animation-delay: 3.6s;
+      ${({ $isVideoLoaded }) => ($isVideoLoaded ? divAnimationHelper : null)};
 
       p {
         font-size: 2rem;

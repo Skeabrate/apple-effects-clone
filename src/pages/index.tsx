@@ -31,10 +31,13 @@ if (typeof window !== 'undefined') {
 const Home: NextPage = () => {
   const [isHighlighted, setIsHighlighted] = useState<number>(0);
   const [sliderIndex, setSliderIndex] = useState<number>(0);
+  const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
 
   const { isSticky } = useContext(ScrollContext);
 
+  /* First Section */
   const firstSectRef = useRef<HTMLDivElement>(null);
+  const firstSectVidRef = useRef<HTMLVideoElement>(null);
 
   /* Third Section */
   const thirdSectRef = useRef<HTMLDivElement>(null);
@@ -57,6 +60,12 @@ const Home: NextPage = () => {
 
   /* Fifth Section */
   const fifthSectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (firstSectVidRef.current && firstSectVidRef.current.readyState === 4) {
+      setIsVideoLoaded(true);
+    }
+  }, [firstSectVidRef?.current?.readyState]);
 
   useEffect(() => {
     const mqFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
@@ -225,7 +234,7 @@ const Home: NextPage = () => {
       <HeadComponent title='Apple effects clone' />
 
       <FirstSection ref={firstSectRef}>
-        <StyledFirstVideo>
+        <StyledFirstVideo $isVideoLoaded={isVideoLoaded}>
           <header>
             <h1>iPhone 13 Pro</h1>
             <div>
@@ -234,7 +243,7 @@ const Home: NextPage = () => {
             </div>
           </header>
 
-          <video autoPlay muted playsInline preload='auto'>
+          <video ref={firstSectVidRef} autoPlay muted playsInline preload='auto'>
             <source src='/images/medium.mp4' type='video/mp4' />
           </video>
         </StyledFirstVideo>
