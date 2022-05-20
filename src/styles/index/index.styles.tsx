@@ -230,6 +230,8 @@ export const SecondSection = styled.section<IndexProps>`
           margin-top: 8rem;
 
           p {
+            letter-spacing: -0.6px;
+
             &:first-child {
               margin-top: 8rem;
             }
@@ -599,19 +601,14 @@ export const SixthSectionHelperUp = styled.div`
   top: 566px;
   left: 0;
   width: 100%;
-  height: 1px;
-  background-color: red;
-  z-index: 2;
+  height: calc(100% - 400px - 566px);
 `;
 
 export const SixthSectionHelperDown = styled.div`
   position: absolute;
-  bottom: 488px;
+  bottom: 400px;
   left: 0;
   width: 100%;
-  height: 1px;
-  background-color: red;
-  z-index: 2;
 `;
 
 export const SixthSectionImg = styled.div<IndexProps>`
@@ -623,9 +620,9 @@ export const SixthSectionImg = styled.div<IndexProps>`
     else if ($sixthSectParalaxIsOnTop) return '0';
   }};
   bottom: ${({ $sixthSectParalaxIsOnTop, $sixthSectParalaxIsActive }) => {
-    if ($sixthSectParalaxIsActive) return '0 !important';
+    if ($sixthSectParalaxIsActive) return '0';
     else if ($sixthSectParalaxIsOnTop) return 'unset';
-    else return '490px';
+    else return '400px';
   }};
   left: 0;
 

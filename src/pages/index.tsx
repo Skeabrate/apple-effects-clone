@@ -78,10 +78,8 @@ const Home: NextPage = () => {
   const fifthSectRef = useRef<HTMLDivElement>(null);
 
   /* Sixth Section */
-  const sixthSectionRef = useRef<HTMLDivElement>(null);
   const sixthSectionHelperUpRef = useRef<HTMLDivElement>(null);
   const sixthSectionHelperDownRef = useRef<HTMLDivElement>(null);
-
   const sixthSectionImageRef = useRef<HTMLDivElement>(null);
 
   /* Animations */
@@ -172,7 +170,7 @@ const Home: NextPage = () => {
         .timeline({
           scrollTrigger: {
             trigger: fourthSectFirstRef.current,
-            start: '20% bottom',
+            start: '15% bottom',
             scrub: true,
           },
         })
@@ -264,26 +262,17 @@ const Home: NextPage = () => {
     }
 
     /* Sixth section */
-    /*  if (sixthSectionRef.current && sixthSectionImageRef.current) {
-      gsap.to(sixthSectionDivRef.current, {
-        scrollTrigger: {
-          trigger: sixthSectionRef.current,
-          scrub: true,
-          pin: true,
-          start: '20% bottom',
-          end: 'bottom top',
-        },
-      });
+    if (sixthSectionHelperUpRef.current && sixthSectionImageRef.current) {
       gsap.to(sixthSectionImageRef.current, {
         scrollTrigger: {
-          trigger: sixthSectionRef.current,
+          trigger: sixthSectionHelperUpRef.current,
           scrub: true,
-          start: '20% bottom',
-          end: 'bottom top',
+          start: '0% bottom',
+          end: 'bottom bottom',
         },
-        y: '-20%',
+        y: '-10%',
       });
-    } */
+    }
   }, [
     firstSectRef,
     thirdSectRef,
@@ -299,6 +288,8 @@ const Home: NextPage = () => {
     fourthSectThirdRef,
     fourthSectThirdLeftRef,
     fourthSectThirdRightRef,
+    sixthSectionHelperUpRef,
+    sixthSectionImageRef,
   ]);
 
   useEffect(() => {
@@ -334,20 +325,7 @@ const Home: NextPage = () => {
         });
       }
     }
-  }, [
-    isSticky,
-    sixthSectionRef,
-    sixthSectionHelperUpRef,
-    sixthSectionHelperDownRef,
-    sixthSectionImageRef,
-  ]);
-
-  useEffect(() => {
-    console.log({
-      active: sixthSectParalax.isActive,
-      top: sixthSectParalax.isOnTop,
-    });
-  }, [sixthSectParalax]);
+  }, [isSticky, sixthSectionHelperUpRef, sixthSectionHelperDownRef, sixthSectionImageRef]);
 
   return (
     <Wrapper>
@@ -541,7 +519,7 @@ const Home: NextPage = () => {
         </StyledH3>
       </FifthSection>
 
-      <SixthSection ref={sixthSectionRef}>
+      <SixthSection>
         <SixthSectionHelperUp ref={sixthSectionHelperUpRef} />
         <SixthSectionImg
           ref={sixthSectionImageRef}
@@ -560,7 +538,7 @@ const Home: NextPage = () => {
         <SixthSectionHelperDown ref={sixthSectionHelperDownRef} />
       </SixthSection>
 
-      <SeventhSection>7</SeventhSection>
+      {/* <SeventhSection>7</SeventhSection> */}
     </Wrapper>
   );
 };
