@@ -13,7 +13,8 @@ import {
   FourtInnerThirdDiv,
   SecondSection,
   SixthSection,
-  SixthSectionHelper,
+  SixthSectionHelperUp,
+  SixthSectionHelperDown,
   SixthSectionImg,
   SixthSectionText,
   StyledFirstVideo,
@@ -22,6 +23,7 @@ import {
   ThirdRight,
   ThirdSection,
   Wrapper,
+  SeventhSection,
 } from 'styles/index/index.styles';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -31,10 +33,19 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+interface sixthSectParalaxType {
+  isActive: boolean;
+  isOnTop: boolean;
+}
+
 const Home: NextPage = () => {
   const [isHighlighted, setIsHighlighted] = useState<number>(0);
   const [sliderIndex, setSliderIndex] = useState<number>(0);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
+  const [sixthSectParalax, setSixthSectParalax] = useState<sixthSectParalaxType>({
+    isActive: false,
+    isOnTop: true,
+  });
 
   const { isSticky } = useContext(ScrollContext);
 
@@ -68,7 +79,9 @@ const Home: NextPage = () => {
 
   /* Sixth Section */
   const sixthSectionRef = useRef<HTMLDivElement>(null);
-  const sixthSectionHelperRef = useRef<HTMLDivElement>(null);
+  const sixthSectionHelperUpRef = useRef<HTMLDivElement>(null);
+  const sixthSectionHelperDownRef = useRef<HTMLDivElement>(null);
+
   const sixthSectionImageRef = useRef<HTMLDivElement>(null);
 
   /* Animations */
@@ -251,8 +264,8 @@ const Home: NextPage = () => {
     }
 
     /* Sixth section */
-    if (sixthSectionRef.current && sixthSectionImageRef.current) {
-      /* gsap.to(sixthSectionDivRef.current, {
+    /*  if (sixthSectionRef.current && sixthSectionImageRef.current) {
+      gsap.to(sixthSectionDivRef.current, {
         scrollTrigger: {
           trigger: sixthSectionRef.current,
           scrub: true,
@@ -260,17 +273,17 @@ const Home: NextPage = () => {
           start: '20% bottom',
           end: 'bottom top',
         },
-      }); */
+      });
       gsap.to(sixthSectionImageRef.current, {
         scrollTrigger: {
           trigger: sixthSectionRef.current,
           scrub: true,
           start: '20% bottom',
-          /* end: 'bottom top', */
+          end: 'bottom top',
         },
         y: '-20%',
       });
-    }
+    } */
   }, [
     firstSectRef,
     thirdSectRef,
@@ -296,9 +309,45 @@ const Home: NextPage = () => {
       }
     });
 
-    if (sixthSectionRef.current)
-      console.log(window.innerHeight, sixthSectionRef.current.getBoundingClientRect().top);
-  }, [isSticky, sixthSectionRef, sixthSectionImageRef]);
+    if (sixthSectionHelperUpRef.current && sixthSectionHelperDownRef.current) {
+      if (
+        sixthSectionHelperUpRef.current.getBoundingClientRect().top <= window.innerHeight &&
+        sixthSectionHelperDownRef.current.getBoundingClientRect().top >= window.innerHeight
+      ) {
+        setSixthSectParalax((state) => ({
+          ...state,
+          isActive: true,
+        }));
+      } else if (
+        sixthSectionHelperUpRef.current.getBoundingClientRect().top >= window.innerHeight
+      ) {
+        setSixthSectParalax({
+          isActive: false,
+          isOnTop: true,
+        });
+      } else if (
+        sixthSectionHelperDownRef.current.getBoundingClientRect().top <= window.innerHeight
+      ) {
+        setSixthSectParalax({
+          isActive: false,
+          isOnTop: false,
+        });
+      }
+    }
+  }, [
+    isSticky,
+    sixthSectionRef,
+    sixthSectionHelperUpRef,
+    sixthSectionHelperDownRef,
+    sixthSectionImageRef,
+  ]);
+
+  useEffect(() => {
+    console.log({
+      active: sixthSectParalax.isActive,
+      top: sixthSectParalax.isOnTop,
+    });
+  }, [sixthSectParalax]);
 
   return (
     <Wrapper>
@@ -493,8 +542,12 @@ const Home: NextPage = () => {
       </FifthSection>
 
       <SixthSection ref={sixthSectionRef}>
-        <SixthSectionHelper ref={sixthSectionHelperRef} />
-        <SixthSectionImg ref={sixthSectionImageRef}>
+        <SixthSectionHelperUp ref={sixthSectionHelperUpRef} />
+        <SixthSectionImg
+          ref={sixthSectionImageRef}
+          $sixthSectParalaxIsActive={sixthSectParalax.isActive}
+          $sixthSectParalaxIsOnTop={sixthSectParalax.isOnTop}
+        >
           <img src='/images/SixthSection.png' alt='Pro camera system' />
         </SixthSectionImg>
         <SixthSectionText>
@@ -504,7 +557,10 @@ const Home: NextPage = () => {
           <span>mind-blowingly fast chip</span> that makes it all possible.{' '}
           <span>It’ll change the way you shoot.</span>
         </SixthSectionText>
+        <SixthSectionHelperDown ref={sixthSectionHelperDownRef} />
       </SixthSection>
+
+      <SeventhSection>7</SeventhSection>
     </Wrapper>
   );
 };

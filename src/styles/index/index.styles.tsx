@@ -4,6 +4,8 @@ interface IndexProps {
   $isHighlighted?: number;
   $sliderIndex?: number;
   $isVideoLoaded?: boolean;
+  $sixthSectParalaxIsActive?: boolean;
+  $sixthSectParalaxIsOnTop?: boolean;
 }
 
 const wrapperHelper = css`
@@ -568,23 +570,13 @@ export const SixthSection = styled.section`
   overflow: hidden;
 `;
 
-export const SixthSectionHelper = styled.div`
-  position: absolute;
-  top: 580px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: red;
-  z-index: 10;
-`;
-
 export const SixthSectionText = styled.div`
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
   font-weight: 500;
   line-height: 1.1;
   max-width: 690px;
   margin: 0 auto;
-  padding: 20rem 4rem 650px 4rem;
+  padding: 35rem 4rem 85rem 4rem;
 
   span {
     color: #1d1d1f;
@@ -602,17 +594,52 @@ export const SixthSectionText = styled.div`
   }
 `;
 
-export const SixthSectionImg = styled.div`
+export const SixthSectionHelperUp = styled.div`
+  position: absolute;
+  top: 566px;
+  left: 0;
   width: 100%;
-  position: relative;
-  bottom: 0px;
+  height: 1px;
+  background-color: red;
+  z-index: 2;
+`;
+
+export const SixthSectionHelperDown = styled.div`
+  position: absolute;
+  bottom: 488px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: red;
+  z-index: 2;
+`;
+
+export const SixthSectionImg = styled.div<IndexProps>`
+  width: 100%;
+  position: ${({ $sixthSectParalaxIsActive }) =>
+    $sixthSectParalaxIsActive ? 'fixed' : 'absolute'};
+  top: ${({ $sixthSectParalaxIsOnTop, $sixthSectParalaxIsActive }) => {
+    if ($sixthSectParalaxIsActive) return 'unset';
+    else if ($sixthSectParalaxIsOnTop) return '0';
+  }};
+  bottom: ${({ $sixthSectParalaxIsOnTop, $sixthSectParalaxIsActive }) => {
+    if ($sixthSectParalaxIsActive) return '0 !important';
+    else if ($sixthSectParalaxIsOnTop) return 'unset';
+    else return '490px';
+  }};
   left: 0;
 
   img {
     position: relative;
     margin-left: -791px;
-    top: 300px;
+    top: 290px;
     left: 50%;
     z-index: 1;
   }
+`;
+
+export const SeventhSection = styled.section`
+  width: 100%;
+  height: 100vh;
+  background: blue;
 `;
