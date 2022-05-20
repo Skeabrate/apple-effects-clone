@@ -11,15 +11,18 @@ export const GlobalStyles = createGlobalStyle`
 
 	html{
 		font-size: 62.5%;
-		letter-spacing: -0.4px;
-		line-height: ${({ theme }) => theme.lineHeight.default};
 	}
 
 	body {
 		padding: 0;
 		margin: 0;
-		font-size: ${({ theme }) => theme.fontSize.paragraph};
-		font-family: 'Roboto Flex', sans-serif;
 		overflow-x: hidden !important;
+		font-size: ${({ theme }) => theme.fontSize.paragraph};
+		font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+		letter-spacing: -0.6px;
+
+		h1, h2, h3, h4, h5, h6{
+			font-weight: 500;
+		}
 	}
 `;

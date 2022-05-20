@@ -89,7 +89,7 @@ export const StyledDots = styled.div<Props>`
 
   div {
     color: rgba(0, 0, 0, 0.25);
-    font-weight: bold;
+    font-weight: 500;
     width: 250px;
     font-size: ${({ theme }) => theme.fontSize.paragraph};
     text-align: center;

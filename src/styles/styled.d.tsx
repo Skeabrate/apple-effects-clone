@@ -16,9 +16,8 @@ declare module 'styled-components' {
       paragraph: string;
       caption: string;
     };
-    lineHeight: {
+    letterSpacing: {
       heading: string;
-      default: string;
     };
     mq: {
       tablet: string;

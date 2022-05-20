@@ -45,7 +45,7 @@ export const StyledFirstVideo = styled.div<IndexProps>`
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    line-height: 1.5;
+    line-height: 1.25;
 
     h1 {
       position: absolute;
@@ -61,11 +61,11 @@ export const StyledFirstVideo = styled.div<IndexProps>`
 
       p {
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 500;
       }
 
       h2 {
-        font-size: 5rem;
+        font-size: ${({ theme }) => theme.fontSize.headingTablet};
       }
     }
   }
@@ -84,6 +84,7 @@ export const StyledFirstVideo = styled.div<IndexProps>`
 
       h1 {
         font-size: 6rem;
+        letter-spacing: -2px;
       }
 
       div {
@@ -92,6 +93,7 @@ export const StyledFirstVideo = styled.div<IndexProps>`
         }
 
         h2 {
+          letter-spacing: ${({ theme }) => theme.letterSpacing.heading};
           font-size: ${({ theme }) => theme.fontSize.heading};
         }
       }
@@ -155,7 +157,8 @@ export const SecondSection = styled.section<IndexProps>`
     span {
       color: #f5f5f7;
       font-size: ${({ theme }) => theme.fontSize.headingMobile};
-      font-weight: bold;
+      font-weight: 500;
+      line-height: 1.1;
       opacity: 0.25;
       transition: opacity 0.3s ease-out;
       display: block;
@@ -215,11 +218,11 @@ export const SecondSection = styled.section<IndexProps>`
 
   ${({ theme }) => theme.mq.desktop} {
     div {
-      max-width: 970px;
+      max-width: 950px;
 
       span {
         font-size: ${({ theme }) => theme.fontSize.heading};
-        line-height: ${({ theme }) => theme.lineHeight.heading};
+        letter-spacing: ${({ theme }) => theme.letterSpacing.heading};
 
         &:last-child {
           margin-top: 8rem;
@@ -577,10 +580,11 @@ export const SixthSectionHelper = styled.div`
 
 export const SixthSectionText = styled.div`
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
-  font-weight: bold;
+  font-weight: 500;
+  line-height: 1.1;
   max-width: 690px;
   margin: 0 auto;
-  padding: 20rem 4rem 650px 0px;
+  padding: 20rem 4rem 650px 4rem;
 
   span {
     color: #1d1d1f;
@@ -592,10 +596,9 @@ export const SixthSectionText = styled.div`
 
   ${({ theme }) => theme.mq.desktop} {
     font-size: ${({ theme }) => theme.fontSize.heading};
-    line-height: ${({ theme }) => theme.lineHeight.heading};
-    letter-spacing: -1.5px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.heading};
 
-    max-width: 980px;
+    max-width: 1050px;
   }
 `;
 
