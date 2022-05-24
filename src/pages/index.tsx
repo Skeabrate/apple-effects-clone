@@ -625,18 +625,18 @@ const Home: NextPage = () => {
             Presenting <span>Cinematic mode.</span>
           </p>
         </NinthHeader>
-      </NinthSection>
 
-      <video
-        style={{ height: '100vh', width: '100%' }}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload='auto'
-      >
-        <source src='/images/ninthsect.mp4' type='video/mp4' />
-      </video>
+        <video
+          style={{ height: '100vh', width: 'auto' }}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload='auto'
+        >
+          <source src='/images/ninthsect.mp4' type='video/mp4' />
+        </video>
+      </NinthSection>
     </Wrapper>
   );
 };

@@ -787,6 +787,8 @@ export const EightSection = styled.section`
 
 export const NinthSection = styled.section`
   color: ${({ theme }) => theme.colors.black};
+  width: 100%;
+  overflow: hidden;
 `;
 
 export const NinthHeader = styled.header`
