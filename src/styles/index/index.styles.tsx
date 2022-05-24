@@ -684,6 +684,8 @@ export const SixthSectionImg = styled.div<IndexProps>`
 
 export const SeventhSection = styled.section`
   color: ${({ theme }) => theme.colors.black};
+  width: 100%;
+  overflow: hidden;
 
   p {
     color: #6e6e73;
