@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import { useContext, useEffect, useState, useRef } from 'react';
 import HeadComponent from 'components/Head/Head';
 import ScrollContext from 'context/ScrollContext';
@@ -58,9 +59,9 @@ const Home: NextPage = () => {
   /* Third Section */
   const thirdSectRef = useRef<HTMLDivElement>(null);
   const thirdSectLeftH2Ref = useRef<HTMLDivElement>(null);
-  const thirdSectLeftImgRef = useRef<HTMLImageElement>(null);
+  const thirdSectLeftImgRef = useRef<HTMLDivElement>(null);
   const thirdSectRightH2Ref = useRef<HTMLDivElement>(null);
-  const thirdSectRightImgRef = useRef<HTMLImageElement>(null);
+  const thirdSectRightImgRef = useRef<HTMLDivElement>(null);
 
   /* Fourth Section */
   const fourthSectFirstRef = useRef<HTMLDivElement>(null);
@@ -376,26 +377,29 @@ const Home: NextPage = () => {
               iPhone 13 Pro Max
               <span>6.7”</span>
             </h2>
-            <img
-              ref={thirdSectLeftImgRef}
-              src='/images/section2_2.png'
-              alt='iPhone 13 Pro Max 6.7”'
-              height='650'
-              width='321'
-            />
+            <div ref={thirdSectLeftImgRef}>
+              <Image
+                src='/images/section2_2.png'
+                alt='iPhone 13 Pro Max 6.7”'
+                height='650'
+                width='321'
+                layout='intrinsic'
+              />
+            </div>
           </ThirdLeft>
           <ThirdRight>
             <h2 ref={thirdSectRightH2Ref}>
               iPhone 13 Pro
               <span>6.1”</span>
             </h2>
-            <img
-              height='588'
-              width='292'
-              ref={thirdSectRightImgRef}
-              src='/images/section2_1.png'
-              alt='iPhone 13 Pro 6.1”'
-            />
+            <div ref={thirdSectRightImgRef}>
+              <Image
+                src='/images/section2_1.png'
+                alt='iPhone 13 Pro 6.1”'
+                height='588'
+                width='292'
+              />
+            </div>
           </ThirdRight>
         </ThirdInner>
         <StyledH3>Super Retina XDR display1 with ProMotion</StyledH3>

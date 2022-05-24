@@ -312,7 +312,7 @@ export const ThirdInner = styled.div`
 export const ThirdLeft = styled.div`
   margin-right: -40px;
 
-  img {
+  div {
     width: 200px;
     height: auto;
   }
@@ -321,7 +321,7 @@ export const ThirdLeft = styled.div`
     text-align: right;
     margin-right: -50px;
 
-    img {
+    div {
       width: 250px;
     }
 
@@ -334,7 +334,7 @@ export const ThirdLeft = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     margin-right: -70px;
 
-    img {
+    div {
       width: unset;
     }
   }
@@ -344,7 +344,7 @@ export const ThirdRight = styled.div`
   margin-left: -40px;
   text-align: right;
 
-  img {
+  div {
     width: 171px;
     height: auto;
   }
@@ -353,7 +353,7 @@ export const ThirdRight = styled.div`
     text-align: left;
     margin-left: -200px;
 
-    img {
+    div {
       width: 221px;
     }
 
@@ -366,7 +366,7 @@ export const ThirdRight = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     margin-left: -200px;
 
-    img {
+    div {
       width: unset;
     }
   }
