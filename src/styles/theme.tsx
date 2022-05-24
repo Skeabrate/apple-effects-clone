@@ -10,6 +10,7 @@ export const theme: DefaultTheme = {
     borderDark: '#4b4b4b',
   },
   fontSize: {
+    huge: '12rem',
     heading: '8rem',
     headingTablet: '5.6rem',
     headingMobile: '3rem',

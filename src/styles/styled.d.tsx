@@ -11,6 +11,7 @@ declare module 'styled-components' {
       borderDark: string;
     };
     fontSize: {
+      huge: string;
       heading: string;
       headingTablet: string;
       headingMobile: string;

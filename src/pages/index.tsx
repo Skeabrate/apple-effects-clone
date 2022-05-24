@@ -26,10 +26,13 @@ import {
   Wrapper,
   SeventhSection,
   EightSection,
+  NinthSection,
+  NinthHeader,
 } from 'styles/index/index.styles';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { StyledH3 } from 'styles/GlobalStyledComponents.styles';
+import Heading from 'components/Heading/Heading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -584,7 +587,7 @@ const Home: NextPage = () => {
         </div>
 
         <div>
-          <h2>Whoa.</h2>
+          <Heading>Whoa.</Heading>
 
           <div style={{ opacity: 0, transform: 'translateY(40px)' }} ref={seventhSectFirstRef}>
             <h3>Macro photography comes to iPhone.</h3>
@@ -611,6 +614,29 @@ const Home: NextPage = () => {
       </SeventhSection>
 
       <EightSection>8</EightSection>
+
+      <NinthSection>
+        <NinthHeader>
+          <Heading>
+            Shift the focus.
+            <span>Up the drama.</span>
+          </Heading>
+          <p>
+            Presenting <span>Cinematic mode.</span>
+          </p>
+        </NinthHeader>
+      </NinthSection>
+
+      <video
+        style={{ height: '100vh', width: '100%' }}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload='auto'
+      >
+        <source src='/images/ninthsect.mp4' type='video/mp4' />
+      </video>
     </Wrapper>
   );
 };

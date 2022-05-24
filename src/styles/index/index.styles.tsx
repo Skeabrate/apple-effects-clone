@@ -712,10 +712,6 @@ export const SeventhSection = styled.section`
     display: flex;
     flex-direction: column;
     gap: 15px;
-
-    h2 {
-      font-size: ${({ theme }) => theme.fontSize.headingTablet};
-    }
   }
 
   video {
@@ -748,10 +744,6 @@ export const SeventhSection = styled.section`
       p {
         max-width: 255px;
       }
-
-      h2 {
-        font-size: ${({ theme }) => theme.fontSize.heading};
-      }
     }
 
     div:nth-of-type(2) h3 {
@@ -774,10 +766,6 @@ export const SeventhSection = styled.section`
         font-size: 40px;
       }
 
-      h2 {
-        font-size: 120px;
-      }
-
       p {
         max-width: 330px;
       }
@@ -793,4 +781,46 @@ export const SeventhSection = styled.section`
 export const EightSection = styled.section`
   width: 100%;
   height: 100vh;
+  background-color: black;
+  color: white;
+`;
+
+export const NinthSection = styled.section`
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export const NinthHeader = styled.header`
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem auto;
+  padding: 0 5vw;
+
+  p {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 3rem;
+
+    span {
+      display: block;
+    }
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin: 10rem auto;
+
+    p {
+      align-self: flex-end;
+      font-size: 3rem;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin: 15rem auto;
+
+    p {
+      font-size: 4rem;
+      margin-top: 4rem;
+    }
+  }
 `;
