@@ -268,7 +268,7 @@ const Home: NextPage = () => {
           trigger: sixthSectionHelperUpRef.current,
           scrub: true,
           start: '0% bottom',
-          end: 'bottom bottom',
+          end: '100% bottom',
         },
         y: '-10%',
       });
@@ -300,6 +300,7 @@ const Home: NextPage = () => {
       }
     });
 
+    /* Sixth section */
     if (sixthSectionHelperUpRef.current && sixthSectionHelperDownRef.current) {
       if (
         sixthSectionHelperUpRef.current.getBoundingClientRect().top <= window.innerHeight &&
@@ -538,7 +539,7 @@ const Home: NextPage = () => {
         <SixthSectionHelperDown ref={sixthSectionHelperDownRef} />
       </SixthSection>
 
-      {/* <SeventhSection>7</SeventhSection> */}
+      <SeventhSection>7</SeventhSection>
     </Wrapper>
   );
 };
