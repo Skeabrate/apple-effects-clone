@@ -25,6 +25,7 @@ import {
   ThirdSection,
   Wrapper,
   SeventhSection,
+  EightSection,
 } from 'styles/index/index.styles';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -85,6 +86,8 @@ const Home: NextPage = () => {
 
   /* Seventh Section */
   const seventhSectVideoRef = useRef<HTMLVideoElement>(null);
+  const seventhSectFirstRef = useRef<HTMLDivElement>(null);
+  const seventhSectSecondRef = useRef<HTMLDivElement>(null);
 
   /* Animations */
   useEffect(() => {
@@ -284,6 +287,22 @@ const Home: NextPage = () => {
         trigger: seventhSectVideoRef.current,
         start: 'top center',
         onEnter: () => seventhSectVideoRef.current && seventhSectVideoRef.current.play(),
+      });
+    }
+
+    if (seventhSectFirstRef.current && seventhSectSecondRef.current) {
+      const paralaxTable = [seventhSectFirstRef.current, seventhSectSecondRef.current];
+      paralaxTable.forEach((item) => {
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: item,
+              start: '40% bottom',
+              end: 'bottom bottom',
+              scrub: true,
+            },
+          })
+          .to(item, { y: 0, opacity: 1 }, 0);
       });
     }
   }, [
@@ -567,7 +586,7 @@ const Home: NextPage = () => {
         <div>
           <h2>Whoa.</h2>
 
-          <div>
+          <div style={{ opacity: 0, transform: 'translateY(40px)' }} ref={seventhSectFirstRef}>
             <h3>Macro photography comes to iPhone.</h3>
             <p>
               With its redesigned lens and powerful autofocus system, the new Ultra Wide camera can
@@ -582,7 +601,7 @@ const Home: NextPage = () => {
           <source src='/images/seventh.mp4' type='video/mp4' />
         </video>
 
-        <div>
+        <div style={{ opacity: 0, transform: 'translateY(40px)' }} ref={seventhSectSecondRef}>
           <h3>Macro video, anyone?</h3>
           <p>
             Macro stills are just the beginning. You can also shoot macro videos — including slow
@@ -590,6 +609,8 @@ const Home: NextPage = () => {
           </p>
         </div>
       </SeventhSection>
+
+      <EightSection>8</EightSection>
     </Wrapper>
   );
 };
