@@ -686,6 +686,8 @@ export const SeventhSection = styled.section`
   color: ${({ theme }) => theme.colors.black};
   width: 100%;
   overflow: hidden;
+  position: relative;
+  background: white;
 
   p {
     color: #6e6e73;
@@ -747,7 +749,6 @@ export const SeventhSection = styled.section`
     }
 
     div:nth-of-type(2) h3 {
-      padding-top: 30px;
       width: 300px;
     }
 
@@ -772,7 +773,7 @@ export const SeventhSection = styled.section`
     }
 
     div:nth-of-type(2) h3 {
-      padding-top: 40px;
+      padding-top: 10px;
       width: 380px;
     }
   }
@@ -780,7 +781,6 @@ export const SeventhSection = styled.section`
 
 export const EightSection = styled.section`
   width: 100%;
-  height: 100vh;
   background-color: black;
   color: white;
 `;

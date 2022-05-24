@@ -31,7 +31,7 @@ const Navigation = () => {
     else
       document.body.setAttribute(
         'style',
-        'overflow:hidden !important; height:100vh !important; position: fixed !important'
+        'overflow:hidden !important; height:100vh !important; position: fixed !important; width: 100% !important; '
       );
 
     setToggle(!toggle);
