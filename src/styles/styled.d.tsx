@@ -3,9 +3,10 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
+      black: string;
       lightGrey: string;
       grey: string;
-      dark: string;
+      darkNav: string;
       borderLight: string;
       borderDark: string;
     };

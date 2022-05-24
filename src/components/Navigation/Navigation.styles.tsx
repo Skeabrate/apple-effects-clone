@@ -13,13 +13,13 @@ export const Wrapper = styled.div`
 
 export const StyledNavOuter = styled.nav<NavProps>`
   color: ${({ theme }) => theme.colors.grey};
-  background-color: ${({ theme, $toggle }) => ($toggle ? 'black' : theme.colors.dark)};
+  background-color: ${({ theme, $toggle }) => ($toggle ? 'black' : theme.colors.darkNav)};
   transition: background-color ease-in-out;
   transition-duration: ${({ $toggle }) => ($toggle ? '.2s' : '.3s')};
   transition-delay: ${({ $toggle }) => ($toggle ? '0' : '0.4s')};
 
   ${({ theme }) => theme.mq.tablet} {
-    background-color: ${({ theme }) => theme.colors.dark};
+    background-color: ${({ theme }) => theme.colors.darkNav};
   }
 `;
 

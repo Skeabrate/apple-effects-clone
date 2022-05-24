@@ -83,6 +83,9 @@ const Home: NextPage = () => {
   const sixthSectionHelperDownRef = useRef<HTMLDivElement>(null);
   const sixthSectionImageRef = useRef<HTMLDivElement>(null);
 
+  /* Seventh Section */
+  const seventhSectVideoRef = useRef<HTMLVideoElement>(null);
+
   /* Animations */
   useEffect(() => {
     /* First Section */
@@ -272,6 +275,15 @@ const Home: NextPage = () => {
           end: '100% bottom',
         },
         y: '-10%',
+      });
+    }
+
+    /* Seventh section video */
+    if (seventhSectVideoRef.current) {
+      ScrollTrigger.create({
+        trigger: seventhSectVideoRef.current,
+        start: 'top center',
+        onEnter: () => seventhSectVideoRef.current && seventhSectVideoRef.current.play(),
       });
     }
   }, [
@@ -543,7 +555,41 @@ const Home: NextPage = () => {
         <SixthSectionHelperDown ref={sixthSectionHelperDownRef} />
       </SixthSection>
 
-      <SeventhSection>7</SeventhSection>
+      <SeventhSection>
+        <div>
+          <Image
+            src='/images/macro_photography__e2abtsqe82c2_large.jpg'
+            height='1019'
+            width='1358'
+          />
+        </div>
+
+        <div>
+          <h2>Whoa.</h2>
+
+          <div>
+            <h3>Macro photography comes to iPhone.</h3>
+            <p>
+              With its redesigned lens and powerful autofocus system, the new Ultra Wide camera can
+              focus at just 2cm — making even the smallest details seem epic. Transform a leaf into
+              abstract art. Capture a caterpillar’s fuzz. Magnify a dewdrop. The beauty of tiny
+              awaits.
+            </p>
+          </div>
+        </div>
+
+        <video height='768' width='1358' ref={seventhSectVideoRef} muted playsInline preload='auto'>
+          <source src='/images/seventh.mp4' type='video/mp4' />
+        </video>
+
+        <div>
+          <h3>Macro video, anyone?</h3>
+          <p>
+            Macro stills are just the beginning. You can also shoot macro videos — including slow
+            motion and time-lapse. Prepare to be mesmerised.
+          </p>
+        </div>
+      </SeventhSection>
     </Wrapper>
   );
 };
