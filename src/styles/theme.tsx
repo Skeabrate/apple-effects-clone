@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme, css } from 'styled-components';
 
 export const theme: DefaultTheme = {
   colors: {
@@ -26,4 +26,8 @@ export const theme: DefaultTheme = {
     bigDesktop: '@media (min-width: 1280px)',
     huge: '@media (min-width: 1440px)',
   },
+  ContainerStyles: () => css`
+		maxWidth: '2000px',
+    margin: '0 auto',
+	`,
 };

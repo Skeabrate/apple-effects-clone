@@ -3,24 +3,12 @@ import Image from 'next/image';
 import { useContext, useEffect, useState, useRef } from 'react';
 import HeadComponent from 'components/Head/Head';
 import ScrollContext from 'context/ScrollContext';
-import ImageSlider from 'components/ImageSlider/ImageSlider';
 import {
-  FifthSection,
-  FourthInner,
-  FourthSection,
-  FourtInnerFirstDiv,
-  FourtInnerSecondDiv,
-  FourtInnerThirdDiv,
   SixthSection,
   SixthSectionHelperUp,
   SixthSectionHelperDown,
   SixthSectionImg,
   SixthSectionText,
-  ThirdInner,
-  ThirdLeft,
-  ThirdRight,
-  ThirdSection,
-  Wrapper,
   SeventhSection,
   EightSection,
   NinthSection,
@@ -28,17 +16,20 @@ import {
 } from 'styles/index/index.styles';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { StyledH3 } from 'styles/GlobalStyledComponents.styles';
 import Heading from 'components/Heading/Heading';
 import FirstSection from 'components/Index/FirstSection/FirstSection';
 import SecondSection from 'components/Index/SecondSection/SecondSection';
+import ThirdSection from 'components/Index/ThirdSection/ThirdSection';
+import FourthSection from 'components/Index/FourthSection/FourthSection';
+import FifthSection from 'components/Index/FifthSection/FifthSection';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 const Home: NextPage = () => {
-  const [sliderIndex, setSliderIndex] = useState<number>(0);
+  const [fourthSectionRef, setFourthSectionRef] = useState(null);
+  const [fifthSectionRef, setFifthSectionRef] = useState(null);
   const [sixthSectParalax, setSixthSectParalax] = useState<{ isActive: boolean; isOnTop: boolean }>(
     {
       isActive: false,
@@ -47,28 +38,6 @@ const Home: NextPage = () => {
   );
 
   const { isSticky } = useContext(ScrollContext);
-
-  /* Third Section */
-  const thirdSectRef = useRef<HTMLDivElement>(null);
-  const thirdSectLeftH2Ref = useRef<HTMLDivElement>(null);
-  const thirdSectLeftImgRef = useRef<HTMLDivElement>(null);
-  const thirdSectRightH2Ref = useRef<HTMLDivElement>(null);
-  const thirdSectRightImgRef = useRef<HTMLDivElement>(null);
-
-  /* Fourth Section */
-  const fourthSectFirstRef = useRef<HTMLDivElement>(null);
-  const fourthSectFirstRightRef = useRef<HTMLDivElement>(null);
-
-  const fourthSectSecondRef = useRef<HTMLDivElement>(null);
-  const fourthSectSecondLeftRef = useRef<HTMLImageElement>(null);
-  const fourthSectSecondRightRef = useRef<HTMLImageElement>(null);
-
-  const fourthSectThirdRef = useRef<HTMLDivElement>(null);
-  const fourthSectThirdLeftRef = useRef<HTMLImageElement>(null);
-  const fourthSectThirdRightRef = useRef<HTMLVideoElement>(null);
-
-  /* Fifth Section */
-  const fifthSectRef = useRef<HTMLDivElement>(null);
 
   /* Sixth Section */
   const sixthSectionHelperUpRef = useRef<HTMLDivElement>(null);
@@ -81,142 +50,6 @@ const Home: NextPage = () => {
   const seventhSectSecondRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mqThirdSection = window.matchMedia('(min-width: 768px)');
-    const mqFourthSection = window.matchMedia('(min-height: 670px) and (min-width: 768px)');
-
-    /* Sticky Backgounds */
-    // if (mqFixed.matches && firstSectRef.current && thirdSectRef.current) {
-    //   const refTable = [thirdSectRef, firstSectRef];
-
-    //   refTable.forEach((ref) => {
-    //     ScrollTrigger.create({
-    //       trigger: ref.current,
-    //       start: 'top top',
-    //       pin: true,
-    //       pinSpacing: false,
-    //     });
-    //   });
-    // }
-
-    /* Third section */
-    if (
-      mqThirdSection.matches &&
-      thirdSectRef.current &&
-      thirdSectLeftImgRef.current &&
-      thirdSectRightImgRef.current &&
-      thirdSectRightH2Ref.current &&
-      thirdSectLeftH2Ref.current &&
-      fourthSectFirstRef.current
-    ) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: thirdSectRef.current,
-            start: '20% bottom',
-            end: '45% 45%',
-            scrub: true,
-          },
-        })
-        .to(thirdSectLeftImgRef.current, { x: -60 }, 0)
-        .to(thirdSectLeftH2Ref.current, { x: -200, opacity: 1 }, 0)
-        .to(thirdSectRightImgRef.current, { x: 60 }, 0)
-        .to(thirdSectRightH2Ref.current, { x: 200, opacity: 1 }, 0);
-
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: fourthSectFirstRef.current,
-            start: '15% bottom',
-            scrub: true,
-          },
-        })
-        .to(thirdSectLeftImgRef.current, { x: 0 }, 0)
-        .to(thirdSectLeftH2Ref.current, { x: 0, opacity: 0 }, 0)
-        .to(thirdSectRightImgRef.current, { x: 0 }, 0)
-        .to(thirdSectRightH2Ref.current, { x: 0, opacity: 0 }, 0);
-    }
-
-    /* Fourth section */
-    if (
-      mqFourthSection.matches &&
-      fourthSectFirstRef.current &&
-      fourthSectSecondRef.current &&
-      fourthSectSecondLeftRef.current &&
-      fourthSectSecondRightRef.current &&
-      fourthSectThirdRef.current &&
-      fourthSectThirdRightRef.current &&
-      fifthSectRef.current
-    ) {
-      const refTable = [fourthSectFirstRef, fourthSectSecondRef, fourthSectThirdRef];
-      const paralaxBigTable = [
-        {
-          to: fourthSectFirstRightRef,
-          trigger: fourthSectSecondRef,
-        },
-        {
-          to: fourthSectSecondLeftRef,
-          trigger: fourthSectThirdRef,
-        },
-        {
-          to: fourthSectThirdRightRef,
-          trigger: fifthSectRef,
-        },
-      ];
-      const paralaxSmallTable = [
-        {
-          to: fourthSectSecondRightRef,
-          trigger: fourthSectThirdRef,
-        },
-        {
-          to: fourthSectThirdLeftRef,
-          trigger: fifthSectRef,
-        },
-      ];
-
-      refTable.forEach((ref) => {
-        ScrollTrigger.create({
-          trigger: ref.current,
-          start: 'top top',
-          pin: true,
-          end: '+=200%',
-          pinSpacing: false,
-        });
-      });
-
-      paralaxBigTable.forEach(({ to, trigger }) => {
-        gsap.to(to.current, {
-          yPercent: -80,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: trigger.current,
-            start: '0% bottom',
-            scrub: true,
-          },
-        });
-      });
-
-      paralaxSmallTable.forEach(({ to, trigger }) => {
-        gsap.to(to.current, {
-          yPercent: -60,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: trigger.current,
-            start: '0% bottom',
-            scrub: true,
-          },
-        });
-      });
-    }
-
-    /* Fourth section video start when in view */
-    if (fourthSectThirdRightRef.current) {
-      ScrollTrigger.create({
-        trigger: fourthSectThirdRightRef.current,
-        start: 'top center',
-        onEnter: () => fourthSectThirdRightRef.current && fourthSectThirdRightRef.current.play(),
-      });
-    }
-
     /* Sixth section */
     if (sixthSectionHelperUpRef.current && sixthSectionImageRef.current) {
       gsap.to(sixthSectionImageRef.current, {
@@ -286,166 +119,18 @@ const Home: NextPage = () => {
   }, [isSticky, sixthSectionHelperUpRef, sixthSectionHelperDownRef, sixthSectionImageRef]);
 
   return (
-    <Wrapper>
+    <main>
       <HeadComponent title='Apple effects clone' />
 
       <FirstSection />
 
       <SecondSection />
 
-      <ThirdSection ref={thirdSectRef}>
-        <ThirdInner>
-          <ThirdLeft>
-            <h2 ref={thirdSectLeftH2Ref}>
-              iPhone 13 Pro Max
-              <span>6.7”</span>
-            </h2>
-            <div ref={thirdSectLeftImgRef}>
-              <Image
-                src='/images/section2_2.png'
-                alt='iPhone 13 Pro Max 6.7”'
-                height='650'
-                width='321'
-                layout='intrinsic'
-              />
-            </div>
-          </ThirdLeft>
-          <ThirdRight>
-            <h2 ref={thirdSectRightH2Ref}>
-              iPhone 13 Pro
-              <span>6.1”</span>
-            </h2>
-            <div ref={thirdSectRightImgRef}>
-              <Image
-                src='/images/section2_1.png'
-                alt='iPhone 13 Pro 6.1”'
-                height='588'
-                width='292'
-              />
-            </div>
-          </ThirdRight>
-        </ThirdInner>
-        <StyledH3>Super Retina XDR display1 with ProMotion</StyledH3>
-      </ThirdSection>
+      <ThirdSection fourthSectionRef={fourthSectionRef} />
 
-      <FourthSection>
-        <FourthInner ref={fourthSectFirstRef} $sliderIndex={sliderIndex}>
-          <FourtInnerFirstDiv>
-            <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
-          </FourtInnerFirstDiv>
+      <FourthSection setFourthSectionRef={setFourthSectionRef} fifthSectionRef={fifthSectionRef} />
 
-          <FourtInnerFirstDiv $sliderIndex={sliderIndex}>
-            <div ref={fourthSectFirstRightRef}>
-              <img
-                width='1042'
-                height='935'
-                src='/images/green-huge.jpg'
-                alt=''
-                aria-hidden='true'
-              />
-              <img
-                width='1042'
-                height='935'
-                src='/images/silver-huge.jpg'
-                alt=''
-                aria-hidden='true'
-              />
-              <img
-                width='1042'
-                height='935'
-                src='/images/gold-huge.jpg'
-                alt=''
-                aria-hidden='true'
-              />
-              <img
-                width='1042'
-                height='935'
-                src='/images/black-huge.jpg'
-                alt=''
-                aria-hidden='true'
-              />
-              <img
-                width='1042'
-                height='935'
-                src='/images/blue-huge.jpg'
-                alt=''
-                aria-hidden='true'
-              />
-            </div>
-          </FourtInnerFirstDiv>
-        </FourthInner>
-
-        <FourthInner ref={fourthSectSecondRef}>
-          <FourtInnerSecondDiv>
-            <div>
-              <img
-                src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
-                alt='Surgical-grade stainless steel'
-                ref={fourthSectSecondRightRef}
-                height='657'
-                width='53'
-              />
-            </div>
-            <StyledH3>
-              Surgical-grade <span>stainless steel</span>
-            </StyledH3>
-          </FourtInnerSecondDiv>
-
-          <FourtInnerSecondDiv>
-            <img
-              src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
-              alt=''
-              aria-hidden='true'
-              height='960'
-              width='201'
-              ref={fourthSectSecondLeftRef}
-            />
-          </FourtInnerSecondDiv>
-        </FourthInner>
-
-        <FourthInner ref={fourthSectThirdRef}>
-          <FourtInnerThirdDiv>
-            <div>
-              <img
-                src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
-                alt='Ceramic Shield, tougher than any smartphone glass'
-                ref={fourthSectThirdLeftRef}
-                height='543'
-                width='270'
-              />
-            </div>
-            <StyledH3>
-              Ceramic Shield, tougher than <span>any smartphone glass</span>
-            </StyledH3>
-          </FourtInnerThirdDiv>
-
-          <FourtInnerThirdDiv>
-            <video
-              height='866'
-              width='652'
-              ref={fourthSectThirdRightRef}
-              muted
-              playsInline
-              preload='auto'
-            >
-              <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
-            </video>
-          </FourtInnerThirdDiv>
-        </FourthInner>
-      </FourthSection>
-
-      <FifthSection ref={fifthSectRef}>
-        <img
-          src='/images/water_resistant__ddhg6jxs53yq_large.jpg'
-          alt='Industry-leading IP68 water resistance'
-          width='884'
-          height='1394'
-        />
-
-        <StyledH3>
-          Industry-leading IP68 <span>water resistance&#178;</span>
-        </StyledH3>
-      </FifthSection>
+      <FifthSection setFifthSectionRef={setFifthSectionRef} />
 
       <SixthSection>
         <SixthSectionHelperUp ref={sixthSectionHelperUpRef} />
@@ -617,7 +302,7 @@ const Home: NextPage = () => {
           <source src='/images/ninthsect.mp4' type='video/mp4' />
         </video>
       </NinthSection>
-    </Wrapper>
+    </main>
   );
 };
 
