@@ -1,4 +1,4 @@
-Apple website clone
+## Apple Clone
 
 Technologies:
 
@@ -9,5 +9,5 @@ Technologies:
 Website URL:
 https://apple-effects-nextjs.vercel.app/
 
-Original Website:
+Original Apple Website:
 https://www.apple.com/uk/iphone-13-pro/
