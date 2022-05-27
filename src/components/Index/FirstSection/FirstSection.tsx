@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
-import { StyledVideo, Wrapper } from './FirstSection.styles';
+import { Wrapper } from './FirstSection.styles';
 import { useParalax } from 'hooks/useParalax';
 
 const FirstSection: React.FC = () => {
@@ -13,24 +13,22 @@ const FirstSection: React.FC = () => {
 
   useParalax(mainRef);
 
+  const videoLoadingHandler = useCallback(() => {
+    if (videoRef?.current?.readyState == 4) {
+      setIsVideoLoaded(true);
+    }
+  }, []);
+
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.addEventListener('playing', () => {
-        if (videoRef?.current?.readyState == 4) {
-          setIsVideoLoaded(true);
-        }
-      });
-      videoRef.current.addEventListener('suspend', () => {
-        if (videoRef?.current?.readyState == 4) {
-          setIsVideoLoaded(true);
-        }
-      });
+      videoRef.current.addEventListener('playing', videoLoadingHandler);
+      videoRef.current.addEventListener('suspend', videoLoadingHandler);
     }
 
     return () => {
       if (videoRef.current) {
-        videoRef.current.removeEventListener('loadeddata', () => {});
-        videoRef.current.removeEventListener('suspend', () => {});
+        videoRef.current.removeEventListener('loadeddata', videoLoadingHandler);
+        videoRef.current.removeEventListener('suspend', videoLoadingHandler);
       }
     };
   }, [videoRef]);
@@ -53,19 +51,17 @@ const FirstSection: React.FC = () => {
 
   return (
     <Wrapper ref={mainRef}>
-      <StyledVideo>
-        <header>
-          <h1 ref={h1Ref}>iPhone 13 Pro</h1>
-          <div ref={h2Ref}>
-            <p>iPhone 13 Pro</p>
-            <h2>Oh. So. Pro.</h2>
-          </div>
-        </header>
+      <header>
+        <h1 ref={h1Ref}>iPhone 13 Pro</h1>
+        <div ref={h2Ref}>
+          <p>iPhone 13 Pro</p>
+          <h2>Oh. So. Pro.</h2>
+        </div>
+      </header>
 
-        <video ref={videoRef} autoPlay muted playsInline preload='auto'>
-          <source src='/images/medium.mp4' type='video/mp4' />
-        </video>
-      </StyledVideo>
+      <video ref={videoRef} autoPlay muted playsInline preload='auto'>
+        <source src='/images/medium.mp4' type='video/mp4' />
+      </video>
     </Wrapper>
   );
 };

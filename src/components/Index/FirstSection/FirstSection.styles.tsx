@@ -8,20 +8,6 @@ export const Wrapper = styled.section`
   width: 100%;
   z-index: -1;
 
-  ${({ theme }) => theme.mq.tablet} {
-    min-height: 700px;
-  }
-
-  ${({ theme }) => theme.mq.desktop} {
-    min-height: 800px;
-  }
-
-  ${({ theme }) => theme.mq.huge} {
-    min-height: 900px;
-  }
-`;
-
-export const StyledVideo = styled.div`
   header {
     width: fit-content;
     text-align: center;
@@ -64,6 +50,8 @@ export const StyledVideo = styled.div`
   }
 
   ${({ theme }) => theme.mq.tablet} {
+    min-height: 700px;
+
     header {
       bottom: 400px;
 
@@ -91,6 +79,8 @@ export const StyledVideo = styled.div`
   }
 
   ${({ theme }) => theme.mq.desktop} {
+    min-height: 800px;
+
     header {
       bottom: 500px;
     }
@@ -102,6 +92,8 @@ export const StyledVideo = styled.div`
   }
 
   ${({ theme }) => theme.mq.huge} {
+    min-height: 900px;
+
     header {
       bottom: 600px;
     }
