@@ -6,7 +6,6 @@ import ScrollContext from 'context/ScrollContext';
 import ImageSlider from 'components/ImageSlider/ImageSlider';
 import {
   FifthSection,
-  FirstSection,
   FourthInner,
   FourthSection,
   FourtInnerFirstDiv,
@@ -18,7 +17,6 @@ import {
   SixthSectionHelperDown,
   SixthSectionImg,
   SixthSectionText,
-  StyledFirstVideo,
   ThirdInner,
   ThirdLeft,
   ThirdRight,
@@ -33,32 +31,23 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { StyledH3 } from 'styles/GlobalStyledComponents.styles';
 import Heading from 'components/Heading/Heading';
+import FirstSection from 'components/Index/FirstSection/FirstSection';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface sixthSectParalaxType {
-  isActive: boolean;
-  isOnTop: boolean;
-}
-
 const Home: NextPage = () => {
   const [isHighlighted, setIsHighlighted] = useState<number>(0);
   const [sliderIndex, setSliderIndex] = useState<number>(0);
-  const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
-  const [sixthSectParalax, setSixthSectParalax] = useState<sixthSectParalaxType>({
-    isActive: false,
-    isOnTop: true,
-  });
+  const [sixthSectParalax, setSixthSectParalax] = useState<{ isActive: boolean; isOnTop: boolean }>(
+    {
+      isActive: false,
+      isOnTop: true,
+    }
+  );
 
   const { isSticky } = useContext(ScrollContext);
-
-  /* First Section */
-  const firstSectHeaderRef = useRef<HTMLDivElement>(null);
-  const firstSectDivRef = useRef<HTMLDivElement>(null);
-  const firstSectRef = useRef<HTMLDivElement>(null);
-  const firstSectVidRef = useRef<HTMLVideoElement>(null);
 
   /* Third Section */
   const thirdSectRef = useRef<HTMLDivElement>(null);
@@ -92,65 +81,23 @@ const Home: NextPage = () => {
   const seventhSectFirstRef = useRef<HTMLDivElement>(null);
   const seventhSectSecondRef = useRef<HTMLDivElement>(null);
 
-  /* Animations */
   useEffect(() => {
-    /* First Section */
-    if (firstSectVidRef.current) {
-      firstSectVidRef.current.addEventListener('playing', () => {
-        if (firstSectVidRef?.current?.readyState == 4) {
-          setIsVideoLoaded(true);
-        }
-      });
-      firstSectVidRef.current.addEventListener('suspend', () => {
-        if (firstSectVidRef?.current?.readyState == 4) {
-          setIsVideoLoaded(true);
-        }
-      });
-    }
-
-    return () => {
-      if (firstSectVidRef.current) {
-        firstSectVidRef.current.removeEventListener('loadeddata', () => {});
-        firstSectVidRef.current.removeEventListener('suspend', () => {});
-      }
-    };
-  }, [firstSectVidRef]);
-
-  useEffect(() => {
-    /* First Section */
-    if (firstSectHeaderRef.current && firstSectDivRef.current) {
-      let tl = gsap.timeline({ paused: !isVideoLoaded });
-
-      tl.to(firstSectHeaderRef.current, {
-        opacity: 0,
-        duration: 1,
-        delay: 1.5,
-      }).to(firstSectDivRef.current, {
-        opacity: 1,
-        duration: 1.5,
-        delay: 0.5,
-      });
-    }
-  }, [isVideoLoaded, firstSectHeaderRef, firstSectDivRef]);
-
-  useEffect(() => {
-    const mqFixed = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
     const mqThirdSection = window.matchMedia('(min-width: 768px)');
     const mqFourthSection = window.matchMedia('(min-height: 670px) and (min-width: 768px)');
 
     /* Sticky Backgounds */
-    if (mqFixed.matches && firstSectRef.current && thirdSectRef.current) {
-      const refTable = [thirdSectRef, firstSectRef];
+    // if (mqFixed.matches && firstSectRef.current && thirdSectRef.current) {
+    //   const refTable = [thirdSectRef, firstSectRef];
 
-      refTable.forEach((ref) => {
-        ScrollTrigger.create({
-          trigger: ref.current,
-          start: 'top top',
-          pin: true,
-          pinSpacing: false,
-        });
-      });
-    }
+    //   refTable.forEach((ref) => {
+    //     ScrollTrigger.create({
+    //       trigger: ref.current,
+    //       start: 'top top',
+    //       pin: true,
+    //       pinSpacing: false,
+    //     });
+    //   });
+    // }
 
     /* Third section */
     if (
@@ -308,24 +255,7 @@ const Home: NextPage = () => {
           .to(item, { y: 0, opacity: 1 }, 0);
       });
     }
-  }, [
-    firstSectRef,
-    thirdSectRef,
-    thirdSectLeftH2Ref,
-    thirdSectLeftImgRef,
-    thirdSectRightH2Ref,
-    thirdSectRightImgRef,
-    fourthSectFirstRef,
-    fourthSectFirstRightRef,
-    fourthSectSecondRef,
-    fourthSectSecondLeftRef,
-    fourthSectSecondRightRef,
-    fourthSectThirdRef,
-    fourthSectThirdLeftRef,
-    fourthSectThirdRightRef,
-    sixthSectionHelperUpRef,
-    sixthSectionImageRef,
-  ]);
+  }, []);
 
   useEffect(() => {
     /* Second section */
@@ -367,21 +297,7 @@ const Home: NextPage = () => {
     <Wrapper>
       <HeadComponent title='Apple effects clone' />
 
-      <FirstSection ref={firstSectRef}>
-        <StyledFirstVideo $isVideoLoaded={isVideoLoaded}>
-          <header>
-            <h1 ref={firstSectHeaderRef}>iPhone 13 Pro</h1>
-            <div ref={firstSectDivRef}>
-              <p>iPhone 13 Pro</p>
-              <h2>Oh. So. Pro.</h2>
-            </div>
-          </header>
-
-          <video ref={firstSectVidRef} autoPlay muted playsInline preload='auto'>
-            <source src='/images/medium.mp4' type='video/mp4' />
-          </video>
-        </StyledFirstVideo>
-      </FirstSection>
+      <FirstSection />
 
       <SecondSection $isHighlighted={isHighlighted}>
         <video autoPlay loop muted playsInline preload='auto'>
