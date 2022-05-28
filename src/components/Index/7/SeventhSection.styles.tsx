@@ -35,7 +35,7 @@ export const Wrapper = styled.section`
   }
 
   video {
-    width: 800px;
+    width: 100%;
     height: auto;
     position: relative;
     left: 50%;
@@ -69,11 +69,6 @@ export const Wrapper = styled.section`
     div:nth-of-type(2) h3 {
       width: 300px;
     }
-
-    video {
-      width: unset;
-      height: auto;
-    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
@@ -88,6 +83,11 @@ export const Wrapper = styled.section`
       p {
         max-width: 330px;
       }
+    }
+
+    video {
+      width: unset;
+      height: auto;
     }
 
     div:nth-of-type(2) h3 {

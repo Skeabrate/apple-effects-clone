@@ -10,10 +10,11 @@ import {
   StyledThirdElement,
   Wrapper,
 } from './FourthSection.styles';
+import { useVideoAutoPlay } from 'hooks/useVideoAutoPlay';
 
 interface Props {
   setFourthSectionRef: Function;
-  fifthSectionRef: any;
+  fifthSectionRef: HTMLDivElement;
 }
 
 const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }) => {
@@ -29,6 +30,8 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
   const thirdRef = useRef<HTMLDivElement>(null);
   const thirdLeftRef = useRef<HTMLImageElement>(null);
   const thirdRightRef = useRef<HTMLVideoElement>(null);
+
+  useVideoAutoPlay(thirdRightRef);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-height: 670px) and (min-width: 768px)');
@@ -107,15 +110,6 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
             scrub: true,
           },
         });
-      });
-    }
-
-    /* video starts when in view */
-    if (thirdRightRef.current) {
-      ScrollTrigger.create({
-        trigger: thirdRightRef.current,
-        start: 'top center',
-        onEnter: () => thirdRightRef.current && thirdRightRef.current.play(),
       });
     }
   }, [

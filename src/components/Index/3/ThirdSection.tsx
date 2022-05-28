@@ -11,7 +11,7 @@ import { useParalax } from 'hooks/useParalax';
 import gsap from 'gsap';
 
 interface Props {
-  fourthSectionRef: any;
+  fourthSectionRef: HTMLDivElement;
 }
 
 const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {

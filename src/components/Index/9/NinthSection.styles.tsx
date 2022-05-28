@@ -42,6 +42,36 @@ export const StyledHeader = styled.header`
   }
 `;
 
+export const StyledVideo = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  img {
+    display: none;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    img {
+      display: initial;
+    }
+
+    video {
+      position: absolute;
+      top: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 300px;
+    }
+  }
+`;
+
 export const StyledContent = styled.div`
   ${({ theme }) => theme.paddingMobile()};
   font-weight: 500;

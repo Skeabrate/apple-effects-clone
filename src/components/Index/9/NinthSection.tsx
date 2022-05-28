@@ -1,8 +1,16 @@
 import Heading from 'components/Heading/Heading';
-import React from 'react';
-import { StyledContent, StyledFooter, StyledHeader, Wrapper } from './NinthSection.styles';
+import React, { useRef } from 'react';
+import {
+  StyledContent,
+  StyledFooter,
+  StyledHeader,
+  StyledVideo,
+  Wrapper,
+} from './NinthSection.styles';
 
 const NinthSection: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   return (
     <Wrapper>
       <StyledHeader>
@@ -15,16 +23,18 @@ const NinthSection: React.FC = () => {
         </p>
       </StyledHeader>
 
-      <video
-        style={{ height: '100vh', width: 'auto' }}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload='auto'
-      >
-        <source src='/images/ninthsect.mp4' type='video/mp4' />
-      </video>
+      <StyledVideo>
+        <img
+          src='/images/ninthSection.png'
+          alt='Presenting cinematic mode.'
+          width='981'
+          height='487'
+        />
+
+        <video ref={videoRef} autoPlay loop muted playsInline preload='auto'>
+          <source src='/images/ninthsect.mp4' type='video/mp4' />
+        </video>
+      </StyledVideo>
 
       <StyledContent>
         <div>

@@ -1,5 +1,5 @@
-import ScrollContext from 'context/ScrollContext';
 import React, { useState, useEffect, useContext } from 'react';
+import ScrollContext from 'context/ScrollContext';
 import { Wrapper } from './SecondSection.styles';
 
 const SecondSection: React.FC = () => {

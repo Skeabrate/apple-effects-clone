@@ -1,24 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Heading from 'components/Heading/Heading';
 import { Wrapper } from './SeventhSection.styles';
+import { useVideoAutoPlay } from 'hooks/useVideoAutoPlay';
 
 const SeventhSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const firstRef = useRef<HTMLDivElement>(null);
   const secondRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      ScrollTrigger.create({
-        trigger: videoRef.current,
-        start: 'top center',
-        onEnter: () => videoRef.current && videoRef.current.play(),
-      });
-    }
+  useVideoAutoPlay(videoRef);
 
+  useEffect(() => {
     if (firstRef.current && secondRef.current) {
       const paralaxTable = [firstRef.current, secondRef.current];
       paralaxTable.forEach((item) => {
@@ -34,7 +28,7 @@ const SeventhSection: React.FC = () => {
           .to(item, { y: 0, opacity: 1 }, 0);
       });
     }
-  }, [videoRef, firstRef, secondRef]);
+  }, [firstRef, secondRef]);
 
   return (
     <Wrapper>
