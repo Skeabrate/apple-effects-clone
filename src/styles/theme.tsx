@@ -26,8 +26,11 @@ export const theme: DefaultTheme = {
     bigDesktop: '@media (min-width: 1280px)',
     huge: '@media (min-width: 1440px)',
   },
-  ContainerStyles: () => css`
+  containerStyles: () => css`
 		maxWidth: '2000px',
     margin: '0 auto',
 	`,
+  paddingMobile: () => css`
+    padding: 0 6vw;
+  `,
 };

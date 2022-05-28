@@ -28,7 +28,7 @@ export const Wrapper = styled.section`
 
   div:nth-of-type(2),
   div:nth-of-type(3) {
-    padding: 3rem 5vw 5rem;
+    padding: 3rem 6vw 5rem;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -58,7 +58,7 @@ export const Wrapper = styled.section`
       width: fit-content;
       gap: 150px;
       margin: 0 auto;
-      padding: 5rem 5vw 12rem;
+      padding: 5rem 6vw 12rem;
 
       div,
       p {

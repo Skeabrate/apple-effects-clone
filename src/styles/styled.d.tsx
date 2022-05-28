@@ -27,6 +27,7 @@ declare module 'styled-components' {
       bigDesktop: string;
       huge: string;
     };
-    ContainerStyles: Function;
+    containerStyles: Function;
+    paddingMobile: Function;
   }
 }

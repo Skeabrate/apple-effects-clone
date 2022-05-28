@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  ${({ theme }) => theme.ContainerStyles()}
+  ${({ theme }) => theme.containerStyles()}
   width: 100%;
   height: 700px;
   display: flex;
