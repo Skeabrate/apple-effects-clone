@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Wrapper } from './SecondSection.styles';
 
 const SecondSection: React.FC = () => {
-  const [isHighlighted, setIsHighlighted] = useState<number>(0);
+  const [isHighlighted, setIsHighlighted] = useState<number>(-1);
 
   const { isSticky } = useContext(ScrollContext);
 
