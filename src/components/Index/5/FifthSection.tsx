@@ -11,7 +11,7 @@ const FifthSection: React.FC<Props> = ({ setFifthSectionRef }) => {
 
   useEffect(() => {
     if (mainRef.current) setFifthSectionRef(mainRef.current);
-  }, [mainRef]);
+  }, [mainRef, setFifthSectionRef]);
 
   return (
     <Wrapper ref={mainRef}>

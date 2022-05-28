@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   position: relative;
 `;
 
-export const InnerItem = styled.div`
+export const StyledInnerItem = styled.div`
   display: grid;
   grid-template-columns: 1fr;
 
@@ -72,7 +72,7 @@ const SecondandThirdHelper = css`
   }
 `;
 
-export const FirstElement = styled.div<Props>`
+export const StyledFirstElement = styled.div<Props>`
   ${ElementHelper};
   &:nth-child(2) {
     div {
@@ -109,7 +109,7 @@ export const FirstElement = styled.div<Props>`
   }
 `;
 
-export const SecondElement = styled.div`
+export const StyledSecondElement = styled.div`
   ${ElementHelper};
   &:nth-child(1) {
     ${SecondandThirdHelper};
@@ -138,7 +138,7 @@ export const SecondElement = styled.div`
   }
 `;
 
-export const ThirdElement = styled.div`
+export const StyledThirdElement = styled.div`
   ${ElementHelper};
   &:nth-child(1) {
     ${SecondandThirdHelper};

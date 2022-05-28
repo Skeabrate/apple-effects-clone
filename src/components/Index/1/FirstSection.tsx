@@ -20,18 +20,19 @@ const FirstSection: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.addEventListener('playing', videoLoadingHandler);
-      videoRef.current.addEventListener('suspend', videoLoadingHandler);
+    const videoRefCurr = videoRef.current;
+    if (videoRefCurr) {
+      videoRefCurr.addEventListener('playing', videoLoadingHandler);
+      videoRefCurr.addEventListener('suspend', videoLoadingHandler);
     }
 
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('loadeddata', videoLoadingHandler);
-        videoRef.current.removeEventListener('suspend', videoLoadingHandler);
+      if (videoRefCurr) {
+        videoRefCurr.removeEventListener('loadeddata', videoLoadingHandler);
+        videoRefCurr.removeEventListener('suspend', videoLoadingHandler);
       }
     };
-  }, [videoRef]);
+  }, [videoRef, videoLoadingHandler]);
 
   useEffect(() => {
     if (h1Ref.current && h2Ref.current) {

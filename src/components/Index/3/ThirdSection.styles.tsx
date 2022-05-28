@@ -17,7 +17,7 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const InnerWrapper = styled.div`
+export const StyledInnerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +67,7 @@ export const InnerWrapper = styled.div`
   }
 `;
 
-export const LeftPart = styled.div`
+export const StyledLeftPart = styled.div`
   margin-right: -40px;
 
   div {
@@ -98,7 +98,7 @@ export const LeftPart = styled.div`
   }
 `;
 
-export const RightPart = styled.div`
+export const StyledRightPart = styled.div`
   margin-left: -40px;
   text-align: right;
 

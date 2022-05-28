@@ -4,10 +4,10 @@ import { StyledH3 } from 'styles/GlobalStyledComponents.styles';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import gsap from 'gsap';
 import {
-  FirstElement,
-  InnerItem,
-  SecondElement,
-  ThirdElement,
+  StyledFirstElement,
+  StyledInnerItem,
+  StyledSecondElement,
+  StyledThirdElement,
   Wrapper,
 } from './FourthSection.styles';
 
@@ -118,16 +118,27 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
         onEnter: () => thirdRightRef.current && thirdRightRef.current.play(),
       });
     }
-  }, [firstRef, fifthSectionRef]);
+  }, [
+    setFourthSectionRef,
+    fifthSectionRef,
+    firstRef,
+    firstRightRef,
+    secondRef,
+    secondLeftRef,
+    secondRightRef,
+    thirdRef,
+    thirdLeftRef,
+    thirdRightRef,
+  ]);
 
   return (
     <Wrapper>
-      <InnerItem ref={firstRef}>
-        <FirstElement>
+      <StyledInnerItem ref={firstRef}>
+        <StyledFirstElement>
           <ImageSlider sliderIndex={sliderIndex} setSliderIndex={setSliderIndex} />
-        </FirstElement>
+        </StyledFirstElement>
 
-        <FirstElement $sliderIndex={sliderIndex}>
+        <StyledFirstElement $sliderIndex={sliderIndex}>
           <div ref={firstRightRef}>
             <img width='1042' height='935' src='/images/green-huge.jpg' alt='' aria-hidden='true' />
             <img
@@ -141,11 +152,11 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
             <img width='1042' height='935' src='/images/black-huge.jpg' alt='' aria-hidden='true' />
             <img width='1042' height='935' src='/images/blue-huge.jpg' alt='' aria-hidden='true' />
           </div>
-        </FirstElement>
-      </InnerItem>
+        </StyledFirstElement>
+      </StyledInnerItem>
 
-      <InnerItem ref={secondRef}>
-        <SecondElement>
+      <StyledInnerItem ref={secondRef}>
+        <StyledSecondElement>
           <div>
             <img
               src='/images/stainless_steel_2_static__bh174dfhj9te_large.jpg'
@@ -158,9 +169,9 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
           <StyledH3>
             Surgical-grade <span>stainless steel</span>
           </StyledH3>
-        </SecondElement>
+        </StyledSecondElement>
 
-        <SecondElement>
+        <StyledSecondElement>
           <img
             src='/images/stainless_steel_1_static__bys3zwk8iieu_large.jpg'
             alt=''
@@ -169,11 +180,11 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
             width='201'
             ref={secondLeftRef}
           />
-        </SecondElement>
-      </InnerItem>
+        </StyledSecondElement>
+      </StyledInnerItem>
 
-      <InnerItem ref={thirdRef}>
-        <ThirdElement>
+      <StyledInnerItem ref={thirdRef}>
+        <StyledThirdElement>
           <div>
             <img
               src='/images/ceramic_shield_1_static__ci68bor3yn6u_large.jpg'
@@ -186,14 +197,14 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
           <StyledH3>
             Ceramic Shield, tougher than <span>any smartphone glass</span>
           </StyledH3>
-        </ThirdElement>
+        </StyledThirdElement>
 
-        <ThirdElement>
+        <StyledThirdElement>
           <video height='866' width='652' ref={thirdRightRef} muted playsInline preload='auto'>
             <source src='/images/fourthSectionMovie.mp4' type='video/mp4' />
           </video>
-        </ThirdElement>
-      </InnerItem>
+        </StyledThirdElement>
+      </StyledInnerItem>
     </Wrapper>
   );
 };

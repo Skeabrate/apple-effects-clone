@@ -1,7 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { StyledH3 } from 'styles/GlobalStyledComponents.styles';
-import { Wrapper, InnerWrapper, LeftPart, RightPart } from './ThirdSection.styles';
+import {
+  Wrapper,
+  StyledInnerWrapper,
+  StyledLeftPart,
+  StyledRightPart,
+} from './ThirdSection.styles';
 import { useParalax } from 'hooks/useParalax';
 import gsap from 'gsap';
 
@@ -57,12 +62,12 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
         .to(rightImgRef.current, { x: 0 }, 0)
         .to(rightH2Ref.current, { x: 0, opacity: 0 }, 0);
     }
-  }, [fourthSectionRef]);
+  }, [fourthSectionRef, mainRef, leftH2Ref, leftImgRef, rightH2Ref, rightImgRef]);
 
   return (
     <Wrapper ref={mainRef}>
-      <InnerWrapper>
-        <LeftPart>
+      <StyledInnerWrapper>
+        <StyledLeftPart>
           <h2 ref={leftH2Ref}>
             iPhone 13 Pro Max
             <span>6.7”</span>
@@ -76,8 +81,8 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
               layout='intrinsic'
             />
           </div>
-        </LeftPart>
-        <RightPart>
+        </StyledLeftPart>
+        <StyledRightPart>
           <h2 ref={rightH2Ref}>
             iPhone 13 Pro
             <span>6.1”</span>
@@ -85,8 +90,8 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
           <div ref={rightImgRef}>
             <Image src='/images/section2_1.png' alt='iPhone 13 Pro 6.1”' height='588' width='292' />
           </div>
-        </RightPart>
-      </InnerWrapper>
+        </StyledRightPart>
+      </StyledInnerWrapper>
 
       <StyledH3>Super Retina XDR display1 with ProMotion</StyledH3>
     </Wrapper>
