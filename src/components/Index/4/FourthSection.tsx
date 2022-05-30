@@ -14,7 +14,7 @@ import { useVideoAutoPlay } from 'hooks/useVideoAutoPlay';
 
 interface Props {
   setFourthSectionRef: Function;
-  fifthSectionRef: HTMLDivElement;
+  fifthSectionRef: HTMLDivElement | null;
 }
 
 const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }) => {
