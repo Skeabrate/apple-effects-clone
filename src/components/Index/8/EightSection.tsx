@@ -65,7 +65,7 @@ const EightSection = () => {
       </StyledThirdArticle>
 
       <StyledFourthArticle>
-        <div>test</div>
+        <div></div>
 
         <img
           src='/images/night_mode_photography_4__eshaa1swvdoy_large.jpg'
