@@ -14,7 +14,7 @@ export const theme: DefaultTheme = {
     heading: '8rem',
     headingTablet: '5.6rem',
     headingMobile: '3rem',
-    paragraph: '1.6rem',
+    paragraph: '1.7rem',
     caption: '1.2rem',
   },
   letterSpacing: {
