@@ -43,7 +43,7 @@ const articleHelper = css`
   display: flex;
   flex-direction: column;
   max-width: 460px;
-  margin: 0 auto;
+  margin: 0px auto;
 
   div {
     padding: 60px 6vw;
@@ -60,7 +60,28 @@ const articleHelper = css`
 
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row;
-    max-width: 900px;
+    max-width: 1100px;
+    background: red;
+
+    div {
+      min-width: 400px;
+      max-width: 500px;
+      background: yellow;
+      padding: 50px 10px 0 40px;
+    }
+
+    img {
+      align-self: unset;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    max-width: 1200px;
+
+    div {
+      min-width: 600px;
+      max-width: 600px;
+    }
   }
 `;
 
@@ -72,6 +93,10 @@ const bigImage = css`
   ${({ theme }) => theme.mq.tablet} {
     max-width: 500px;
   }
+
+  ${({ theme }) => theme.mq.desktop} {
+    max-width: unset;
+  }
 `;
 
 const smallImage = css`
@@ -80,6 +105,10 @@ const smallImage = css`
 
   ${({ theme }) => theme.mq.tablet} {
     max-width: 480px;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    max-width: unset;
   }
 `;
 
@@ -96,15 +125,6 @@ export const StyledFirstArticle = styled.article`
 
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row-reverse;
-
-    img {
-      z-index: 2;
-    }
-
-    div {
-      min-width: 450px;
-      padding: 10px 20px 0 50px;
-    }
   }
 `;
 
@@ -116,19 +136,11 @@ export const StyledSecondArticle = styled.article`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    width: fit-content;
+    justify-content: center;
 
     div {
-			min-width: 290px
-      max-width: 350px;
-      padding: 80px 100px 80px 30px;
-    }
-
-    img {
-      margin-top: -180px;
-      z-index: 1;
-      border: 1px solid #1d1d1d;
-      border-right: unset;
+      max-width: 400px;
+      padding: 100px 30px 0 200px;
     }
   }
 `;
@@ -142,20 +154,31 @@ export const StyledThirdArticle = styled.article`
 
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row-reverse;
-
-    div {
-      min-width: 360px;
-      padding: 100px 20px 0 50px;
-    }
-
-    img {
-      z-index: 0;
-      margin-top: -50px;
-    }
   }
 `;
 
 export const StyledFourthArticle = styled.article`
+  ${articleHelper};
+  margin-top: 30px;
+
+  div {
+    display: none;
+  }
+
+  img {
+    ${smallImage};
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin-top: unset;
+
+    div {
+      display: initial;
+    }
+  }
+`;
+
+export const StyledFifthArticle = styled.article`
   ${articleHelper};
 
   img {
@@ -164,44 +187,9 @@ export const StyledFourthArticle = styled.article`
 
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row-reverse;
-
-    div {
-      min-width: 350px;
-      max-width: 350px;
-      padding: 120px 20px 0 50px;
-    }
-
-    img {
-      z-index: 2;
-      margin-top: -80px;
-    }
   }
 `;
 
-export const StyledFifthArticle = styled.article`
+export const StyledSixthArticle = styled.article`
   ${articleHelper};
-`;
-
-export const StyledAloneImage = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    margin-top: 40px;
-    max-width: 400px;
-    height: auto;
-  }
-
-  ${({ theme }) => theme.mq.tablet} {
-    position: relative;
-    left: 250px;
-
-    img {
-      margin-top: -160px;
-      max-width: 700px;
-      height: auto;
-      z-index: 1;
-    }
-  }
 `;

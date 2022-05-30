@@ -1,11 +1,11 @@
 import React from 'react';
 import Heading from 'components/Heading/Heading';
 import {
-  StyledAloneImage,
   StyledFifthArticle,
   StyledFirstArticle,
   StyledFourthArticle,
   StyledSecondArticle,
+  StyledSixthArticle,
   StyledThirdArticle,
   Wrapper,
 } from './EightSection.styles';
@@ -64,16 +64,18 @@ const EightSection = () => {
         />
       </StyledThirdArticle>
 
-      <StyledAloneImage>
+      <StyledFourthArticle>
+        <div>test</div>
+
         <img
           src='/images/night_mode_photography_4__eshaa1swvdoy_large.jpg'
           height='663'
           width='884'
           alt='The Ultra Wide camera captures'
         />
-      </StyledAloneImage>
+      </StyledFourthArticle>
 
-      <StyledFourthArticle>
+      <StyledFifthArticle>
         <div>
           <h3>
             Night mode now <span>on every camera</span>
@@ -86,16 +88,16 @@ const EightSection = () => {
           width='635'
           alt='Night mode now on every camera'
         />
-      </StyledFourthArticle>
+      </StyledFifthArticle>
 
-      <StyledFifthArticle>
+      <StyledSixthArticle>
         <div>
           <h3>
             Sharper, more <span>detailed photos</span> and videos
           </h3>
           <p>in any light</p>
         </div>
-      </StyledFifthArticle>
+      </StyledSixthArticle>
     </Wrapper>
   );
 };
