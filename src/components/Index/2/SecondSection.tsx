@@ -18,7 +18,7 @@ const SecondSection: React.FC = () => {
   return (
     <Wrapper $isHighlighted={isHighlighted}>
       <video autoPlay loop muted playsInline preload='auto'>
-        <source src='/images/section2.mp4' type='video/mp4' />
+        <source src='/images/section2.mp4' type='video/mp4' height='1100' width='1440' />
       </video>
 
       <div>
