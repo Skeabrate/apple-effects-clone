@@ -30,12 +30,12 @@ export const useParalax = (...ref: AnimationParametr[]) => {
             .timeline({
               scrollTrigger: {
                 trigger: current,
-                start: '10% bottom',
+                start: '0% bottom',
                 end: 'center bottom',
                 scrub: true,
               },
             })
-            .fromTo(current, { y: 80 }, { y: 0 });
+            .fromTo(current, { y: 70 }, { y: 0 });
         }
       });
     }
