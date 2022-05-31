@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import Heading from 'components/Heading/Heading';
 import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+import { useParalax } from 'hooks/useParalax';
 import {
   StyledFifthArticle,
   StyledFirstArticle,
   StyledFourthArticle,
+  StyledInnerArticle,
   StyledSecondArticle,
   StyledSixthArticle,
   StyledThirdArticle,
@@ -24,11 +26,12 @@ const EightSection: React.FC = () => {
   const sixthRef = useRef<HTMLDivElement>(null);
 
   useFadeInAnimation(firstRef, secondRef, thirdRef, fifthRef, sixthRef);
+  useParalax(firstImgRef, secondImgRef, thirdImgRef, fourthImgRef, fifthImgRef);
 
   return (
     <Wrapper>
       <StyledFirstArticle>
-        <div>
+        <StyledInnerArticle>
           <Heading>
             Bring on <span>the night.</span>
           </Heading>
@@ -38,7 +41,7 @@ const EightSection: React.FC = () => {
             Wide gets a wider aperture, a faster sensor and all-new autofocus. And Telephoto now has
             Night mode.
           </p>
-        </div>
+        </StyledInnerArticle>
 
         <img
           ref={firstImgRef}
@@ -50,11 +53,13 @@ const EightSection: React.FC = () => {
       </StyledFirstArticle>
 
       <StyledSecondArticle>
-        <div ref={secondRef}>
-          <p>The Wide camera captures up to</p>
-          <h3>2.2x more light</h3>
-          <p>for better photos and videos</p>
-        </div>
+        <StyledInnerArticle>
+          <div ref={secondRef}>
+            <p>The Wide camera captures up to</p>
+            <h3>2.2x more light</h3>
+            <p>for better photos and videos</p>
+          </div>
+        </StyledInnerArticle>
 
         <img
           ref={secondImgRef}
@@ -66,11 +71,13 @@ const EightSection: React.FC = () => {
       </StyledSecondArticle>
 
       <StyledThirdArticle>
-        <div ref={thirdRef}>
-          <p>The Ultra Wide camera captures</p>
-          <h3>92% more light</h3>
-          <p>for better photos and videos</p>
-        </div>
+        <StyledInnerArticle>
+          <div ref={thirdRef}>
+            <p>The Ultra Wide camera captures</p>
+            <h3>92% more light</h3>
+            <p>for better photos and videos</p>
+          </div>
+        </StyledInnerArticle>
 
         <img
           ref={thirdImgRef}
@@ -82,7 +89,7 @@ const EightSection: React.FC = () => {
       </StyledThirdArticle>
 
       <StyledFourthArticle>
-        <div></div>
+        <StyledInnerArticle></StyledInnerArticle>
 
         <img
           ref={fourthImgRef}
@@ -94,11 +101,11 @@ const EightSection: React.FC = () => {
       </StyledFourthArticle>
 
       <StyledFifthArticle>
-        <div ref={fifthRef}>
-          <h3>
+        <StyledInnerArticle>
+          <h3 ref={fifthRef}>
             Night mode now <span>on every camera</span>
           </h3>
-        </div>
+        </StyledInnerArticle>
 
         <img
           ref={fifthImgRef}
@@ -110,12 +117,14 @@ const EightSection: React.FC = () => {
       </StyledFifthArticle>
 
       <StyledSixthArticle>
-        <div ref={sixthRef}>
-          <h3>
-            Sharper, more <span>detailed photos</span> and videos
-          </h3>
-          <p>in any light</p>
-        </div>
+        <StyledInnerArticle>
+          <div ref={sixthRef}>
+            <h3>
+              Sharper, more <span>detailed photos</span> and videos
+            </h3>
+            <p>in any light</p>
+          </div>
+        </StyledInnerArticle>
       </StyledSixthArticle>
     </Wrapper>
   );

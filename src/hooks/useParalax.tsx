@@ -1,18 +1,43 @@
-import React, { useEffect } from 'react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useEffect } from 'react';
+import gsap from 'gsap';
 
-export const useParalax = (ref: React.RefObject<HTMLDivElement> | null) => {
+interface AnimationParametr {
+  current: HTMLDivElement | HTMLImageElement | null;
+}
+
+export const useParalax = (...ref: AnimationParametr[]) => {
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-height: 820px) and (min-width: 768px)');
-    const currRef = ref ? ref.current : null;
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-    if (mediaQuery.matches && currRef) {
-      ScrollTrigger.create({
-        trigger: currRef,
-        start: 'top top',
-        pin: true,
-        pinSpacing: false,
+    if (ref && mediaQuery.matches) {
+      ref.forEach(({ current }, index) => {
+        if (current && index % 2 === 0) {
+          gsap.to(current, {
+            yPercent: -25,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: current,
+              start: '0% bottom',
+              scrub: true,
+            },
+          });
+        }
+      });
+    } else if (ref) {
+      ref.forEach(({ current }) => {
+        if (current) {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: current,
+                start: '10% bottom',
+                end: 'center bottom',
+                scrub: true,
+              },
+            })
+            .fromTo(current, { y: 80 }, { y: 0 });
+        }
       });
     }
-  }, [ref]);
+  }, [...ref]);
 };

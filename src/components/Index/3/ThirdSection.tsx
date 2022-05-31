@@ -7,7 +7,7 @@ import {
   StyledLeftPart,
   StyledRightPart,
 } from './ThirdSection.styles';
-import { useParalax } from 'hooks/useParalax';
+import { useFixedContent } from 'hooks/useFixedContent';
 import gsap from 'gsap';
 
 interface Props {
@@ -21,7 +21,7 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
   const rightH2Ref = useRef<HTMLDivElement>(null);
   const rightImgRef = useRef<HTMLDivElement>(null);
 
-  useParalax(mainRef);
+  useFixedContent(mainRef);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');

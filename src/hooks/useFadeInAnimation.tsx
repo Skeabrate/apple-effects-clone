@@ -7,19 +7,36 @@ interface AnimationParametr {
 
 export const useFadeInAnimation = (...ref: AnimationParametr[]) => {
   useEffect(() => {
-    if (ref) {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+    if (ref && mediaQuery.matches) {
       ref.forEach((item) => {
         if (item.current) {
           gsap
             .timeline({
               scrollTrigger: {
                 trigger: item.current,
-                start: '40% bottom',
-                end: 'bottom bottom',
+                start: '50% bottom',
+                end: '200% bottom',
                 scrub: true,
               },
             })
-            .fromTo(item.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1 });
+            .fromTo(item.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
+        }
+      });
+    } else if (ref) {
+      ref.forEach((item) => {
+        if (item.current) {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: item.current,
+                start: '50% bottom',
+                end: '300% bottom',
+                scrub: true,
+              },
+            })
+            .fromTo(item.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
         }
       });
     }

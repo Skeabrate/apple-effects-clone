@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { Wrapper } from './FirstSection.styles';
-import { useParalax } from 'hooks/useParalax';
+import { useFixedContent } from 'hooks/useFixedContent';
 
 const FirstSection: React.FC = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
@@ -11,7 +11,7 @@ const FirstSection: React.FC = () => {
   const h2Ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useParalax(mainRef);
+  useFixedContent(mainRef);
 
   const videoLoadingHandler = useCallback(() => {
     if (videoRef?.current?.readyState == 4) {

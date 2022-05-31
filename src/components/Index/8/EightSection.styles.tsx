@@ -19,7 +19,7 @@ export const Wrapper = styled.section`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    padding-block: 70px;
+    padding-block: 140px;
 
     p {
       font-size: 1.9rem;
@@ -35,15 +35,25 @@ export const Wrapper = styled.section`
   }
 `;
 
+export const StyledInnerArticle = styled.div`
+  padding: 60px 6vw;
+
+  ${({ theme }) => theme.mq.tablet} {
+    min-width: 400px;
+    padding: 0px 10px 0 40px;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    min-width: 600px;
+    max-width: 600px;
+  }
+`;
+
 const articleHelper = css`
   display: flex;
   flex-direction: column;
   max-width: 460px;
   margin: 0px auto;
-
-  div {
-    padding: 60px 6vw;
-  }
 
   span {
     display: block;
@@ -61,20 +71,10 @@ const articleHelper = css`
     img {
       align-self: unset;
     }
-
-    div {
-      min-width: 400px;
-      padding: 50px 10px 0 40px;
-    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
     max-width: 1100px;
-
-    div {
-      min-width: 600px;
-      max-width: 600px;
-    }
   }
 `;
 
@@ -142,11 +142,11 @@ export const StyledSecondArticle = styled.article`
       border-right: none;
     }
 
-    div {
+    ${StyledInnerArticle} {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      padding: 100px 100px 0 0px;
+      padding: 0px 100px 0 0px;
 
       p,
       h3 {
@@ -160,7 +160,7 @@ export const StyledSecondArticle = styled.article`
       margin-top: -250px;
     }
 
-    div {
+    ${StyledInnerArticle} {
       p,
       h3 {
         width: 270px;
@@ -179,7 +179,7 @@ export const StyledThirdArticle = styled.article`
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row-reverse;
 
-    div {
+    ${StyledInnerArticle} {
       padding: 150px 10px 0 40px;
     }
 
@@ -200,7 +200,7 @@ export const StyledFourthArticle = styled.article`
   ${articleHelper};
   margin-top: 30px;
 
-  div {
+  ${StyledInnerArticle} {
     display: none;
   }
 
@@ -217,7 +217,7 @@ export const StyledFourthArticle = styled.article`
       max-width: 700px;
     }
 
-    div {
+    ${StyledInnerArticle} {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -249,7 +249,7 @@ export const StyledFifthArticle = styled.article`
       margin-top: -100px;
     }
 
-    div {
+    ${StyledInnerArticle} {
       max-wdith: 350px;
       min-width: 350px;
       padding: 150px 10px 0 40px;
@@ -261,7 +261,7 @@ export const StyledFifthArticle = styled.article`
       margin-top: -150px;
     }
 
-    div {
+    ${StyledInnerArticle} {
       max-wdith: 520px;
       min-width: 520px;
     }
@@ -270,4 +270,11 @@ export const StyledFifthArticle = styled.article`
 
 export const StyledSixthArticle = styled.article`
   ${articleHelper};
+
+  ${({ theme }) => theme.mq.tablet} {
+    ${StyledInnerArticle} {
+      padding: 0px 10px 0 40px;
+      margin-top: -60px;
+    }
+  }
 `;
