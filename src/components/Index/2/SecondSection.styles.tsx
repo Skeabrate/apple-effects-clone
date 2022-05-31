@@ -9,6 +9,8 @@ export const Wrapper = styled.section<Props>`
   z-index: 1;
   background: white;
   margin-bottom: 12rem;
+  height: fit-content;
+  width: 100%;
 
   video {
     position: absolute;
@@ -17,9 +19,7 @@ export const Wrapper = styled.section<Props>`
     z-index: -1;
     left: 0;
     top: 0;
-    bottom: 0;
-    right: 0;
-    object-fit: fill;
+    object-fit: fill !important;
   }
 
   div {
