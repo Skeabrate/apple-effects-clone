@@ -9,36 +9,25 @@ export const useFadeInAnimation = (...ref: AnimationParametr[]) => {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
+    const animationHandler = (end: string, item: HTMLDivElement) => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: '50% bottom',
+            end: `${end} bottom`,
+            scrub: true,
+          },
+        })
+        .fromTo(item, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
+    };
+
     if (ref && mediaQuery.matches) {
-      ref.forEach((item) => {
-        if (item.current) {
-          gsap
-            .timeline({
-              scrollTrigger: {
-                trigger: item.current,
-                start: '50% bottom',
-                end: '200% bottom',
-                scrub: true,
-              },
-            })
-            .fromTo(item.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
-        }
-      });
+      // desktop
+      ref.forEach((item) => item.current && animationHandler('200%', item.current));
     } else if (ref) {
-      ref.forEach((item) => {
-        if (item.current) {
-          gsap
-            .timeline({
-              scrollTrigger: {
-                trigger: item.current,
-                start: '50% bottom',
-                end: '300% bottom',
-                scrub: true,
-              },
-            })
-            .fromTo(item.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
-        }
-      });
+      // mobile
+      ref.forEach((item) => item.current && animationHandler('300%', item.current));
     }
   }, [...ref]);
 };
