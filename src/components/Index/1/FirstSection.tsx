@@ -67,4 +67,4 @@ const FirstSection: React.FC = () => {
   );
 };
 
-export default FirstSection;
+export default React.memo(FirstSection);

@@ -82,4 +82,4 @@ const SixthSection: React.FC = () => {
   );
 };
 
-export default SixthSection;
+export default React.memo(SixthSection);

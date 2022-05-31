@@ -53,4 +53,4 @@ const SeventhSection: React.FC = () => {
   );
 };
 
-export default SeventhSection;
+export default React.memo(SeventhSection);

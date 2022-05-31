@@ -64,4 +64,4 @@ const NinthSection: React.FC = () => {
   );
 };
 
-export default NinthSection;
+export default React.memo(NinthSection);

@@ -203,4 +203,4 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
   );
 };
 
-export default FourthSection;
+export default React.memo(FourthSection);

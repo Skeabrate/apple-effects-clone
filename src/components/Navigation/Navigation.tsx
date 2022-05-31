@@ -18,7 +18,7 @@ import {
   StyledBuyButton,
 } from './Navigation.styles';
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [barOptionsToggle, setBarOptionsToggle] = useState<boolean>(false);
 
@@ -152,4 +152,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default React.memo(Navigation);

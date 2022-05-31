@@ -11,7 +11,7 @@ import {
   Wrapper,
 } from './EightSection.styles';
 
-const EightSection = () => {
+const EightSection: React.FC = () => {
   const firstRef = useRef<HTMLDivElement>(null);
   const firstImgRef = useRef<HTMLImageElement>(null);
   const secondRef = useRef<HTMLDivElement>(null);
@@ -121,4 +121,4 @@ const EightSection = () => {
   );
 };
 
-export default EightSection;
+export default React.memo(EightSection);

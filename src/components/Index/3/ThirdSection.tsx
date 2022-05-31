@@ -98,4 +98,4 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
   );
 };
 
-export default ThirdSection;
+export default React.memo(ThirdSection);
