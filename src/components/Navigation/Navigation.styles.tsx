@@ -95,7 +95,7 @@ export const StyledList = styled.ul<NavProps>`
 
     span {
       width: 100%;
-      padding: 14px 0;
+      padding: 2vh 0;
       border-bottom: 1px solid ${({ theme }) => theme.colors.borderDark};
     }
 
@@ -140,7 +140,7 @@ export const StyledSupport = styled.li`
 export const StyledSearch = styled.li<NavProps>`
   order: -1;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderDark};
-  padding: 0 14px 20px 14px !important;
+  padding: 0 14px 3vh 14px !important;
   transform-origin: top;
   transform: ${({ $toggle }) => ($toggle ? ' scaleY(100%)' : ' scaleY(0)')} !important;
   transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')} !important;

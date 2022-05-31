@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-export const useVideoAutoPlay = (ref: React.RefObject<HTMLVideoElement>) => {
+export const useVideoAutoPlay = (ref: React.RefObject<HTMLVideoElement> | null) => {
   useEffect(() => {
-    if (ref.current) {
-      const videoCurr = ref.current;
+    const videoCurr = ref ? ref.current : null;
 
+    if (videoCurr) {
       ScrollTrigger.create({
         trigger: videoCurr,
         start: 'top center',

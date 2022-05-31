@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
 import Heading from 'components/Heading/Heading';
 import { Wrapper } from './SeventhSection.styles';
 import { useVideoAutoPlay } from 'hooks/useVideoAutoPlay';
+import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
 
 const SeventhSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -11,24 +11,7 @@ const SeventhSection: React.FC = () => {
   const secondRef = useRef<HTMLDivElement>(null);
 
   useVideoAutoPlay(videoRef);
-
-  useEffect(() => {
-    if (firstRef.current && secondRef.current) {
-      const paralaxTable = [firstRef.current, secondRef.current];
-      paralaxTable.forEach((item) => {
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: item,
-              start: '40% bottom',
-              end: 'bottom bottom',
-              scrub: true,
-            },
-          })
-          .to(item, { y: 0, opacity: 1 }, 0);
-      });
-    }
-  }, [firstRef, secondRef]);
+  useFadeInAnimation(firstRef, secondRef);
 
   return (
     <Wrapper>
@@ -44,7 +27,7 @@ const SeventhSection: React.FC = () => {
       <div>
         <Heading>Whoa.</Heading>
 
-        <div style={{ opacity: 0, transform: 'translateY(40px)' }} ref={firstRef}>
+        <div ref={firstRef}>
           <h3>Macro photography comes to iPhone.</h3>
           <p>
             With its redesigned lens and powerful autofocus system, the new Ultra Wide camera can
@@ -59,7 +42,7 @@ const SeventhSection: React.FC = () => {
         <source src='/images/seventh.mp4' type='video/mp4' />
       </video>
 
-      <div style={{ opacity: 0, transform: 'translateY(40px)' }} ref={secondRef}>
+      <div ref={secondRef}>
         <h3>Macro video, anyone?</h3>
         <p>
           Macro stills are just the beginning. You can also shoot macro videos — including slow

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import Heading from 'components/Heading/Heading';
+import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
 import {
   StyledFifthArticle,
   StyledFirstArticle,
@@ -21,6 +22,8 @@ const EightSection = () => {
   const fifthRef = useRef<HTMLDivElement>(null);
   const fifthImgRef = useRef<HTMLImageElement>(null);
   const sixthRef = useRef<HTMLDivElement>(null);
+
+  useFadeInAnimation(firstRef, secondRef, thirdRef, fifthRef, sixthRef);
 
   return (
     <Wrapper>
