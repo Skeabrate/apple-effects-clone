@@ -4,6 +4,7 @@ export const Wrapper = styled.section`
   width: 100%;
   background-color: black;
   color: white;
+  overflow: hidden;
 
   h3 {
     font-size: 3.2rem;

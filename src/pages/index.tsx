@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       <FifthSection setFifthSectionRef={setFifthSectionRef} />
       <SixthSection />
       <SeventhSection />
-      <EightSection />
+      {/* <EightSection /> */}
       <NinthSection />
     </main>
   );
