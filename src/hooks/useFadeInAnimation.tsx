@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 interface AnimationParametr {
   current: HTMLDivElement | null;
@@ -7,27 +8,38 @@ interface AnimationParametr {
 
 export const useFadeInAnimation = (...ref: AnimationParametr[]) => {
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const animationHandler = (item: HTMLDivElement) => {
+      ScrollTrigger.matchMedia({
+        '(min-width: 768px)': function () {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: item,
+                start: '50% bottom',
+                end: '200% bottom',
+                scrub: true,
+              },
+            })
+            .fromTo(item, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
+        },
 
-    const animationHandler = (end: string, item: HTMLDivElement) => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: item,
-            start: '50% bottom',
-            end: `${end} bottom`,
-            scrub: true,
-          },
-        })
-        .fromTo(item, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
+        '(max-width: 768px)': function () {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: item,
+                start: '50% bottom',
+                end: '300% bottom',
+                scrub: true,
+              },
+            })
+            .fromTo(item, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
+        },
+      });
     };
 
-    if (ref && mediaQuery.matches) {
-      // desktop
-      ref.forEach((item) => item.current && animationHandler('200%', item.current));
-    } else if (ref) {
-      // mobile
-      ref.forEach((item) => item.current && animationHandler('300%', item.current));
+    if (ref) {
+      ref.forEach((item) => item.current && animationHandler(item.current));
     }
   }, [...ref]);
 };

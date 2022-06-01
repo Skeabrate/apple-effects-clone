@@ -43,9 +43,9 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledVideo = styled.div`
-  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   img {
     display: none;
@@ -57,18 +57,37 @@ export const StyledVideo = styled.div`
   }
 
   ${({ theme }) => theme.mq.desktop} {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
     img {
       display: initial;
+      position: absolute;
+      top: -29%;
+      width: auto;
+      height: 170%;
     }
 
     video {
       position: absolute;
-      top: 78px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;
-      height: 300px;
+      width: auto;
+      height: 100%;
+      will-change: transform;
+      transform-origin: center;
     }
+  }
+`;
+
+export const StyledVideoInner = styled.div`
+  ${({ theme }) => theme.mq.desktop} {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -99,7 +118,7 @@ export const StyledContent = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row;
     gap: 80px;
-    margin: 5rem auto 0;
+    margin: 0 auto; /* needs change */
 
     div:first-child {
       max-width: 300px;
