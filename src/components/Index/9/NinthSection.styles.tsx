@@ -60,23 +60,6 @@ export const StyledVideo = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    position: relative;
-
-    img {
-      display: initial;
-      position: absolute;
-      top: -29%;
-      width: auto;
-      height: 170%;
-    }
-
-    video {
-      position: absolute;
-      width: auto;
-      height: 100%;
-      will-change: transform;
-      transform-origin: center;
-    }
   }
 `;
 
@@ -88,6 +71,22 @@ export const StyledVideoInner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+      display: initial;
+      position: absolute;
+      top: -29%;
+      width: auto;
+      height: 170%;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      transform-origin: center;
+      object-fit: cover;
+    }
   }
 `;
 

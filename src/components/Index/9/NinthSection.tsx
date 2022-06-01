@@ -1,6 +1,7 @@
 import Heading from 'components/Heading/Heading';
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import {
   StyledContent,
   StyledFooter,
@@ -16,32 +17,28 @@ const NinthSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 1024px)');
-
-    if (mediaQuery.matches && videoRef.current && contentRef.current && videoContainerRef.current) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: contentRef.current,
-            start: 'top top',
-            end: () => window.innerHeight * 2,
-            scrub: true,
-            pin: true,
-            onUpdate: (self) => {
-              if (videoRef.current) {
-                if (self.progress) videoRef.current.pause();
-                else videoRef.current.play();
-              }
-            },
-          },
-        })
-        .fromTo(
-          videoContainerRef.current,
-          {
-            height: '100%',
-          },
-          { height: '281px' }
-        );
+    if (videoRef.current && contentRef.current && videoContainerRef.current) {
+      ScrollTrigger.matchMedia({
+        '(min-height: 500px) and (min-width: 1024px)': function () {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: contentRef.current,
+                start: 'top top',
+                end: '100% bottom',
+                scrub: true,
+                pin: true,
+                onUpdate: (self) => {
+                  if (videoRef.current) {
+                    if (self.progress) videoRef.current.pause();
+                    else videoRef.current.play();
+                  }
+                },
+              },
+            })
+            .to(videoContainerRef.current, { height: '281px', width: '499.55px' }, 0);
+        },
+      });
     }
   }, [videoRef, contentRef, videoContainerRef]);
 
