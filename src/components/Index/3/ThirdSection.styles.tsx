@@ -55,7 +55,6 @@ export const StyledInnerWrapper = styled.div`
         top: 50%;
         transform: translateY(-50%);
         width: 200px;
-        opacity: 0;
       }
     }
   }

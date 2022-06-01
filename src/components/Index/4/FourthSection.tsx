@@ -34,12 +34,9 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
   useVideoAutoPlay(thirdRightRef);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-height: 670px) and (min-width: 768px)');
-
     if (firstRef.current) setFourthSectionRef(firstRef.current);
 
     if (
-      mediaQuery.matches &&
       firstRef.current &&
       firstRightRef.current &&
       secondRef.current &&
@@ -78,38 +75,42 @@ const FourthSection: React.FC<Props> = ({ setFourthSectionRef, fifthSectionRef }
         },
       ];
 
-      refTable.forEach((ref) => {
-        ScrollTrigger.create({
-          trigger: ref.current,
-          start: 'top top',
-          pin: true,
-          end: '+=200%',
-          pinSpacing: false,
-        });
-      });
+      ScrollTrigger.matchMedia({
+        '(min-height: 670px) and (min-width: 768px)': function () {
+          refTable.forEach((ref) => {
+            ScrollTrigger.create({
+              trigger: ref.current,
+              start: 'top top',
+              pin: true,
+              end: '+=200%',
+              pinSpacing: false,
+            });
+          });
 
-      paralaxBigTable.forEach(({ to, trigger }) => {
-        gsap.to(to.current, {
-          yPercent: -80,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: trigger.current,
-            start: '0% bottom',
-            scrub: true,
-          },
-        });
-      });
+          paralaxBigTable.forEach(({ to, trigger }) => {
+            gsap.to(to.current, {
+              yPercent: -80,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: trigger.current,
+                start: '0% bottom',
+                scrub: true,
+              },
+            });
+          });
 
-      paralaxSmallTable.forEach(({ to, trigger }) => {
-        gsap.to(to.current, {
-          yPercent: -60,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: trigger.current,
-            start: '0% bottom',
-            scrub: true,
-          },
-        });
+          paralaxSmallTable.forEach(({ to, trigger }) => {
+            gsap.to(to.current, {
+              yPercent: -60,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: trigger.current,
+                start: '0% bottom',
+                scrub: true,
+              },
+            });
+          });
+        },
       });
     }
   }, [

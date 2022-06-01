@@ -35,7 +35,10 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
     ) {
       ScrollTrigger.matchMedia({
         '(min-width: 768px)': function () {
-          let tl1 = gsap
+          gsap.set(leftH2Ref.current, { opacity: 0 });
+          gsap.set(rightH2Ref.current, { opacity: 0 });
+
+          gsap
             .timeline({
               scrollTrigger: {
                 trigger: mainRef.current,
@@ -49,7 +52,7 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
             .to(rightImgRef.current, { x: 60 }, 0)
             .to(rightH2Ref.current, { x: 200, opacity: 1 }, 0);
 
-          let tl2 = gsap
+          gsap
             .timeline({
               scrollTrigger: {
                 trigger: fourthSectionRef,
@@ -62,11 +65,6 @@ const ThirdSection: React.FC<Props> = ({ fourthSectionRef }) => {
             .to(leftH2Ref.current, { x: 0, opacity: 0 }, 0)
             .to(rightImgRef.current, { x: 0 }, 0)
             .to(rightH2Ref.current, { x: 0, opacity: 0 }, 0);
-
-          return function () {
-            tl1.kill();
-            tl2.kill();
-          };
         },
         '(max-width: 768px)': function () {
           gsap.set(leftH2Ref.current, { opacity: 1 });
