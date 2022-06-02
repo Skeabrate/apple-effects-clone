@@ -117,7 +117,6 @@ export const StyledContent = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: row;
     gap: 80px;
-    margin: 0 auto; /* needs change */
 
     div:first-child {
       max-width: 300px;
@@ -127,6 +126,10 @@ export const StyledContent = styled.div`
       gap: 50px;
       max-width: 400px;
     }
+  }
+
+  @media (min-width: 1024px) and (min-height: 500px) {
+    margin: 0 auto;
   }
 `;
 
