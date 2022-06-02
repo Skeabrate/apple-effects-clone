@@ -129,7 +129,15 @@ export const StyledContent = styled.div`
   }
 
   @media (min-width: 1024px) and (min-height: 500px) {
-    margin: 0 auto;
+    margin: 5rem auto;
+  }
+
+  @media (min-width: 1024px) and (min-height: 600px) {
+    margin: 0rem auto;
+  }
+
+  @media (min-width: 1024px) and (min-height: 800px) {
+    margin: -15vh auto 0;
   }
 `;
 
