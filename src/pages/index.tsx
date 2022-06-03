@@ -35,7 +35,7 @@ const Home: NextPage = () => {
       <SeventhSection />
       <EightSection />
       <NinthSection />
-      {/* <TenthSection /> */}
+      <TenthSection />
     </main>
   );
 };

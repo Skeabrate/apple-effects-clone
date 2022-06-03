@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  /* margin-top: 500px; */
+  padding-top: 100px;
   width: 100%;
-  height: 100vh;
-  background: red;
+  background: black;
+  position: relative;
+  color: #f5f5f7;
+  margin: 0 auto;
 `;
