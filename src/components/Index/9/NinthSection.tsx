@@ -36,7 +36,10 @@ const NinthSection: React.FC = () => {
                 },
               },
             })
-            .to(videoContainerRef.current, { height: '281px', width: '499.55px' }, 0);
+            .to(videoContainerRef.current, {
+              height: '284px',
+              width: '504px',
+            });
         },
       });
     }

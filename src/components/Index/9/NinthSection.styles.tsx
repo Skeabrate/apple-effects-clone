@@ -47,6 +47,14 @@ export const StyledVideo = styled.div`
   justify-content: center;
   align-items: center;
 
+  ${({ theme }) => theme.mq.desktop} {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+`;
+
+export const StyledVideoInner = styled.div`
   img {
     display: none;
   }
@@ -57,35 +65,33 @@ export const StyledVideo = styled.div`
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-`;
-
-export const StyledVideoInner = styled.div`
-  ${({ theme }) => theme.mq.desktop} {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     position: relative;
-    display: flex;
-    justify-content: center;
     align-items: center;
 
     img {
       display: initial;
       position: absolute;
-      top: -29%;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: auto;
-      height: 170%;
+      height: 172%;
+      object-fit: cover;
     }
 
     video {
-      width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      width: auto;
       height: 100%;
+      object-fit: cover;
       will-change: transform;
       transform-origin: center;
-      object-fit: cover;
     }
   }
 `;
@@ -128,7 +134,7 @@ export const StyledContent = styled.div`
     }
   }
 
-  @media (min-width: 1024px) and (min-height: 500px) {
+  /* @media (min-width: 1024px) and (min-height: 500px) {
     margin: 5rem auto;
   }
 
@@ -138,7 +144,7 @@ export const StyledContent = styled.div`
 
   @media (min-width: 1024px) and (min-height: 800px) {
     margin: -15vh auto 0;
-  }
+  } */
 `;
 
 export const StyledFooter = styled.div`
