@@ -7,25 +7,29 @@ interface Props {
 export const Wrapper = styled.section<Props>`
   position: relative;
   z-index: 1;
-  background: white;
-  margin-bottom: 12rem;
+  min-height: 100vh;
   height: fit-content;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+  overflow: hidden;
 
   video {
     position: absolute;
-    width: 100%;
-    height: calc(100% + 12rem);
-    z-index: -1;
-    left: 0;
     top: 0;
-    object-fit: fill !important;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 100%;
+    width: auto;
+    min-height: 100%;
+    height: auto;
+    z-index: -1;
+    object-fit: contain;
   }
 
   div {
-    position: relative;
-    top: 6rem;
-    z-index: 1;
     max-width: 690px;
     margin: 0 auto;
     padding: 0 4rem;
@@ -45,14 +49,14 @@ export const Wrapper = styled.section<Props>`
       }
 
       &:last-child {
-        margin-block: 3rem;
+        margin-top: 3rem;
         display: block;
 
         p {
           font-size: 2rem;
           display: flex;
           flex-direction: column;
-          margin-block: 2rem;
+          margin-top: 2rem;
 
           &:first-child {
             margin-top: 3rem;
@@ -63,15 +67,9 @@ export const Wrapper = styled.section<Props>`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    margin-bottom: 30rem;
-
-    video {
-      height: calc(100% + 30rem);
-    }
+    padding: 15rem 0;
 
     div {
-      top: 15rem;
-
       span {
         display: initial;
         font-size: ${({ theme }) => theme.fontSize.headingTablet};
@@ -114,4 +112,11 @@ export const Wrapper = styled.section<Props>`
       }
     }
   }
+
+  /* @media (min-width: 1600px) {
+    video {
+      width: 100%;
+      height: auto;
+    }
+  } */
 `;

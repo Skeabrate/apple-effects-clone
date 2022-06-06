@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import ScrollContext from 'context/ScrollContext';
 import { Wrapper } from './SecondSection.styles';
 

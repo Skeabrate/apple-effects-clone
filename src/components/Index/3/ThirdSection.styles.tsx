@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.section`
   ${({ theme }) => theme.containerStyles()}
   width: 100%;
+  min-height: 100vh;
   height: 700px;
   display: flex;
   justify-content: center;

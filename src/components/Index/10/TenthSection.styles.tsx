@@ -7,4 +7,8 @@ export const Wrapper = styled.section`
   position: relative;
   color: #f5f5f7;
   margin: 0 auto;
+
+  img {
+    max-width: 100%;
+  }
 `;
