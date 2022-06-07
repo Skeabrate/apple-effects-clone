@@ -1,17 +1,20 @@
 import Heading from 'components/Heading/Heading';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import {
   StyledContent,
   StyledFooter,
   StyledHeader,
+  StyledMarginWrapper,
   StyledVideo,
   StyledVideoInner,
   Wrapper,
 } from './NinthSection.styles';
 
 const NinthSection: React.FC = () => {
+  const [margin, setMargin] = useState<number>(0);
+
   const contentRef = useRef<HTMLDivElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,6 +46,7 @@ const NinthSection: React.FC = () => {
         },
       });
     }
+    setMargin(window.innerHeight / 2 - 300);
   }, [videoRef, contentRef, videoContainerRef]);
 
   return (
@@ -73,30 +77,32 @@ const NinthSection: React.FC = () => {
           </StyledVideoInner>
         </StyledVideo>
 
-        <StyledContent>
-          <div>
-            Now iPhone can shoot with shallow depth of field and automatically add elegant focus
-            transitions between subjects. Cinematic mode can also anticipate when a prominent new
-            subject is about to enter the frame and bring them into focus when they do, for far more
-            creative storytelling. You have the option to change focus or adjust the level of bokeh
-            even after capture. We can’t wait to see what you do with it.
-          </div>
-          <div>
-            <p>The only smartphone that lets you edit the depth effect after you shoot</p>
-            <p>Shoot with the Wide, Telephoto or TrueDepth camera in Cinematic mode</p>
-            <p>Cinematic mode supports Dolby Vision HDR</p>
-          </div>
-        </StyledContent>
+        <StyledMarginWrapper $margin={margin}>
+          <StyledContent>
+            <div>
+              Now iPhone can shoot with shallow depth of field and automatically add elegant focus
+              transitions between subjects. Cinematic mode can also anticipate when a prominent new
+              subject is about to enter the frame and bring them into focus when they do, for far
+              more creative storytelling. You have the option to change focus or adjust the level of
+              bokeh even after capture. We can’t wait to see what you do with it.
+            </div>
+            <div>
+              <p>The only smartphone that lets you edit the depth effect after you shoot</p>
+              <p>Shoot with the Wide, Telephoto or TrueDepth camera in Cinematic mode</p>
+              <p>Cinematic mode supports Dolby Vision HDR</p>
+            </div>
+          </StyledContent>
 
-        <StyledFooter>
-          <p>See how we trained your camera to be a cinematograph­er</p>
-          <button>
-            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
-              <path d='M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z' />
-            </svg>
-            Geek out
-          </button>
-        </StyledFooter>
+          <StyledFooter>
+            <p>See how we trained your camera to be a cinematograph­er</p>
+            <button>
+              <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
+                <path d='M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z' />
+              </svg>
+              Geek out
+            </button>
+          </StyledFooter>
+        </StyledMarginWrapper>
       </div>
     </Wrapper>
   );

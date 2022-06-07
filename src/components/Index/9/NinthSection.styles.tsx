@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 
+interface Props {
+  $margin: number;
+}
+
 export const Wrapper = styled.section`
   color: ${({ theme }) => theme.colors.black};
   width: 100%;
   overflow: hidden;
+
+  ${({ theme }) => theme.mq.desktop} {
+    padding-bottom: 4rem;
+  }
 `;
 
 export const StyledHeader = styled.header`
@@ -96,6 +104,13 @@ export const StyledVideoInner = styled.div`
   }
 `;
 
+export const StyledMarginWrapper = styled.div<Props>`
+  @media (min-width: 1024px) and (min-height: 500px) {
+    margin: ${({ $margin }) => `-${$margin}px auto 0`};
+    /* padding-bottom: 4rem; */
+  }
+`;
+
 export const StyledContent = styled.div`
   ${({ theme }) => theme.paddingMobile()};
   font-weight: 500;
@@ -133,18 +148,6 @@ export const StyledContent = styled.div`
       max-width: 400px;
     }
   }
-
-  /* @media (min-width: 1024px) and (min-height: 500px) {
-    margin: 5rem auto;
-  }
-
-  @media (min-width: 1024px) and (min-height: 600px) {
-    margin: 0rem auto;
-  }
-
-  @media (min-width: 1024px) and (min-height: 800px) {
-    margin: -15vh auto 0;
-  } */
 `;
 
 export const StyledFooter = styled.div`
@@ -200,6 +203,6 @@ export const StyledFooter = styled.div`
 
   ${({ theme }) => theme.mq.desktop} {
     width: 950px;
-    margin: 15rem auto;
+    margin: 15rem auto 0;
   }
 `;
