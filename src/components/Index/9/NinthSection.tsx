@@ -1,16 +1,15 @@
-import Heading from 'components/Heading/Heading';
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import HeaderWithCaption from 'components/HeaderWithCaption/HeaderWithCaption';
 import {
   StyledContent,
-  StyledFooter,
-  StyledHeader,
   StyledMarginWrapper,
   StyledVideo,
   StyledVideoInner,
   Wrapper,
 } from './NinthSection.styles';
+import GeekOut from 'components/GeekOut/GeekOut';
 
 const NinthSection: React.FC = () => {
   const [margin, setMargin] = useState<number>(0);
@@ -51,15 +50,10 @@ const NinthSection: React.FC = () => {
 
   return (
     <Wrapper>
-      <StyledHeader>
-        <Heading>
-          Shift the focus.
-          <span>Up the drama.</span>
-        </Heading>
-        <p>
-          Presenting <span>Cinematic mode.</span>
-        </p>
-      </StyledHeader>
+      <HeaderWithCaption
+        mainHeading={['Shift the focus.', 'Up the drama.']}
+        captions={['Presenting', 'Cinematic mode.']}
+      />
 
       <div ref={contentRef}>
         <StyledVideo>
@@ -93,15 +87,7 @@ const NinthSection: React.FC = () => {
             </div>
           </StyledContent>
 
-          <StyledFooter>
-            <p>See how we trained your camera to be a cinematograph­er</p>
-            <button>
-              <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
-                <path d='M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z' />
-              </svg>
-              Geek out
-            </button>
-          </StyledFooter>
+          <GeekOut text={'See how we trained your camera to be a cinematograph­er'} />
         </StyledMarginWrapper>
       </div>
     </Wrapper>

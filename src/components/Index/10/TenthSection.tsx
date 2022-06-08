@@ -72,4 +72,4 @@ const TenthSection: React.FC = () => {
   );
 };
 
-export default TenthSection;
+export default React.memo(TenthSection);
