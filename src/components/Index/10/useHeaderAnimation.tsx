@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -7,8 +7,8 @@ interface AnimationParametr {
 }
 
 export const useHeaderAnimation = (...ref: AnimationParametr[]) => {
-  useEffect(() => {
-    const animationHandler = (item: HTMLElement, x: number) => {
+  const animationHandler = useCallback(
+    (item: HTMLElement, x: number) => {
       const triggerItem = ref[ref.length - 1];
 
       ScrollTrigger.matchMedia({
@@ -37,13 +37,16 @@ export const useHeaderAnimation = (...ref: AnimationParametr[]) => {
             .fromTo(item, { x: 0 }, { x: x < 0 ? x + 80 : x - 40 });
         },
       });
-    };
+    },
+    [ref]
+  );
 
+  useEffect(() => {
     ref.forEach((item, index) => {
       if (!item.current) return;
       return index !== 1
         ? animationHandler(item.current, 80)
         : animationHandler(item.current, -120);
     });
-  }, [...ref]);
+  }, [ref, animationHandler]);
 };

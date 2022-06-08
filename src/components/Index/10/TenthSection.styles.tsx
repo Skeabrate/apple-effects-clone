@@ -73,6 +73,7 @@ export const StyledList = styled.div`
       width: 60%;
       bottom: -6px;
       left: 0;
+      transform-origin: left;
     }
   }
 

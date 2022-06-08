@@ -41,5 +41,5 @@ export const useParalax = (...ref: AnimationParametr[]) => {
         });
       },
     });
-  }, [...ref]);
+  }, [ref]);
 };
