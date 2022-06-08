@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   StyledContent,
   StyledHeader,
@@ -7,15 +7,23 @@ import {
   StyledYellowListItem,
   Wrapper,
 } from './TenthSection.styles';
+import { useHeaderAnimation } from './useHeaderAnimation';
 
 const TenthSection: React.FC = () => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const firstHeaderRef = useRef<HTMLDivElement>(null);
+  const secondHeaderRef = useRef<HTMLDivElement>(null);
+  const thirdHeaderRef = useRef<HTMLDivElement>(null);
+
+  useHeaderAnimation(firstHeaderRef, secondHeaderRef, thirdHeaderRef);
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <StyledHeader>
         <h2>
-          <span>A snap­shot</span>
-          <span> of each </span>
-          <span>cam­era.</span>
+          <span ref={firstHeaderRef}>A snapshot</span>
+          <span ref={secondHeaderRef}> of each </span>
+          <span ref={thirdHeaderRef}>camera.</span>
         </h2>
       </StyledHeader>
 
@@ -60,7 +68,7 @@ const TenthSection: React.FC = () => {
         <StyledImage>
           <img
             src='/images/camera_redesign__epvv5uvn9lea_large.jpg'
-            alt='A snap­shot of each cam­era.'
+            alt='A snapshot of each camera.'
           />
 
           <p>
