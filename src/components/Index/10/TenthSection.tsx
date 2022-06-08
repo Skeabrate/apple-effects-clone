@@ -10,7 +10,6 @@ import {
 import { useHeaderAnimation } from './useHeaderAnimation';
 
 const TenthSection: React.FC = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const firstHeaderRef = useRef<HTMLDivElement>(null);
   const secondHeaderRef = useRef<HTMLDivElement>(null);
   const thirdHeaderRef = useRef<HTMLDivElement>(null);
@@ -18,7 +17,7 @@ const TenthSection: React.FC = () => {
   useHeaderAnimation(firstHeaderRef, secondHeaderRef, thirdHeaderRef);
 
   return (
-    <Wrapper ref={wrapperRef}>
+    <Wrapper>
       <StyledHeader>
         <h2>
           <span ref={firstHeaderRef}>A snapshot</span>
@@ -30,7 +29,9 @@ const TenthSection: React.FC = () => {
       <StyledContent>
         <StyledList>
           <div>
-            <h3>Telephoto</h3>
+            <h3>
+              Telephoto <span></span>
+            </h3>
             <ul>
               <StyledYellowListItem>77mm focal length</StyledYellowListItem>
               <StyledYellowListItem>3x optical zoom</StyledYellowListItem>
@@ -42,7 +43,9 @@ const TenthSection: React.FC = () => {
           </div>
 
           <div>
-            <h3>Ultra Wide</h3>
+            <h3>
+              Ultra Wide <span></span>
+            </h3>
             <ul>
               <li>13mm focal length</li>
               <StyledYellowListItem>ƒ/1.8 aperture</StyledYellowListItem>
@@ -53,7 +56,9 @@ const TenthSection: React.FC = () => {
           </div>
 
           <div>
-            <h3>Wide</h3>
+            <h3>
+              Wide <span></span>
+            </h3>
             <ul>
               <li>26mm focal length</li>
               <StyledYellowListItem>1.9 μm pixels</StyledYellowListItem>

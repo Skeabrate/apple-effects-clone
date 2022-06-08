@@ -66,8 +66,7 @@ export const StyledList = styled.div`
     position: relative;
     margin-bottom: 12px;
 
-    &::after {
-      content: '';
+    span {
       position: absolute;
       background-color: white;
       height: 1px;
@@ -91,8 +90,7 @@ export const StyledList = styled.div`
       font-size: 2rem;
       margin-bottom: 10px;
 
-      &::after {
-        content: '';
+      span {
         position: absolute;
         background-color: white;
         height: 1px;
@@ -102,19 +100,19 @@ export const StyledList = styled.div`
     }
 
     div:first-child {
-      h3::after {
+      h3 span {
         width: 384px;
       }
     }
 
     div:nth-child(2) {
-      h3::after {
+      h3 span {
         width: 514px;
       }
     }
 
     div:nth-child(3) {
-      h3::after {
+      h3 span {
         width: 391px;
       }
     }
@@ -128,7 +126,7 @@ export const StyledList = styled.div`
       font-size: 3.2rem;
       margin-bottom: 16px;
 
-      &::after {
+      span {
         bottom: -8px;
       }
     }
@@ -142,7 +140,7 @@ export const StyledList = styled.div`
     }
 
     div:first-child {
-      h3::after {
+      h3 span {
         width: 645px;
       }
     }
@@ -150,13 +148,13 @@ export const StyledList = styled.div`
     div:nth-child(2) {
       margin-left: 160px;
 
-      h3::after {
+      h3 span {
         width: 700px;
       }
     }
 
     div:nth-child(3) {
-      h3::after {
+      h3 span {
         width: 662px;
       }
     }
