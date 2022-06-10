@@ -1,27 +1,26 @@
 import React from 'react';
-import { Wrapper } from './TwelfthSection.styles';
+import { StyledHeader, StyledLock, StyledArticle, Wrapper } from './TwelfthSection.styles';
 
 const TwelfthSection: React.FC = () => {
   return (
     <Wrapper>
-      <div>
-        <p>Apple lock</p>
+      <StyledLock />
+      <StyledHeader>
         <h2>
           Privacy is <span>built in.</span>
         </h2>
-      </div>
+      </StyledHeader>
 
-      <div>
+      <StyledArticle>
         <p>
           iPhone helps put you in control of your personal information. For example, when you’re
           browsing, Safari intelligently helps block trackers from profiling you and shows you which
           ones have been blocked in your Privacy Report. And the list goes on.
         </p>
-
-        <button>
+        <a href='#'>
           Learn more about Apple and privacy <span>arrow SVG</span>
-        </button>
-      </div>
+        </a>
+      </StyledArticle>
     </Wrapper>
   );
 };
