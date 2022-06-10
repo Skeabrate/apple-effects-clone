@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+interface Props {
+  $animationState: {
+    x: number;
+    y: number;
+    step: number;
+  };
+}
+
 export const Wrapper = styled.section`
   display: grid;
   background-color: black;
@@ -22,10 +30,13 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const StyledLock = styled.p`
+export const StyledLock = styled.p<Props>`
   background-image: url('/images/privacy_icon__dlw1ars629g2_large.png');
-  width: 66px;
-  height: 88px;
+  background-repeat: no-repeat;
+  background-position: ${({ $animationState }) =>
+    `-${$animationState.x}px -${$animationState.y}px`};
+  width: 66px; // 66 * 6 = 396
+  height: 88px; // 88 * 6 = 528
   margin-bottom: 16px;
 
   ${({ theme }) => theme.mq.tablet} {
