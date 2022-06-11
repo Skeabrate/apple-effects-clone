@@ -33,9 +33,9 @@ const TenthSection: React.FC = () => {
   const footerRef = useRef<HTMLDivElement>(null);
 
   const refObject = {
-    first: [firstH3Ref, firstItemRef, firstLineRef],
-    second: [secondH3Ref, secondItemRef, secondLineRef],
-    third: [thirdH3Ref, thirdItemRef, thirdLineRef],
+    first: [firstH3Ref, firstLineRef, firstItemRef],
+    second: [secondH3Ref, secondLineRef, secondItemRef],
+    third: [thirdH3Ref, thirdLineRef, thirdItemRef],
   };
 
   useHeaderAnimation(firstHeaderRef, secondHeaderRef, thirdHeaderRef);
