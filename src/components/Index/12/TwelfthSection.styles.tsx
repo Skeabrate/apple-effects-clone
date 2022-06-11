@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 interface Props {
-  $animationState: {
+  $lockAnimationState: {
     x: number;
     y: number;
     step: number;
@@ -33,10 +33,10 @@ export const Wrapper = styled.section`
 `;
 
 export const StyledLock = styled.p<Props>(
-  ({ theme, $animationState, $singleFrameWidth, $singleFrameHeight }) => css`
+  ({ theme, $lockAnimationState, $singleFrameWidth, $singleFrameHeight }) => css`
     background-image: url('/images/privacy_icon__dlw1ars629g2_large.png');
     background-repeat: no-repeat;
-    background-position: -${$animationState.x}px -${$animationState.y}px;
+    background-position: -${$lockAnimationState.x}px -${$lockAnimationState.y}px;
     width: ${$singleFrameWidth}px;
     height: ${$singleFrameHeight}px;
     margin-bottom: 16px;
@@ -52,10 +52,19 @@ export const StyledHeader = styled.header`
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
   margin-bottom: 16px;
 
+  h2 {
+    word-break: break-word;
+    height: 120px;
+  }
+
   ${({ theme }) => theme.mq.tablet} {
     font-size: ${({ theme }) => theme.fontSize.headingTablet};
     line-height: 1.1;
     margin-bottom: 0;
+
+    h2 {
+      height: 200px;
+    }
   }
 `;
 
