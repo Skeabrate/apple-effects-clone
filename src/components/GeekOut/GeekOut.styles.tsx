@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   font-weight: 500;
   font-size: 24px;
   padding: 40px 20px;
-  margin: 60px 20px 20px;
+  margin: 60px 20px;
   background-color: #f5f5f7;
   color: ${({ theme }) => theme.colors.black};
 

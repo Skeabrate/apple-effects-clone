@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   z-index: 1;
   background: white;
   gap: 3rem;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
 
   img {
     width: 300px;

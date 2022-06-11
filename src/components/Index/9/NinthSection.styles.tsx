@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
   overflow: hidden;
 
   ${({ theme }) => theme.mq.desktop} {
-    padding-bottom: 4rem;
+    padding-bottom: 10rem;
   }
 `;
 

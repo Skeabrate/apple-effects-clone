@@ -95,7 +95,7 @@ export const StyledFirstElement = styled.div<Props>`
     }
   }
 
-  @media screen and (min-width: 1024px) and (max-height: 1000px) {
+  @media screen and (min-width: 1024px) and (max-height: 1000px) and (min-height: 600px) {
     &:nth-child(2) {
       div {
         img {
