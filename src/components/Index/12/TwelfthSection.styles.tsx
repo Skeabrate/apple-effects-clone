@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface Props {
   $animationState: {
@@ -6,6 +6,8 @@ interface Props {
     y: number;
     step: number;
   };
+  $singleFrameWidth: number;
+  $singleFrameHeight: number;
 }
 
 export const Wrapper = styled.section`
@@ -30,20 +32,21 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const StyledLock = styled.p<Props>`
-  background-image: url('/images/privacy_icon__dlw1ars629g2_large.png');
-  background-repeat: no-repeat;
-  background-position: ${({ $animationState }) =>
-    `-${$animationState.x}px -${$animationState.y}px`};
-  width: 66px; // 66 * 6 = 396
-  height: 88px; // 88 * 6 = 528
-  margin-bottom: 16px;
+export const StyledLock = styled.p<Props>(
+  ({ theme, $animationState, $singleFrameWidth, $singleFrameHeight }) => css`
+    background-image: url('/images/privacy_icon__dlw1ars629g2_large.png');
+    background-repeat: no-repeat;
+    background-position: -${$animationState.x}px -${$animationState.y}px;
+    width: ${$singleFrameWidth}px;
+    height: ${$singleFrameHeight}px;
+    margin-bottom: 16px;
 
-  ${({ theme }) => theme.mq.tablet} {
-    grid-column: 1/3;
-    grid-row: 1;
-  }
-`;
+    ${theme.mq.tablet} {
+      grid-column: 1/3;
+      grid-row: 1;
+    }
+  `
+);
 
 export const StyledHeader = styled.header`
   font-size: ${({ theme }) => theme.fontSize.headingMobile};

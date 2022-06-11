@@ -12,17 +12,20 @@ const TwelfthSection: React.FC = () => {
     y: 0,
     step: 0,
   });
+  const animationData = {
+    singleFrameDuration: 10, // amount of items = 36, animation duration = 360px
+    singleFrameWidth: 66,
+    singleFrameHeight: 88,
+    maxWidth: 330,
+    maxHeight: 440,
+  };
 
   const { isSticky } = useContext(ScrollContext);
   const animationRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const animationHandler = useCallback(() => {
-    // Animation Properties
-    const singleFrameDuration = 10; // amount of items = 36, animation duration = 360px;
-    const singleFrameWidth = 66;
-    const singleFrameHeight = 88;
-    const maxWidth = 330;
-    const maxHeight = 440;
+    const { singleFrameDuration, singleFrameWidth, singleFrameHeight, maxWidth, maxHeight } =
+      animationData;
 
     // Animation Duration State
     const isAnimationDirectionForwards =
@@ -81,7 +84,11 @@ const TwelfthSection: React.FC = () => {
 
   return (
     <Wrapper>
-      <StyledLock $animationState={animationState} />
+      <StyledLock
+        $animationState={animationState}
+        $singleFrameWidth={animationData.singleFrameWidth}
+        $singleFrameHeight={animationData.singleFrameHeight}
+      />
       <StyledHeader>
         <h2 ref={animationRef}>Privacy is built in.{/* ....................*/}</h2>
       </StyledHeader>
