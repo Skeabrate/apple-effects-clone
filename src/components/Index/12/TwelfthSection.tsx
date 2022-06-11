@@ -12,6 +12,14 @@ const TwelfthSection: React.FC = () => {
     y: 0,
     step: 0,
   });
+  const [titleState, setTitleState] = useState<{
+    initial: string;
+    final: string;
+  }>({
+    initial: '...................',
+    final: 'Privacy is built in.',
+  });
+
   const animationData = {
     singleFrameDuration: 10, // amount of items = 36, animation duration = 360px
     singleFrameWidth: 66,
@@ -28,17 +36,26 @@ const TwelfthSection: React.FC = () => {
       animationData;
 
     // Animation Duration State
-    const isAnimationDirectionForwards =
-      animationRef.current.getBoundingClientRect().top <= animationState.step;
-    const isAnimationDirectionBackwards =
-      animationRef.current.getBoundingClientRect().top >= animationState.step + singleFrameDuration;
-    const animationInitialState = animationState.x === 0 && animationState.y === 0;
-    const animationFinalState = animationState.x === maxWidth && animationState.y === maxHeight;
+    const animationEnd =
+      window.innerHeight -
+      animationRef.current.getBoundingClientRect().height / 2 -
+      singleFrameDuration * 35;
+
+    const animationInitialPosition = animationState.x === 0 && animationState.y === 0;
+    const animationFinalPosition = animationState.x === maxWidth && animationState.y === maxHeight;
+
     const animationReachedMaxWidth = animationState.x === maxWidth;
     const animationReachedMinWidth = animationState.x === 0;
 
-    if (isAnimationDirectionForwards) {
-      if (animationFinalState) return;
+    const animationDirectionForwards =
+      animationRef.current.getBoundingClientRect().top <= animationState.step &&
+      animationRef.current.getBoundingClientRect().top >= animationEnd;
+    const animationDirectionBackwards =
+      animationRef.current.getBoundingClientRect().top >=
+        animationState.step + singleFrameDuration && !animationInitialPosition;
+
+    if (animationDirectionForwards) {
+      if (animationFinalPosition) return;
       else if (animationReachedMaxWidth) {
         setAnimationState((state) => ({
           x: 0,
@@ -52,8 +69,8 @@ const TwelfthSection: React.FC = () => {
           step: state.step - singleFrameDuration,
         }));
       }
-    } else if (isAnimationDirectionBackwards) {
-      if (animationInitialState) return;
+    } else if (animationDirectionBackwards) {
+      if (animationInitialPosition) return;
       else if (animationReachedMinWidth) {
         setAnimationState((state) => ({
           x: maxWidth,
@@ -76,6 +93,20 @@ const TwelfthSection: React.FC = () => {
         ...state,
         step: window.innerHeight - animationRef.current.getBoundingClientRect().height / 2,
       }));
+
+    /* const [titleState, setTitleState] = useState<{
+			initial: string;
+			final: string;
+		}>({
+			initial: '...................',
+			final: 'Privacy is built in.',
+		}); */
+
+    /* setTitleState((state) => ({
+			...state,
+			initial: 
+		})) */
+    /* console.log(titleState.initial.slice(0)) */
   }, [animationRef]);
 
   useEffect(() => {
@@ -90,7 +121,7 @@ const TwelfthSection: React.FC = () => {
         $singleFrameHeight={animationData.singleFrameHeight}
       />
       <StyledHeader>
-        <h2 ref={animationRef}>Privacy is built in.{/* ....................*/}</h2>
+        <h2 ref={animationRef}>{titleState.initial}</h2>
       </StyledHeader>
 
       <StyledArticle>
