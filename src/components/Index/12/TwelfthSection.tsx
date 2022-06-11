@@ -23,7 +23,7 @@ const TwelfthSection: React.FC = () => {
   const lockAnimationData = useMemo(
     () => ({
       amountOfFrames: 36,
-      frameDuration: 14, // animation duration = 36 * 14 = 504px
+      frameDuration: 12, // animation duration = 36 * 12 = 432px
       frameWidth: 66,
       frameHeight: 88,
       maxWidth: 330,
@@ -35,7 +35,7 @@ const TwelfthSection: React.FC = () => {
   const titleAnimationData = useMemo(
     () => ({
       amountOfFrames: 20,
-      frameDuration: 25.2, // animation duration = 20 * 25.2 = 504px
+      frameDuration: 21.6, // animation duration = 20 * 21.6 = 432px
       initialTitle: '····················'.substring(
         0,
         '····················'.length - titleAnimationState.frameCount
