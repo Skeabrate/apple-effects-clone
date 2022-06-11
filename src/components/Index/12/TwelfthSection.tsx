@@ -12,14 +12,10 @@ const TwelfthSection: React.FC = () => {
     y: 0,
     step: 0,
   });
-  const [titleState, setTitleState] = useState<{
-    initial: string;
-    final: string;
+  const [titleAnimationState, setTitleAnimationState] = useState<{
     step: number;
     frameCount: number;
   }>({
-    initial: '····················',
-    final: 'Privacy is built in.',
     step: 0,
     frameCount: 0,
   });
@@ -27,9 +23,9 @@ const TwelfthSection: React.FC = () => {
   const lockAnimationData = useMemo(
     () => ({
       amountOfFrames: 36,
-      singleFrameDuration: 14, // amount of items = 36, animation duration = 504px
-      singleFrameWidth: 66,
-      singleFrameHeight: 88,
+      frameDuration: 14, // animation duration = 36 * 14 = 504px
+      frameWidth: 66,
+      frameHeight: 88,
       maxWidth: 330,
       maxHeight: 440,
     }),
@@ -39,75 +35,64 @@ const TwelfthSection: React.FC = () => {
   const titleAnimationData = useMemo(
     () => ({
       amountOfFrames: 20,
-      length: titleState.final.length,
-      singleFrameDuration: 25.8,
-      initialTitleDomHelper: titleState.initial.substring(
+      frameDuration: 25.2, // animation duration = 20 * 25.2 = 504px
+      initialTitle: '····················'.substring(
         0,
-        titleState.initial.length - titleState.frameCount
+        '····················'.length - titleAnimationState.frameCount
       ),
-      finalTitleDomHelper: titleState.final.slice(0, titleState.frameCount),
+      finalTitle: 'Privacy is built in.'.slice(0, titleAnimationState.frameCount),
     }),
-    [titleState]
+    [titleAnimationState]
   );
 
   const { isSticky } = useContext(ScrollContext);
   const animationRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const titleAnimationHandler = useCallback(() => {
-    const { length, singleFrameDuration, amountOfFrames } = titleAnimationData;
+    const { frameDuration, amountOfFrames } = titleAnimationData;
     const animationRefgetBoundingRect = animationRef.current.getBoundingClientRect();
 
     const animationEnd =
-      window.innerHeight -
-      animationRefgetBoundingRect.height / 2 -
-      singleFrameDuration * amountOfFrames;
+      window.innerHeight - animationRefgetBoundingRect.height / 2 - frameDuration * amountOfFrames;
 
-    const animationFinalPosition = titleState.frameCount === length;
-    const animationInitialPosition = !titleState.frameCount;
+    const animationFinalPosition = titleAnimationState.frameCount === amountOfFrames;
+    const animationInitialPosition = !titleAnimationState.frameCount;
 
     const animationDirectionForwards =
-      animationRefgetBoundingRect.top <= titleState.step &&
+      animationRefgetBoundingRect.top <= titleAnimationState.step &&
       animationRefgetBoundingRect.top >= animationEnd;
     const animationDirectionBackwards =
-      animationRefgetBoundingRect.top >= titleState.step + singleFrameDuration &&
+      animationRefgetBoundingRect.top >= titleAnimationState.step + frameDuration &&
       !animationInitialPosition;
 
     if (animationDirectionForwards) {
       if (animationFinalPosition) return;
       else {
-        setTitleState((state) => ({
+        setTitleAnimationState((state) => ({
           ...state,
-          step: state.step - singleFrameDuration,
+          step: state.step - frameDuration,
           frameCount: state.frameCount + 1,
         }));
       }
     } else if (animationDirectionBackwards) {
       if (animationInitialPosition) return;
       else {
-        setTitleState((state) => ({
+        setTitleAnimationState((state) => ({
           ...state,
-          step: state.step + singleFrameDuration,
+          step: state.step + frameDuration,
           frameCount: state.frameCount - 1,
         }));
       }
     }
-  }, [titleAnimationData, titleState]);
+  }, [titleAnimationData, titleAnimationState]);
 
   const lockAnimationHandler = useCallback(() => {
-    const {
-      amountOfFrames,
-      singleFrameDuration,
-      singleFrameWidth,
-      singleFrameHeight,
-      maxWidth,
-      maxHeight,
-    } = lockAnimationData;
+    const { amountOfFrames, frameDuration, frameWidth, frameHeight, maxWidth, maxHeight } =
+      lockAnimationData;
     const animationRefgetBoundingRect = animationRef.current.getBoundingClientRect();
 
     const animationEnd =
-      window.innerHeight -
-      animationRefgetBoundingRect.height / 2 -
-      singleFrameDuration * amountOfFrames;
+      window.innerHeight - animationRefgetBoundingRect.height / 2 - frameDuration * amountOfFrames;
 
     const animationInitialPosition = lockAnimationState.x === 0 && lockAnimationState.y === 0;
     const animationFinalPosition =
@@ -120,7 +105,7 @@ const TwelfthSection: React.FC = () => {
       animationRefgetBoundingRect.top <= lockAnimationState.step &&
       animationRefgetBoundingRect.top >= animationEnd;
     const animationDirectionBackwards =
-      animationRefgetBoundingRect.top >= lockAnimationState.step + singleFrameDuration &&
+      animationRefgetBoundingRect.top >= lockAnimationState.step + frameDuration &&
       !animationInitialPosition;
 
     if (animationDirectionForwards) {
@@ -128,14 +113,14 @@ const TwelfthSection: React.FC = () => {
       else if (animationReachedMaxWidth) {
         setLockAnimationState((state) => ({
           x: 0,
-          y: state.y + singleFrameHeight,
-          step: state.step - singleFrameDuration,
+          y: state.y + frameHeight,
+          step: state.step - frameDuration,
         }));
       } else {
         setLockAnimationState((state) => ({
           ...state,
-          x: state.x + singleFrameWidth,
-          step: state.step - singleFrameDuration,
+          x: state.x + frameWidth,
+          step: state.step - frameDuration,
         }));
       }
     } else if (animationDirectionBackwards) {
@@ -143,14 +128,14 @@ const TwelfthSection: React.FC = () => {
       else if (animationReachedMinWidth) {
         setLockAnimationState((state) => ({
           x: maxWidth,
-          y: state.y - singleFrameHeight,
-          step: state.step + singleFrameDuration,
+          y: state.y - frameHeight,
+          step: state.step + frameDuration,
         }));
       } else {
         setLockAnimationState((state) => ({
           ...state,
-          x: state.x - singleFrameWidth,
-          step: state.step + singleFrameDuration,
+          x: state.x - frameWidth,
+          step: state.step + frameDuration,
         }));
       }
     }
@@ -165,7 +150,7 @@ const TwelfthSection: React.FC = () => {
         ...state,
         step: initialStep,
       }));
-      setTitleState((state) => ({
+      setTitleAnimationState((state) => ({
         ...state,
         step: initialStep,
       }));
@@ -183,13 +168,13 @@ const TwelfthSection: React.FC = () => {
     <Wrapper>
       <StyledLock
         $lockAnimationState={lockAnimationState}
-        $singleFrameWidth={lockAnimationData.singleFrameWidth}
-        $singleFrameHeight={lockAnimationData.singleFrameHeight}
+        $frameWidth={lockAnimationData.frameWidth}
+        $frameHeight={lockAnimationData.frameHeight}
       />
       <StyledHeader>
         <h2 ref={animationRef}>
-          <span>{titleAnimationData.finalTitleDomHelper}</span>
-          <span>{titleAnimationData.initialTitleDomHelper}</span>
+          <span>{titleAnimationData.finalTitle}</span>
+          <span>{titleAnimationData.initialTitle}</span>
         </h2>
       </StyledHeader>
 

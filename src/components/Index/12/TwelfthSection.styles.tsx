@@ -6,8 +6,8 @@ interface Props {
     y: number;
     step: number;
   };
-  $singleFrameWidth: number;
-  $singleFrameHeight: number;
+  $frameWidth: number;
+  $frameHeight: number;
 }
 
 export const Wrapper = styled.section`
@@ -33,12 +33,12 @@ export const Wrapper = styled.section`
 `;
 
 export const StyledLock = styled.p<Props>(
-  ({ theme, $lockAnimationState, $singleFrameWidth, $singleFrameHeight }) => css`
+  ({ theme, $lockAnimationState, $frameWidth, $frameHeight }) => css`
     background-image: url('/images/privacy_icon__dlw1ars629g2_large.png');
     background-repeat: no-repeat;
     background-position: -${$lockAnimationState.x}px -${$lockAnimationState.y}px;
-    width: ${$singleFrameWidth}px;
-    height: ${$singleFrameHeight}px;
+    width: ${$frameWidth}px;
+    height: ${$frameHeight}px;
     margin-bottom: 16px;
 
     ${theme.mq.tablet} {
