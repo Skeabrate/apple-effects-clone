@@ -47,6 +47,7 @@ const TwelfthSection: React.FC = () => {
 
   const { isSticky } = useContext(ScrollContext);
   const animationRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const animationMediaQuery = '(min-width: 768px) and (min-height: 600px)';
 
   const titleAnimationHandler = useCallback(() => {
     const { frameDuration, amountOfFrames } = titleAnimationData;
@@ -142,6 +143,19 @@ const TwelfthSection: React.FC = () => {
   }, [lockAnimationState, animationRef, lockAnimationData]);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia(animationMediaQuery);
+    if (!mediaQuery.matches) {
+      setLockAnimationState((state) => ({
+        ...state,
+        x: lockAnimationData.maxWidth,
+        y: lockAnimationData.maxHeight,
+      }));
+      setTitleAnimationState((state) => ({
+        ...state,
+        frameCount: titleAnimationData.amountOfFrames,
+      }));
+    }
+
     if (animationRef.current) {
       const initialStep =
         window.innerHeight - animationRef.current.getBoundingClientRect().height / 2;
@@ -158,10 +172,11 @@ const TwelfthSection: React.FC = () => {
   }, [animationRef]);
 
   useEffect(() => {
-    if (animationRef.current) {
-      lockAnimationHandler();
-      titleAnimationHandler();
-    }
+    const mediaQuery = window.matchMedia(animationMediaQuery);
+
+    if (!animationRef.current || !mediaQuery.matches) return;
+    lockAnimationHandler();
+    titleAnimationHandler();
   }, [isSticky, animationRef, lockAnimationHandler, titleAnimationHandler]);
 
   return (

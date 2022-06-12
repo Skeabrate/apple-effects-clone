@@ -213,7 +213,7 @@ export const StyledFourthArticle = styled.article`
     margin-top: unset;
 
     img {
-      z-index: 1;
+      z-index: 3;
       margin-top: -200px;
       max-width: 700px;
     }

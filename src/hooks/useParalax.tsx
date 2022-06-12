@@ -11,9 +11,9 @@ export const useParalax = (...ref: AnimationParametr[]) => {
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': function () {
         ref.forEach(({ current }, index) => {
-          if (current && index % 2 === 0) {
+          if (current && (index === 0 || index === 3)) {
             gsap.to(current, {
-              yPercent: -25,
+              yPercent: -30,
               ease: 'none',
               scrollTrigger: {
                 trigger: current,

@@ -54,7 +54,6 @@ export const StyledHeader = styled.header`
 
   h2 {
     word-break: break-word;
-    height: 120px;
   }
 
   ${({ theme }) => theme.mq.tablet} {
