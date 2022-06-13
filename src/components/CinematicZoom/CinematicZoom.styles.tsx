@@ -44,10 +44,10 @@ export const WrapperInner = styled.div`
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      min-width: 100%;
-      width: auto;
-      height: 100%;
-      object-fit: cover;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      object-fit: contain;
       will-change: transform;
       transform-origin: center;
     }

@@ -1,20 +1,21 @@
 import React from 'react';
 import HeaderWithCaption from 'components/HeaderWithCaption/HeaderWithCaption';
-import { StyledContent, StyledMarginWrapper, Wrapper } from './NinthSection.styles';
 import GeekOut from 'components/GeekOut/GeekOut';
 import CinematicZoom from 'components/CinematicZoom/CinematicZoom';
-import { useCinematicZoomMargin } from 'hooks/useCinematicZoomMargin';
+import CinematicZoomMarginWrapper from 'components/CinematicZoomMarginWrapper/CinematicZoomMarginWrapper';
 import { useCinematicZoomOpacity } from 'hooks/useCinematicZoomOpacity';
+import { StyledContent, Wrapper } from './NinthSection.styles';
 
 const NinthSection: React.FC = () => {
   const videoProps = {
     src: '/images/ninthsect.mp4',
     imgSrc: '/images/ninthSection.png',
-    width: 504,
+    imgHeight: 981,
+    imgWidth: 487,
     height: 284,
+    width: 504,
   };
 
-  const { margin } = useCinematicZoomMargin(videoProps.height);
   const { opacity, opacityAnimationHandler } = useCinematicZoomOpacity();
 
   return (
@@ -24,13 +25,9 @@ const NinthSection: React.FC = () => {
         captions={['Presenting', 'Cinematic mode.']}
       />
 
-      <CinematicZoom
-        needsImgOrnament
-        videoProps={videoProps}
-        opacityAnimationHandler={opacityAnimationHandler}
-      />
+      <CinematicZoom videoProps={videoProps} opacityAnimationHandler={opacityAnimationHandler} />
 
-      <StyledMarginWrapper $margin={margin}>
+      <CinematicZoomMarginWrapper videoHeight={videoProps.height} hasImgOrnament>
         <StyledContent $opacity={opacity}>
           <div>
             Now iPhone can shoot with shallow depth of field and automatically add elegant focus
@@ -47,7 +44,7 @@ const NinthSection: React.FC = () => {
         </StyledContent>
 
         <GeekOut text={'See how we trained your camera to be a cinematograph­er'} />
-      </StyledMarginWrapper>
+      </CinematicZoomMarginWrapper>
     </Wrapper>
   );
 };

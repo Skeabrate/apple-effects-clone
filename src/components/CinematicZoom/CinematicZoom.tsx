@@ -4,21 +4,18 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { WrapperInner, WrapperOuter } from './CinematicZoom.styles';
 
 interface Props {
-  needsImgOrnament: boolean;
   videoProps: {
     src: string;
     imgSrc?: string;
-    width: number;
+    imgHeight?: number;
+    imgWidth?: number;
     height: number;
+    width: number;
   };
-  opacityAnimationHandler: Function;
+  opacityAnimationHandler?: Function;
 }
 
-const CinematicZoom: React.FC<Props> = ({
-  needsImgOrnament,
-  videoProps,
-  opacityAnimationHandler,
-}) => {
+const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler }) => {
   const stickyContentRef = useRef<HTMLDivElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -32,11 +29,11 @@ const CinematicZoom: React.FC<Props> = ({
               scrollTrigger: {
                 trigger: stickyContentRef.current,
                 start: 'top top',
-                end: '140% bottom',
+                end: '150% bottom',
                 scrub: true,
                 pin: true,
                 onUpdate: (self) => {
-                  opacityAnimationHandler(self.progress);
+                  opacityAnimationHandler && opacityAnimationHandler(self.progress);
 
                   if (videoRef.current) {
                     if (self.progress) videoRef.current.pause();
@@ -58,12 +55,12 @@ const CinematicZoom: React.FC<Props> = ({
     <div ref={stickyContentRef}>
       <WrapperOuter>
         <WrapperInner ref={videoContainerRef}>
-          {needsImgOrnament ? (
+          {videoProps.imgSrc ? (
             <img
               src={videoProps.imgSrc}
               alt='Presenting cinematic mode.'
-              width='981'
-              height='487'
+              width={videoProps.imgWidth}
+              height={videoProps.imgHeight}
             />
           ) : null}
 

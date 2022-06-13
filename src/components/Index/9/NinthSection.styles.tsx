@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-interface MarginProps {
-  $margin: number;
-}
-
 interface OpacityProps {
   $opacity: number;
 }
@@ -12,12 +8,6 @@ export const Wrapper = styled.section`
   color: ${({ theme }) => theme.colors.black};
   width: 100%;
   overflow: hidden;
-`;
-
-export const StyledMarginWrapper = styled.div<MarginProps>`
-  @media (min-width: 1024px) and (min-height: 500px) {
-    margin: ${({ $margin }) => `-${$margin}px auto 0`};
-  }
 `;
 
 export const StyledContent = styled.div<OpacityProps>`
