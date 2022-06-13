@@ -53,6 +53,6 @@ export const Wrapper = styled.div`
 
   ${({ theme }) => theme.mq.desktop} {
     width: 950px;
-    margin: 15rem auto 0;
+    margin: 12rem auto;
   }
 `;

@@ -13,24 +13,50 @@ import GeekOut from 'components/GeekOut/GeekOut';
 
 const NinthSection: React.FC = () => {
   const [margin, setMargin] = useState<number>(0);
+  const [opacity, setOpacity] = useState<number>(0);
 
-  const contentRef = useRef<HTMLDivElement>(null);
+  const opacityAnimationStartPoint = 0.8;
+  const opacityAnimationStep = useRef<number>(opacityAnimationStartPoint);
+  const opacityAnimationSingleStepValue = 0.04;
+  const roundNumberHandler = (number: number) => +number.toFixed(2);
+
+  const stickyContentRef = useRef<HTMLDivElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const videoSize = { width: 504, height: 284 };
+
   useEffect(() => {
-    if (videoRef.current && contentRef.current && videoContainerRef.current) {
+    if (videoRef.current && stickyContentRef.current && videoContainerRef.current) {
       ScrollTrigger.matchMedia({
         '(min-height: 500px) and (min-width: 1024px)': function () {
           gsap
             .timeline({
               scrollTrigger: {
-                trigger: contentRef.current,
+                trigger: stickyContentRef.current,
                 start: 'top top',
-                end: '100% bottom',
+                end: '140% bottom',
                 scrub: true,
                 pin: true,
                 onUpdate: (self) => {
+                  if (self.progress >= opacityAnimationStep.current) {
+                    opacityAnimationStep.current = roundNumberHandler(
+                      opacityAnimationStep.current + opacityAnimationSingleStepValue
+                    );
+                    setOpacity((state) => roundNumberHandler(state + 0.2));
+                  } else if (
+                    self.progress <=
+                      roundNumberHandler(
+                        opacityAnimationStep.current - opacityAnimationSingleStepValue
+                      ) &&
+                    self.progress >= opacityAnimationStartPoint
+                  ) {
+                    opacityAnimationStep.current = roundNumberHandler(
+                      opacityAnimationStep.current - opacityAnimationSingleStepValue
+                    );
+                    setOpacity((state) => roundNumberHandler(state - 0.2));
+                  }
+
                   if (videoRef.current) {
                     if (self.progress) videoRef.current.pause();
                     else videoRef.current.play();
@@ -39,14 +65,14 @@ const NinthSection: React.FC = () => {
               },
             })
             .to(videoContainerRef.current, {
-              height: '284px',
-              width: '504px',
+              height: `${videoSize.height}px`,
+              width: `${videoSize.width}px`,
             });
         },
       });
     }
-    setMargin(window.innerHeight / 2 - 300);
-  }, [videoRef, contentRef, videoContainerRef]);
+    setMargin(window.innerHeight / 2 - videoSize.height);
+  }, [videoRef, stickyContentRef, videoContainerRef]);
 
   return (
     <Wrapper>
@@ -55,7 +81,7 @@ const NinthSection: React.FC = () => {
         captions={['Presenting', 'Cinematic mode.']}
       />
 
-      <div ref={contentRef}>
+      <div ref={stickyContentRef}>
         <StyledVideo>
           <StyledVideoInner ref={videoContainerRef}>
             <img
@@ -70,26 +96,26 @@ const NinthSection: React.FC = () => {
             </video>
           </StyledVideoInner>
         </StyledVideo>
-
-        <StyledMarginWrapper $margin={margin}>
-          <StyledContent>
-            <div>
-              Now iPhone can shoot with shallow depth of field and automatically add elegant focus
-              transitions between subjects. Cinematic mode can also anticipate when a prominent new
-              subject is about to enter the frame and bring them into focus when they do, for far
-              more creative storytelling. You have the option to change focus or adjust the level of
-              bokeh even after capture. We can’t wait to see what you do with it.
-            </div>
-            <div>
-              <p>The only smartphone that lets you edit the depth effect after you shoot</p>
-              <p>Shoot with the Wide, Telephoto or TrueDepth camera in Cinematic mode</p>
-              <p>Cinematic mode supports Dolby Vision HDR</p>
-            </div>
-          </StyledContent>
-
-          <GeekOut text={'See how we trained your camera to be a cinematograph­er'} />
-        </StyledMarginWrapper>
       </div>
+
+      <StyledMarginWrapper $margin={margin}>
+        <StyledContent $opacity={opacity}>
+          <div>
+            Now iPhone can shoot with shallow depth of field and automatically add elegant focus
+            transitions between subjects. Cinematic mode can also anticipate when a prominent new
+            subject is about to enter the frame and bring them into focus when they do, for far more
+            creative storytelling. You have the option to change focus or adjust the level of bokeh
+            even after capture. We can’t wait to see what you do with it.
+          </div>
+          <div>
+            <p>The only smartphone that lets you edit the depth effect after you shoot</p>
+            <p>Shoot with the Wide, Telephoto or TrueDepth camera in Cinematic mode</p>
+            <p>Cinematic mode supports Dolby Vision HDR</p>
+          </div>
+        </StyledContent>
+
+        <GeekOut text={'See how we trained your camera to be a cinematograph­er'} />
+      </StyledMarginWrapper>
     </Wrapper>
   );
 };

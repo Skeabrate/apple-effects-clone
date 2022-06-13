@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-interface Props {
+interface MarginProps {
   $margin: number;
+}
+
+interface OpacityProps {
+  $opacity: number;
 }
 
 export const Wrapper = styled.section`
   color: ${({ theme }) => theme.colors.black};
   width: 100%;
   overflow: hidden;
-
-  ${({ theme }) => theme.mq.desktop} {
-    padding-bottom: 10rem;
-  }
 `;
 
 export const StyledVideo = styled.div`
@@ -68,13 +68,13 @@ export const StyledVideoInner = styled.div`
   }
 `;
 
-export const StyledMarginWrapper = styled.div<Props>`
+export const StyledMarginWrapper = styled.div<MarginProps>`
   @media (min-width: 1024px) and (min-height: 500px) {
     margin: ${({ $margin }) => `-${$margin}px auto 0`};
   }
 `;
 
-export const StyledContent = styled.div`
+export const StyledContent = styled.div<OpacityProps>`
   ${({ theme }) => theme.paddingMobile()};
   font-weight: 500;
   width: fit-content;
@@ -83,6 +83,7 @@ export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  opacity: ${({ $opacity }) => $opacity};
 
   div:first-child {
     color: #6e6e73;
