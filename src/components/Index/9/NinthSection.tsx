@@ -1,78 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import React from 'react';
 import HeaderWithCaption from 'components/HeaderWithCaption/HeaderWithCaption';
-import {
-  StyledContent,
-  StyledMarginWrapper,
-  StyledVideo,
-  StyledVideoInner,
-  Wrapper,
-} from './NinthSection.styles';
+import { StyledContent, StyledMarginWrapper, Wrapper } from './NinthSection.styles';
 import GeekOut from 'components/GeekOut/GeekOut';
+import CinematicZoom from 'components/CinematicZoom/CinematicZoom';
+import { useCinematicZoomMargin } from 'hooks/useCinematicZoomMargin';
+import { useCinematicZoomOpacity } from 'hooks/useCinematicZoomOpacity';
 
 const NinthSection: React.FC = () => {
-  const [margin, setMargin] = useState<number>(0);
-  const [opacity, setOpacity] = useState<number>(0);
+  const videoProps = {
+    src: '/images/ninthsect.mp4',
+    imgSrc: '/images/ninthSection.png',
+    width: 504,
+    height: 284,
+  };
 
-  const opacityAnimationStartPoint = 0.8;
-  const opacityAnimationStep = useRef<number>(opacityAnimationStartPoint);
-  const opacityAnimationSingleStepValue = 0.04;
-  const roundNumberHandler = (number: number) => +number.toFixed(2);
-
-  const stickyContentRef = useRef<HTMLDivElement>(null);
-  const videoContainerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const videoSize = { width: 504, height: 284 };
-
-  useEffect(() => {
-    if (videoRef.current && stickyContentRef.current && videoContainerRef.current) {
-      ScrollTrigger.matchMedia({
-        '(min-height: 500px) and (min-width: 1024px)': function () {
-          gsap
-            .timeline({
-              scrollTrigger: {
-                trigger: stickyContentRef.current,
-                start: 'top top',
-                end: '140% bottom',
-                scrub: true,
-                pin: true,
-                onUpdate: (self) => {
-                  if (self.progress >= opacityAnimationStep.current) {
-                    opacityAnimationStep.current = roundNumberHandler(
-                      opacityAnimationStep.current + opacityAnimationSingleStepValue
-                    );
-                    setOpacity((state) => roundNumberHandler(state + 0.2));
-                  } else if (
-                    self.progress <=
-                      roundNumberHandler(
-                        opacityAnimationStep.current - opacityAnimationSingleStepValue
-                      ) &&
-                    self.progress >= opacityAnimationStartPoint
-                  ) {
-                    opacityAnimationStep.current = roundNumberHandler(
-                      opacityAnimationStep.current - opacityAnimationSingleStepValue
-                    );
-                    setOpacity((state) => roundNumberHandler(state - 0.2));
-                  }
-
-                  if (videoRef.current) {
-                    if (self.progress) videoRef.current.pause();
-                    else videoRef.current.play();
-                  }
-                },
-              },
-            })
-            .to(videoContainerRef.current, {
-              height: `${videoSize.height}px`,
-              width: `${videoSize.width}px`,
-            });
-        },
-      });
-    }
-    setMargin(window.innerHeight / 2 - videoSize.height);
-  }, [videoRef, stickyContentRef, videoContainerRef]);
+  const { margin } = useCinematicZoomMargin(videoProps.height);
+  const { opacity, opacityAnimationHandler } = useCinematicZoomOpacity();
 
   return (
     <Wrapper>
@@ -81,22 +24,11 @@ const NinthSection: React.FC = () => {
         captions={['Presenting', 'Cinematic mode.']}
       />
 
-      <div ref={stickyContentRef}>
-        <StyledVideo>
-          <StyledVideoInner ref={videoContainerRef}>
-            <img
-              src='/images/ninthSection.png'
-              alt='Presenting cinematic mode.'
-              width='981'
-              height='487'
-            />
-
-            <video ref={videoRef} autoPlay loop muted playsInline preload='auto'>
-              <source src='/images/ninthsect.mp4' type='video/mp4' />
-            </video>
-          </StyledVideoInner>
-        </StyledVideo>
-      </div>
+      <CinematicZoom
+        needsImgOrnament
+        videoProps={videoProps}
+        opacityAnimationHandler={opacityAnimationHandler}
+      />
 
       <StyledMarginWrapper $margin={margin}>
         <StyledContent $opacity={opacity}>

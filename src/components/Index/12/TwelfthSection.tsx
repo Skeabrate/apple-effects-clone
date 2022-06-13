@@ -169,7 +169,12 @@ const TwelfthSection: React.FC = () => {
         step: initialStep,
       }));
     }
-  }, [animationRef]);
+  }, [
+    animationRef,
+    lockAnimationData.maxHeight,
+    lockAnimationData.maxWidth,
+    titleAnimationData.amountOfFrames,
+  ]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(animationMediaQuery);

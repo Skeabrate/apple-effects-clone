@@ -14,60 +14,6 @@ export const Wrapper = styled.section`
   overflow: hidden;
 `;
 
-export const StyledVideo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ${({ theme }) => theme.mq.desktop} {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-`;
-
-export const StyledVideoInner = styled.div`
-  img {
-    display: none;
-  }
-
-  video {
-    width: 100%;
-    height: auto;
-  }
-
-  ${({ theme }) => theme.mq.desktop} {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    align-items: center;
-
-    img {
-      display: initial;
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: auto;
-      height: 172%;
-      object-fit: cover;
-    }
-
-    video {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      width: auto;
-      height: 100%;
-      object-fit: cover;
-      will-change: transform;
-      transform-origin: center;
-    }
-  }
-`;
-
 export const StyledMarginWrapper = styled.div<MarginProps>`
   @media (min-width: 1024px) and (min-height: 500px) {
     margin: ${({ $margin }) => `-${$margin}px auto 0`};
