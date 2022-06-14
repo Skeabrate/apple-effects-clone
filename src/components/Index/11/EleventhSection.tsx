@@ -8,8 +8,8 @@ import { Wrapper, WrapperInner } from './EleventhSection.styles';
 const EleventhSection: React.FC = () => {
   const videoProps = {
     src: '/images/bionic.mp4',
-    height: 242,
-    width: 246,
+    height: 244,
+    width: 242,
   };
 
   return (

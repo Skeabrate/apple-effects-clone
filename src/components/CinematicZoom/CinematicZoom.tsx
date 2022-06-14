@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { WrapperInner, WrapperOuter } from './CinematicZoom.styles';
+import ScrollContext from 'context/ScrollContext';
 
 interface Props {
   videoProps: {
@@ -13,12 +14,34 @@ interface Props {
     width: number;
   };
   opacityAnimationHandler?: Function;
+  isVideoLooped?: boolean;
 }
 
-const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler }) => {
+const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler, isVideoLooped }) => {
+  const [notLoopedVideoState, setNotLoopedVideoState] = useState<boolean>(false);
+
   const stickyContentRef = useRef<HTMLDivElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const { isSticky } = useContext(ScrollContext);
+
+  useEffect(() => {
+    if (
+      !isVideoLooped &&
+      videoRef.current &&
+      videoRef.current.getBoundingClientRect().top - window.innerHeight >= 0
+    ) {
+      setNotLoopedVideoState(false);
+    }
+  }, [isSticky, videoRef, isVideoLooped]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (notLoopedVideoState) videoRef.current.play();
+      else videoRef.current.load();
+    }
+  }, [notLoopedVideoState]);
 
   useEffect(() => {
     if (videoRef.current && stickyContentRef.current && videoContainerRef.current) {
@@ -35,9 +58,11 @@ const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler })
                 onUpdate: (self) => {
                   opacityAnimationHandler && opacityAnimationHandler(self.progress);
 
-                  if (videoRef.current) {
+                  if (videoRef.current && isVideoLooped) {
                     if (self.progress) videoRef.current.pause();
                     else videoRef.current.play();
+                  } else if (videoRef.current && !isVideoLooped) {
+                    if (self.progress >= 0.6) setNotLoopedVideoState(true);
                   }
                 },
               },
@@ -49,12 +74,20 @@ const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler })
         },
       });
     }
-  }, [videoRef, stickyContentRef, videoContainerRef]);
+  }, [
+    videoRef,
+    stickyContentRef,
+    videoContainerRef,
+    isVideoLooped,
+    opacityAnimationHandler,
+    videoProps.width,
+    videoProps.height,
+  ]);
 
   return (
     <div ref={stickyContentRef}>
       <WrapperOuter>
-        <WrapperInner ref={videoContainerRef}>
+        <WrapperInner $isWide={videoProps.width > videoProps.height} ref={videoContainerRef}>
           {videoProps.imgSrc ? (
             <img
               src={videoProps.imgSrc}
@@ -64,7 +97,14 @@ const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler })
             />
           ) : null}
 
-          <video ref={videoRef} autoPlay loop muted playsInline preload='auto'>
+          <video
+            ref={videoRef}
+            autoPlay={isVideoLooped}
+            loop={isVideoLooped}
+            muted
+            playsInline
+            preload='auto'
+          >
             <source src={videoProps.src} type='video/mp4' />
           </video>
         </WrapperInner>

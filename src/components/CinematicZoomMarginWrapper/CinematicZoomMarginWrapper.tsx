@@ -14,7 +14,7 @@ const CinematicZoomMarginWrapper: React.FC<Props> = ({ children, videoHeight, ha
     const withOrnament = window.innerHeight / 2 - videoHeight;
     const withoutOrnament = window.innerHeight / 2 - videoHeight / 3;
     setMargin(hasImgOrnament ? withOrnament : withoutOrnament);
-  }, [videoHeight]);
+  }, [videoHeight, hasImgOrnament]);
 
   return <Wrapper $margin={margin}>{children}</Wrapper>;
 };

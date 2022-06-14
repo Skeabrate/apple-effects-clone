@@ -19,7 +19,7 @@ export const StyledContent = styled.div<OpacityProps>`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  opacity: ${({ $opacity }) => $opacity};
+  opacity: 1;
 
   div:first-child {
     color: #6e6e73;
@@ -47,5 +47,9 @@ export const StyledContent = styled.div<OpacityProps>`
       gap: 50px;
       max-width: 400px;
     }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    opacity: ${({ $opacity }) => $opacity};
   }
 `;

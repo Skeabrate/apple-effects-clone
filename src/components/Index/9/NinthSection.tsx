@@ -25,7 +25,11 @@ const NinthSection: React.FC = () => {
         captions={['Presenting', 'Cinematic mode.']}
       />
 
-      <CinematicZoom videoProps={videoProps} opacityAnimationHandler={opacityAnimationHandler} />
+      <CinematicZoom
+        isVideoLooped
+        videoProps={videoProps}
+        opacityAnimationHandler={opacityAnimationHandler}
+      />
 
       <CinematicZoomMarginWrapper videoHeight={videoProps.height} hasImgOrnament>
         <StyledContent $opacity={opacity}>
