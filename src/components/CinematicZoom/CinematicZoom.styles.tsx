@@ -26,7 +26,7 @@ export const WrapperInner = styled.div<VideoProps>`
   }
 
   video {
-    width: 100%;
+    width: 90%;
     height: auto;
   }
 
