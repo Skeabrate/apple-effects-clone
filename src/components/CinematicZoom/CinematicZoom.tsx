@@ -27,12 +27,23 @@ const CinematicZoom: React.FC<Props> = ({ videoProps, opacityAnimationHandler, i
   const { isSticky } = useContext(ScrollContext);
 
   useEffect(() => {
+    const videoStartMediaQueries = window.matchMedia('(max-width: 768px)');
+
     if (
       !isVideoLooped &&
       videoRef.current &&
       videoRef.current.getBoundingClientRect().top - window.innerHeight >= 0
     ) {
       setNotLoopedVideoState(false);
+    }
+
+    if (
+      videoStartMediaQueries.matches &&
+      videoRef.current &&
+      videoRef.current.getBoundingClientRect().top <=
+        (window.innerHeight - videoRef.current.getBoundingClientRect().height) / 2
+    ) {
+      setNotLoopedVideoState(true);
     }
   }, [isSticky, videoRef, isVideoLooped]);
 
