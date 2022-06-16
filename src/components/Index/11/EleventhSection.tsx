@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import HeaderWithCaption from 'components/HeaderWithCaption/HeaderWithCaption';
 import GeekOut from 'components/GeekOut/GeekOut';
 import CinematicZoom from 'components/CinematicZoom/CinematicZoom';
 import CinematicZoomMarginWrapper from 'components/CinematicZoomMarginWrapper/CinematicZoomMarginWrapper';
+import { useContentAnimation } from './useContentAnimation';
 import { StyledItem, StyledItemsPair, Wrapper, WrapperInner } from './EleventhSection.styles';
 
 const EleventhSection: React.FC = () => {
@@ -11,6 +12,20 @@ const EleventhSection: React.FC = () => {
     height: 244,
     width: 242,
   };
+
+  const firstBigTitleRef = useRef<HTMLDivElement>(null);
+  const firstSmallTitleRef = useRef<HTMLDivElement>(null);
+  const secondBigTitleRef = useRef<HTMLDivElement>(null);
+  const secondSmallTitleRef = useRef<HTMLDivElement>(null);
+  const thirdBigTitleRef = useRef<HTMLDivElement>(null);
+  const thirdSmallTitleRef = useRef<HTMLDivElement>(null);
+
+  const animationRefs = {
+    bigTitleAnimation: [firstBigTitleRef, secondBigTitleRef, thirdBigTitleRef],
+    smallTitleAnimation: [firstSmallTitleRef, secondSmallTitleRef, thirdSmallTitleRef],
+  };
+
+  useContentAnimation(animationRefs);
 
   return (
     <Wrapper>
@@ -25,7 +40,7 @@ const EleventhSection: React.FC = () => {
         <WrapperInner>
           <StyledItemsPair>
             <StyledItem>
-              <div>
+              <div ref={firstBigTitleRef}>
                 <h3>All-new 5‑core GPU</h3>
                 <p>
                   delivers faster graphics performance for immersive games, advanced camera features
@@ -34,7 +49,7 @@ const EleventhSection: React.FC = () => {
               </div>
             </StyledItem>
             <StyledItem>
-              <div>
+              <div ref={firstSmallTitleRef}>
                 <h3>New CPU performance and efficiency cores</h3>
                 <p>power through complex tasks and preserve battery life</p>
               </div>
@@ -43,7 +58,7 @@ const EleventhSection: React.FC = () => {
 
           <StyledItemsPair>
             <StyledItem>
-              <div>
+              <div ref={secondSmallTitleRef}>
                 <h3>Superfast Neural Engine</h3>
                 <p>
                   performs up to 15.8 trillion operations per second and helps drive Cinematic mode,
@@ -52,7 +67,7 @@ const EleventhSection: React.FC = () => {
               </div>
             </StyledItem>
             <StyledItem>
-              <div>
+              <div ref={secondBigTitleRef}>
                 <h3>Advanced ISP</h3>
                 <p>takes noise reduction and tone mapping to the next level</p>
               </div>
@@ -61,13 +76,13 @@ const EleventhSection: React.FC = () => {
 
           <StyledItemsPair>
             <StyledItem>
-              <div>
+              <div ref={thirdBigTitleRef}>
                 <h3>Secure Enclave</h3>
                 <p>protects personal information like your Face ID data, contacts and more</p>
               </div>
             </StyledItem>
             <StyledItem>
-              <div>
+              <div ref={thirdSmallTitleRef}>
                 <h3>On-device processing</h3>
                 <p>keeps things like your Siri requests and interactions with Live Text private</p>
               </div>

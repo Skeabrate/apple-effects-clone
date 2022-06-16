@@ -48,7 +48,7 @@ export const WrapperInner = styled.div`
 
 export const StyledItem = styled.div`
   position: relative;
-  padding-block: 25px;
+  padding-block: 35px;
 
   &::after {
     content: '';
