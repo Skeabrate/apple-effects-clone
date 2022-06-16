@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     <main>
       <HeadComponent title='Apple effects clone' />
 
-      <FirstSection />
+      {/*  <FirstSection />
       <SecondSection />
       <ThirdSection fourthSectionRef={fourthSectionRef} />
       <FourthSection setFourthSectionRef={setFourthSectionRef} fifthSectionRef={fifthSectionRef} />
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
       <SeventhSection />
       <EightSection />
       <NinthSection />
-      <TenthSection />
+      <TenthSection /> */}
       <EleventhSection />
       <TwelfthSection />
       <FourteenthSection />

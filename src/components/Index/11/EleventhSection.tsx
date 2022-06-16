@@ -3,7 +3,7 @@ import HeaderWithCaption from 'components/HeaderWithCaption/HeaderWithCaption';
 import GeekOut from 'components/GeekOut/GeekOut';
 import CinematicZoom from 'components/CinematicZoom/CinematicZoom';
 import CinematicZoomMarginWrapper from 'components/CinematicZoomMarginWrapper/CinematicZoomMarginWrapper';
-import { StyledItem, Wrapper, WrapperInner } from './EleventhSection.styles';
+import { StyledItem, StyledItemsPair, Wrapper, WrapperInner } from './EleventhSection.styles';
 
 const EleventhSection: React.FC = () => {
   const videoProps = {
@@ -23,48 +23,56 @@ const EleventhSection: React.FC = () => {
         />
 
         <WrapperInner>
-          <StyledItem>
-            <div>
-              <h3>All-new 5‑core GPU</h3>
-              <p>
-                delivers faster graphics performance for immersive games, advanced camera features
-                and more
-              </p>
-            </div>
-          </StyledItem>
-          <StyledItem>
-            <div>
-              <h3>New CPU performance and efficiency cores</h3>
-              <p>power through complex tasks and preserve battery life</p>
-            </div>
-          </StyledItem>
-          <StyledItem>
-            <div>
-              <h3>Superfast Neural Engine</h3>
-              <p>
-                performs up to 15.8 trillion operations per second and helps drive Cinematic mode,
-                Smart HDR 4 and more
-              </p>
-            </div>
-          </StyledItem>
-          <StyledItem>
-            <div>
-              <h3>Advanced ISP</h3>
-              <p>takes noise reduction and tone mapping to the next level</p>
-            </div>
-          </StyledItem>
-          <StyledItem>
-            <div>
-              <h3>Secure Enclave</h3>
-              <p>protects personal information like your Face ID data, contacts and more</p>
-            </div>
-          </StyledItem>
-          <StyledItem>
-            <div>
-              <h3>On-device processing</h3>
-              <p>keeps things like your Siri requests and interactions with Live Text private</p>
-            </div>
-          </StyledItem>
+          <StyledItemsPair>
+            <StyledItem>
+              <div>
+                <h3>All-new 5‑core GPU</h3>
+                <p>
+                  delivers faster graphics performance for immersive games, advanced camera features
+                  and more
+                </p>
+              </div>
+            </StyledItem>
+            <StyledItem>
+              <div>
+                <h3>New CPU performance and efficiency cores</h3>
+                <p>power through complex tasks and preserve battery life</p>
+              </div>
+            </StyledItem>
+          </StyledItemsPair>
+
+          <StyledItemsPair>
+            <StyledItem>
+              <div>
+                <h3>Superfast Neural Engine</h3>
+                <p>
+                  performs up to 15.8 trillion operations per second and helps drive Cinematic mode,
+                  Smart HDR 4 and more
+                </p>
+              </div>
+            </StyledItem>
+            <StyledItem>
+              <div>
+                <h3>Advanced ISP</h3>
+                <p>takes noise reduction and tone mapping to the next level</p>
+              </div>
+            </StyledItem>
+          </StyledItemsPair>
+
+          <StyledItemsPair>
+            <StyledItem>
+              <div>
+                <h3>Secure Enclave</h3>
+                <p>protects personal information like your Face ID data, contacts and more</p>
+              </div>
+            </StyledItem>
+            <StyledItem>
+              <div>
+                <h3>On-device processing</h3>
+                <p>keeps things like your Siri requests and interactions with Live Text private</p>
+              </div>
+            </StyledItem>
+          </StyledItemsPair>
         </WrapperInner>
 
         <GeekOut text={'See how A15 Bionic is powered by collaboration.'} />
