@@ -51,5 +51,5 @@ export const useContentAnimation = (animationRefs: {
         (item) => item.current && animationHandler(item.current, 30, '30')
       );
     }, 500);
-  }, [animationRefs.bigTitleAnimation, animationRefs.smallTitleAnimation]);
+  }, [animationRefs.bigTitleAnimation, animationRefs.smallTitleAnimation, animationHandler]);
 };

@@ -1,214 +1,33 @@
-import ScrollContext from 'context/ScrollContext';
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { StyledHeader, StyledLock, StyledArticle, Wrapper } from './TwelfthSection.styles';
+import React from 'react';
+import TwelfthArticle from './components/TwelfthArticle/TwelfthArticle';
 
 const TwelfthSection: React.FC = () => {
-  const [lockAnimationState, setLockAnimationState] = useState<{
-    x: number;
-    y: number;
-    step: number;
-  }>({
-    x: 0,
-    y: 0,
-    step: 0,
-  });
-  const [titleAnimationState, setTitleAnimationState] = useState<{
-    step: number;
-    frameCount: number;
-  }>({
-    step: 0,
-    frameCount: 0,
-  });
-
-  const lockAnimationData = useMemo(
-    () => ({
-      amountOfFrames: 36,
-      frameDuration: 10, // animation duration = 36 * 10 = 360px
-      frameWidth: 66,
-      frameHeight: 88,
-      maxWidth: 330,
-      maxHeight: 440,
-    }),
-    []
-  );
-
-  const titleAnimationData = useMemo(
-    () => ({
-      amountOfFrames: 20,
-      frameDuration: 18, // animation duration = 20 * 18 = 360px
-      initialTitle: '····················'.substring(
-        0,
-        '····················'.length - titleAnimationState.frameCount
-      ),
-      finalTitle: 'Privacy is built in.'.slice(0, titleAnimationState.frameCount),
-    }),
-    [titleAnimationState]
-  );
-
-  const { isSticky } = useContext(ScrollContext);
-  const animationRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const animationMediaQuery = '(min-width: 768px) and (min-height: 600px)';
-
-  const titleAnimationHandler = useCallback(() => {
-    const { frameDuration, amountOfFrames } = titleAnimationData;
-    const animationRefgetBoundingRect = animationRef.current.getBoundingClientRect();
-
-    const animationEnd =
-      window.innerHeight - animationRefgetBoundingRect.height / 2 - frameDuration * amountOfFrames;
-
-    const animationFinalPosition = titleAnimationState.frameCount === amountOfFrames;
-    const animationInitialPosition = !titleAnimationState.frameCount;
-
-    const animationDirectionForwards =
-      animationRefgetBoundingRect.top <= titleAnimationState.step &&
-      animationRefgetBoundingRect.top >= animationEnd;
-    const animationDirectionBackwards =
-      animationRefgetBoundingRect.top >= titleAnimationState.step + frameDuration &&
-      !animationInitialPosition;
-
-    if (animationDirectionForwards) {
-      if (animationFinalPosition) return;
-      else {
-        setTitleAnimationState((state) => ({
-          ...state,
-          step: state.step - frameDuration,
-          frameCount: state.frameCount + 1,
-        }));
-      }
-    } else if (animationDirectionBackwards) {
-      if (animationInitialPosition) return;
-      else {
-        setTitleAnimationState((state) => ({
-          ...state,
-          step: state.step + frameDuration,
-          frameCount: state.frameCount - 1,
-        }));
-      }
-    }
-  }, [titleAnimationData, titleAnimationState]);
-
-  const lockAnimationHandler = useCallback(() => {
-    const { amountOfFrames, frameDuration, frameWidth, frameHeight, maxWidth, maxHeight } =
-      lockAnimationData;
-    const animationRefgetBoundingRect = animationRef.current.getBoundingClientRect();
-
-    const animationEnd =
-      window.innerHeight - animationRefgetBoundingRect.height / 2 - frameDuration * amountOfFrames;
-
-    const animationInitialPosition = lockAnimationState.x === 0 && lockAnimationState.y === 0;
-    const animationFinalPosition =
-      lockAnimationState.x === maxWidth && lockAnimationState.y === maxHeight;
-
-    const animationReachedMaxWidth = lockAnimationState.x === maxWidth;
-    const animationReachedMinWidth = lockAnimationState.x === 0;
-
-    const animationDirectionForwards =
-      animationRefgetBoundingRect.top <= lockAnimationState.step &&
-      animationRefgetBoundingRect.top >= animationEnd;
-    const animationDirectionBackwards =
-      animationRefgetBoundingRect.top >= lockAnimationState.step + frameDuration &&
-      !animationInitialPosition;
-
-    if (animationDirectionForwards) {
-      if (animationFinalPosition) return;
-      else if (animationReachedMaxWidth) {
-        setLockAnimationState((state) => ({
-          x: 0,
-          y: state.y + frameHeight,
-          step: state.step - frameDuration,
-        }));
-      } else {
-        setLockAnimationState((state) => ({
-          ...state,
-          x: state.x + frameWidth,
-          step: state.step - frameDuration,
-        }));
-      }
-    } else if (animationDirectionBackwards) {
-      if (animationInitialPosition) return;
-      else if (animationReachedMinWidth) {
-        setLockAnimationState((state) => ({
-          x: maxWidth,
-          y: state.y - frameHeight,
-          step: state.step + frameDuration,
-        }));
-      } else {
-        setLockAnimationState((state) => ({
-          ...state,
-          x: state.x - frameWidth,
-          step: state.step + frameDuration,
-        }));
-      }
-    }
-  }, [lockAnimationState, animationRef, lockAnimationData]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(animationMediaQuery);
-    if (!mediaQuery.matches) {
-      setLockAnimationState((state) => ({
-        ...state,
-        x: lockAnimationData.maxWidth,
-        y: lockAnimationData.maxHeight,
-      }));
-      setTitleAnimationState((state) => ({
-        ...state,
-        frameCount: titleAnimationData.amountOfFrames,
-      }));
-    }
-
-    if (animationRef.current) {
-      const initialStep =
-        window.innerHeight - animationRef.current.getBoundingClientRect().height / 2;
-
-      setLockAnimationState((state) => ({
-        ...state,
-        step: initialStep,
-      }));
-      setTitleAnimationState((state) => ({
-        ...state,
-        step: initialStep,
-      }));
-    }
-  }, [
-    animationRef,
-    lockAnimationData.maxHeight,
-    lockAnimationData.maxWidth,
-    titleAnimationData.amountOfFrames,
-  ]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(animationMediaQuery);
-
-    if (!animationRef.current || !mediaQuery.matches) return;
-    lockAnimationHandler();
-    titleAnimationHandler();
-  }, [isSticky, animationRef, lockAnimationHandler, titleAnimationHandler]);
-
   return (
-    <Wrapper>
-      <StyledLock
-        $lockAnimationState={lockAnimationState}
-        $frameWidth={lockAnimationData.frameWidth}
-        $frameHeight={lockAnimationData.frameHeight}
+    <section>
+      <TwelfthArticle
+        iconUrl={'/images/privacy_icon__dlw1ars629g2_large.png'}
+        iconWidth={66}
+        iconHeight={88}
+        header={'Privacy is built in.'}
+        text={
+          'iPhone helps put you in control of your personal information. For example, when you’re browsing, Safari intelligently helps block trackers from profiling you and shows you which ones have been blocked in your Privacy Report. And the list goes on.'
+        }
+        button={'Learn more about Apple and privacy'}
+        isAnimated
+        isDark
       />
-      <StyledHeader>
-        <h2 ref={animationRef}>
-          <span>{titleAnimationData.finalTitle}</span>
-          <span>{titleAnimationData.initialTitle}</span>
-        </h2>
-      </StyledHeader>
 
-      <StyledArticle>
-        <p>
-          iPhone helps put you in control of your personal information. For example, when you’re
-          browsing, Safari intelligently helps block trackers from profiling you and shows you which
-          ones have been blocked in your Privacy Report. And the list goes on.
-        </p>
-        <a href='#'>
-          Learn more about Apple and privacy <span>arrow SVG</span>
-        </a>
-      </StyledArticle>
-    </Wrapper>
+      <TwelfthArticle
+        iconUrl={'/images/environment_icon__epb71nmm8bau_large.jpg'}
+        iconWidth={57}
+        iconHeight={69}
+        header={'Lighter on the planet.'}
+        text={
+          'Our stores, offices and data centres are already carbon neutral. By 2030 our products — and your carbon footprint from using them — will be too. And this year we eliminated the plastic wrapping around the iPhone 13 and iPhone 13 Pro boxes, saving 600 tonnes of plastic.'
+        }
+        button={'Learn more about Apple and the environment'}
+      />
+    </section>
   );
 };
 
