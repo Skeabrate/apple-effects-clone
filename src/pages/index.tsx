@@ -15,7 +15,6 @@ import NinthSection from 'components/Index/9/NinthSection';
 import TenthSection from 'components/Index/10/TenthSection';
 import EleventhSection from 'components/Index/11/EleventhSection';
 import TwelfthSection from 'components/Index/12/TwelfthSection';
-import FourteenthSection from 'components/Index/14/FourteenthSection';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -41,7 +40,6 @@ const Home: NextPage = () => {
       <TenthSection />
       <EleventhSection />
       <TwelfthSection />
-      <FourteenthSection />
     </main>
   );
 };

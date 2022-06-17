@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import Navigation from 'components/Navigation/Navigation';
 import { useScrollPosition } from 'hooks/useScrollPosition';
 import ScrollContext from 'context/ScrollContext';
+import Footer from 'components/Footer/Footer';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isSticky } = useScrollPosition();
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <Navigation />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </ScrollContext.Provider>
   );
