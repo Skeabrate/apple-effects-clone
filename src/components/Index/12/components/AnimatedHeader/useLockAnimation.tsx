@@ -32,21 +32,24 @@ export const useLockAnimation = (
 
     const animationEnd =
       window.innerHeight - animationRefgetBoundingRect.height / 2 - frameDuration * amountOfFrames;
-
     const animationInitialPosition =
       lockAnimationRef.current.x === 0 && lockAnimationRef.current.y === 0;
     const animationFinalPosition =
       lockAnimationRef.current.x === maxWidth && lockAnimationRef.current.y === maxHeight;
-
     const animationReachedMaxWidth = lockAnimationRef.current.x === maxWidth;
     const animationReachedMinWidth = lockAnimationRef.current.x === 0;
-
     const animationDirectionForwards =
       animationRefgetBoundingRect.top <= lockAnimationRef.current.step &&
       animationRefgetBoundingRect.top >= animationEnd;
     const animationDirectionBackwards =
       animationRefgetBoundingRect.top >= lockAnimationRef.current.step + frameDuration &&
       !animationInitialPosition;
+
+    if (animationRefgetBoundingRect.top <= animationEnd) {
+      lockAnimationRef.current.x = maxWidth;
+      lockAnimationRef.current.y = maxHeight;
+      lockAnimationRef.current.step = animationEnd;
+    }
 
     if (animationDirectionForwards) {
       if (animationFinalPosition) return;

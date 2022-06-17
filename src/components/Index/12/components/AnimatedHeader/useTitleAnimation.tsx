@@ -30,16 +30,20 @@ export const useTitleAnimation = (
 
     const animationEnd =
       window.innerHeight - animationRefgetBoundingRect.height / 2 - frameDuration * amountOfFrames;
-
     const animationFinalPosition = titleAnimationRef.current.frameCount === amountOfFrames;
     const animationInitialPosition = !titleAnimationRef.current.frameCount;
-
     const animationDirectionForwards =
       animationRefgetBoundingRect.top <= titleAnimationRef.current.step &&
       animationRefgetBoundingRect.top >= animationEnd;
     const animationDirectionBackwards =
       animationRefgetBoundingRect.top >= titleAnimationRef.current.step + frameDuration &&
       !animationInitialPosition;
+
+    if (animationRefgetBoundingRect.top <= animationEnd) {
+      titleAnimationRef.current.frameCount = amountOfFrames;
+      titleAnimationRef.current.step = animationEnd;
+    }
+
     if (animationDirectionForwards) {
       if (animationFinalPosition) return;
       else {
