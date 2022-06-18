@@ -6,6 +6,7 @@ import {
   StyledGrid,
   StyledGridArticle,
   StyledHeading,
+  StyledLinks,
   Wrapper,
 } from './FourteenthSection.styles';
 
@@ -35,8 +36,6 @@ const FourteenthSection: React.FC = () => {
     <Wrapper>
       <StyledHeading>Check it out.</StyledHeading>
       <StyledFirstArticle>
-        <img src='/images/ar_alpine_green__c9l94dc60nue_large.jpg' alt='ar_alpine_green' />
-
         <div>
           <header>
             <ArticleSvg />
@@ -45,12 +44,14 @@ const FourteenthSection: React.FC = () => {
 
           <p>Open this page in Safari on your iPhone or iPad.</p>
         </div>
+
+        <img src='/images/ar_alpine_green__c9l94dc60nue_large.jpg' alt='ar_alpine_green' />
       </StyledFirstArticle>
 
       <StyledHeading>Deck it out.</StyledHeading>
       <StyledGrid>
         {gridContent.map(({ header, text, links, image }, index) => (
-          <StyledGridArticle>
+          <StyledGridArticle $isLast={index === gridContent.length - 1}>
             <div>
               <header>
                 <h3>{header}</h3>
@@ -58,9 +59,11 @@ const FourteenthSection: React.FC = () => {
 
               <p>{text}</p>
 
-              {links.map((item, index) => (
-                <BlueLink key={index} label={item} />
-              ))}
+              <StyledLinks>
+                {links.map((item, index) => (
+                  <BlueLink key={index} label={item} />
+                ))}
+              </StyledLinks>
             </div>
 
             <img src={image} alt={text} />

@@ -17,12 +17,17 @@ export const GlobalStyles = createGlobalStyle`
 		padding: 0;
 		margin: 0;
 		overflow-x: hidden !important;
-		font-size: ${({ theme }) => theme.fontSize.paragraph};
+		font-size: ${({ theme }) => theme.fontSize.paragraphMobile};
 		font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
 		letter-spacing: -0.6px;
+		line-height: 1.2;
 
 		h1, h2, h3, h4, h5, h6{
 			font-weight: 500;
+		}
+
+		${({ theme }) => theme.mq.tablet}{
+			font-size: ${({ theme }) => theme.fontSize.paragraph};
 		}
 	}
 `;

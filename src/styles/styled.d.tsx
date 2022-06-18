@@ -18,6 +18,7 @@ declare module 'styled-components' {
       headingTablet: string;
       headingMobile: string;
       paragraph: string;
+      paragraphMobile: string;
       caption: string;
     };
     letterSpacing: {
