@@ -86,25 +86,6 @@ export const StyledText = styled.div<ThemeProps>`
     margin-bottom: 8px;
   }
 
-  a {
-    color: ${({ $isDark }) => ($isDark ? '#2997ff' : '#06c')};
-    text-decoration: none;
-
-    svg {
-      margin-left: 4px;
-      height: 12px;
-      width: 12px;
-
-      path {
-        fill: ${({ $isDark }) => ($isDark ? '#2997ff' : '#06c')};
-      }
-    }
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
   ${({ theme }) => theme.mq.tablet} {
     padding-top: 20px;
 
