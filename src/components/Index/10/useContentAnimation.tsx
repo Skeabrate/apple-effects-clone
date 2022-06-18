@@ -30,7 +30,7 @@ export const useContentAnimation = (ref: {
               scrollTrigger: {
                 trigger,
                 start: '300% bottom',
-                end: '800% bottom',
+                end: '1000% bottom',
                 scrub: true,
               },
             })

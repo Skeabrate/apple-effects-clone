@@ -4,7 +4,7 @@ export const useCinematicZoomOpacity = () => {
   const [opacity, setOpacity] = useState<number>(0);
 
   const opacityAnimationStartPoint = 0.8;
-  const opacityAnimationSingleStepValue = 0.04;
+  const opacityAnimationSingleStepValue = 0.02;
   const roundNumberHandler = (number: number) => +number.toFixed(2);
 
   const opacityAnimationStep = useRef<number>(opacityAnimationStartPoint);
@@ -14,7 +14,7 @@ export const useCinematicZoomOpacity = () => {
       opacityAnimationStep.current = roundNumberHandler(
         opacityAnimationStep.current + opacityAnimationSingleStepValue
       );
-      setOpacity((state) => roundNumberHandler(state + 0.2));
+      setOpacity((state) => roundNumberHandler(state + 0.1));
     } else if (
       progress <=
         roundNumberHandler(opacityAnimationStep.current - opacityAnimationSingleStepValue) &&
@@ -23,8 +23,9 @@ export const useCinematicZoomOpacity = () => {
       opacityAnimationStep.current = roundNumberHandler(
         opacityAnimationStep.current - opacityAnimationSingleStepValue
       );
-      setOpacity((state) => roundNumberHandler(state - 0.2));
+      setOpacity((state) => roundNumberHandler(state - 0.1));
     }
+    if (progress <= 1 && progress >= 0.95) setOpacity(1);
   }, []);
 
   return { opacity, opacityAnimationHandler };
