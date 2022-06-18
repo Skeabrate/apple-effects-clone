@@ -9,10 +9,12 @@ declare module 'styled-components' {
       darkNav: string;
       borderLight: string;
       borderDark: string;
+      greyText: string;
     };
     fontSize: {
       huge: string;
       heading: string;
+      heading64: string;
       headingTablet: string;
       headingMobile: string;
       paragraph: string;

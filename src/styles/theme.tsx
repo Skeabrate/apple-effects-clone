@@ -8,10 +8,12 @@ export const theme: DefaultTheme = {
     darkNav: 'rgba(0, 0, 0, 0.8)',
     borderLight: '#d4d4d4',
     borderDark: '#4b4b4b',
+    greyText: '#6e6e73',
   },
   fontSize: {
     huge: '12rem',
     heading: '8rem',
+    heading64: '6.4rem',
     headingTablet: '5.6rem',
     headingMobile: '3rem',
     paragraph: '1.7rem',
