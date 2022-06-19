@@ -51,7 +51,7 @@ const FourteenthSection: React.FC = () => {
       <StyledHeading>Deck it out.</StyledHeading>
       <StyledGrid>
         {gridContent.map(({ header, text, links, image }, index) => (
-          <StyledGridArticle $isLast={index === gridContent.length - 1}>
+          <StyledGridArticle key={index} $isLast={index === gridContent.length - 1}>
             <div>
               <header>
                 <h3>{header}</h3>
