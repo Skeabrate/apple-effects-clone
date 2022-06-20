@@ -14,7 +14,7 @@ export const StyledHeading = styled.h2`
 `;
 
 export const StyledFirstArticle = styled.article`
-  background-color: #f5f5f7;
+  background-color: ${({ theme }) => theme.colors.grey3};
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ export const StyledFirstArticle = styled.article`
   }
 
   p {
-    color: ${({ theme }) => theme.colors.greyText};
+    color: ${({ theme }) => theme.colors.grey1};
     font-weight: 500;
     max-width: 250px;
   }
@@ -106,7 +106,7 @@ export const StyledGrid = styled.div`
 `;
 
 export const StyledGridArticle = styled.article<{ $isLast: boolean }>`
-  background-color: #f5f5f7;
+  background-color: ${({ theme }) => theme.colors.grey3};
   font-weight: 500;
   text-align: center;
   padding: ${({ $isLast }) => ($isLast ? '40px 0 0' : '40px 0')};
@@ -125,7 +125,7 @@ export const StyledGridArticle = styled.article<{ $isLast: boolean }>`
   }
 
   p {
-    color: ${({ theme }) => theme.colors.greyText};
+    color: ${({ theme }) => theme.colors.grey1};
     padding: 0 10px;
     max-width: 340px;
     margin: 16px auto;

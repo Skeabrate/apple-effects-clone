@@ -17,7 +17,7 @@ interface AnimatedIconProps extends IconProps {
 
 export const Wrapper = styled.article<ThemeProps>`
   display: grid;
-  background-color: ${({ $isDark }) => ($isDark ? 'black' : '#f5f5f7')};
+  background-color: ${({ theme, $isDark }) => ($isDark ? 'black' : theme.colors.grey3)};
   color: ${({ $isDark }) => ($isDark ? 'white' : 'black')};
   font-weight: 500;
   font-size: 1.9rem;
@@ -80,7 +80,7 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledText = styled.div<ThemeProps>`
-  color: ${({ $isDark }) => ($isDark ? '#86868b' : '#6e6e73')};
+  color: ${({ theme, $isDark }) => ($isDark ? theme.colors.grey2 : theme.colors.grey1)};
 
   p {
     margin-bottom: 8px;

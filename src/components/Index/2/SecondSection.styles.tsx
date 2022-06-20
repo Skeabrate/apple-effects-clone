@@ -35,7 +35,7 @@ export const Wrapper = styled.section<Props>`
     padding: 0 4rem;
 
     span {
-      color: #f5f5f7;
+      color: ${({ theme }) => theme.colors.grey3};
       font-size: ${({ theme }) => theme.fontSize.headingMobile};
       font-weight: 500;
       line-height: 1.1;
@@ -112,11 +112,4 @@ export const Wrapper = styled.section<Props>`
       }
     }
   }
-
-  /* @media (min-width: 1600px) {
-    video {
-      width: 100%;
-      height: auto;
-    }
-  } */
 `;

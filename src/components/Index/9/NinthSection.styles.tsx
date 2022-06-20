@@ -5,7 +5,6 @@ interface OpacityProps {
 }
 
 export const Wrapper = styled.section`
-  color: ${({ theme }) => theme.colors.black};
   width: 100%;
   overflow: hidden;
 `;
@@ -22,7 +21,7 @@ export const StyledContent = styled.div<OpacityProps>`
   opacity: 1;
 
   div:first-child {
-    color: #6e6e73;
+    color: ${({ theme }) => theme.colors.grey1};
   }
 
   div:nth-child(2) {

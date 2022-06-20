@@ -4,12 +4,12 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       black: string;
-      lightGrey: string;
-      grey: string;
-      darkNav: string;
       borderLight: string;
       borderDark: string;
-      greyText: string;
+      grey1: string;
+      grey2: string;
+      grey3: string;
+      grey4: string;
     };
     fontSize: {
       huge: string;

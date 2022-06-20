@@ -36,7 +36,7 @@ const ElementHelper = css`
   width: 100%;
   min-height: 670px;
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.grey4};
 
   img,
   video {

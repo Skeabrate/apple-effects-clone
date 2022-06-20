@@ -8,7 +8,7 @@ export const Wrapper = styled.section`
   background: white;
 
   p {
-    color: #6e6e73;
+    color: ${({ theme }) => theme.colors.grey1};
     font-weight: 500;
     font-size: 1.8rem;
   }

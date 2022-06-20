@@ -13,7 +13,7 @@ export const Wrapper = styled.section`
   }
 
   p {
-    color: #86868b;
+    color: ${({ theme }) => theme.colors.grey2};
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSize.paragraph};
     padding-block: 10px;

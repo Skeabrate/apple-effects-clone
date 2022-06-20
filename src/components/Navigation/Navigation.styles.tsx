@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 interface NavProps {
-  readonly $toggle?: boolean;
-  readonly $barOptionsToggle?: boolean;
-  readonly $isSticky?: number;
+  $toggle?: boolean;
+  $barOptionsToggle?: boolean;
+  $isSticky?: number;
 }
 
 export const Wrapper = styled.div`
@@ -12,14 +12,13 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledNavOuter = styled.nav<NavProps>`
-  color: ${({ theme }) => theme.colors.grey};
-  background-color: ${({ theme, $toggle }) => ($toggle ? 'black' : theme.colors.darkNav)};
+  background-color: ${({ $toggle }) => ($toggle ? '#000' : 'rgba(0, 0, 0, 0.8)')};
   transition: background-color ease-in-out;
   transition-duration: ${({ $toggle }) => ($toggle ? '.2s' : '.3s')};
   transition-delay: ${({ $toggle }) => ($toggle ? '0' : '0.4s')};
 
   ${({ theme }) => theme.mq.tablet} {
-    background-color: ${({ theme }) => theme.colors.darkNav};
+    background-color: rgba(0, 0, 0, 0.8);
   }
 `;
 
@@ -40,12 +39,13 @@ export const StyledNavInner = styled.div`
     cursor: pointer;
 
     path {
-      fill: ${({ theme }) => theme.colors.grey};
-      transition: all 0.2s ease-in-out;
+      fill: ${({ theme }) => theme.colors.grey3};
+      transition: opacity 0.2s ease-in-out;
+      opacity: 0.8;
     }
 
     &:hover path {
-      fill: ${({ theme }) => theme.colors.lightGrey};
+      opacity: 1;
     }
   }
 
@@ -92,6 +92,8 @@ export const StyledList = styled.ul<NavProps>`
     transition: all ease-in-out;
     transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')};
     transition-duration: ${({ $toggle }) => ($toggle ? '.25s' : '.4s')};
+    color: ${({ theme }) => theme.colors.grey3};
+    opacity: 0.8;
 
     span {
       width: 100%;
@@ -100,7 +102,7 @@ export const StyledList = styled.ul<NavProps>`
     }
 
     &:hover {
-      color: ${({ theme }) => theme.colors.lightGrey};
+      opacity: 1;
     }
   }
 
@@ -187,7 +189,7 @@ export const StyledSearch = styled.li<NavProps>`
       }
 
       svg path {
-        fill: ${({ theme }) => theme.colors.grey};
+        fill: ${({ theme }) => theme.colors.grey3};
       }
     }
   }
@@ -216,7 +218,8 @@ export const Hamburger = styled.button<NavProps>`
       display: block;
       height: 1px;
       width: 18px;
-      background-color: ${({ theme }) => theme.colors.grey};
+      background-color: ${({ theme }) => theme.colors.grey3};
+      opacity: 0.8;
       transition: all 0.25s ease-in-out;
       transition-delay: ${({ $toggle }) => ($toggle ? '0s' : '0.2s')};
 
@@ -231,7 +234,7 @@ export const Hamburger = styled.button<NavProps>`
   }
 
   &:hover div span {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    opacity: 1;
   }
 
   ${({ theme }) => theme.mq.tablet} {

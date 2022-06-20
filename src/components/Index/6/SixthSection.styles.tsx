@@ -6,8 +6,8 @@ interface Props {
 }
 
 export const Wrapper = styled.section`
-  background-color: #fbfbfd;
-  color: #86868b;
+  background-color: ${({ theme }) => theme.colors.grey4};
+  color: ${({ theme }) => theme.colors.grey2};
   position: relative;
   z-index: 1;
   overflow: hidden;

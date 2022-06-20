@@ -21,9 +21,14 @@ export const GlobalStyles = createGlobalStyle`
 		font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
 		letter-spacing: -0.6px;
 		line-height: 1.2;
+		color: ${({ theme }) => theme.colors.black};
 
 		h1, h2, h3, h4, h5, h6{
 			font-weight: 500;
+		}
+
+		button, a {
+			color: ${({ theme }) => theme.colors.black};
 		}
 
 		${({ theme }) => theme.mq.tablet}{

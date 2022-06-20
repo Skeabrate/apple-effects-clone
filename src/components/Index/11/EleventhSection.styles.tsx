@@ -61,14 +61,13 @@ export const StyledItem = styled.div`
   }
 
   h3 {
-    color: ${({ theme }) => theme.colors.black};
     font-size: ${({ theme }) => theme.fontSize.headingMobile};
     padding-bottom: 8px;
     line-height: 1;
   }
 
   p {
-    color: #6e6e73;
+    color: ${({ theme }) => theme.colors.grey1};
     font-weight: 500;
   }
 

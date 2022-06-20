@@ -4,7 +4,7 @@ export const Wrapper = styled.section`
   width: 100%;
   background: black;
   position: relative;
-  color: #f5f5f7;
+  color: ${({ theme }) => theme.colors.grey3};
   margin: 0 auto;
   overflow: hidden;
 `;
