@@ -11,7 +11,6 @@ export const Wrapper = styled.section`
 
 export const StyledHeader = styled.header`
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
-  line-height: 1;
   width: fit-content;
   position: relative;
   left: 50%;
@@ -133,8 +132,6 @@ export const StyledList = styled.div`
     }
 
     ul {
-      line-height: 1.2;
-
       li {
         font-size: 1.9rem;
       }

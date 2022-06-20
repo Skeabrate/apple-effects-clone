@@ -79,7 +79,6 @@ export const StyledFirstArticle = styled.article`
 
     h3 {
       font-size: 40px;
-      line-height: 1;
       max-width: 400px;
     }
 

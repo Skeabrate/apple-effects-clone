@@ -63,7 +63,6 @@ export const StyledItem = styled.div`
   h3 {
     font-size: ${({ theme }) => theme.fontSize.headingMobile};
     padding-bottom: 8px;
-    line-height: 1;
   }
 
   p {

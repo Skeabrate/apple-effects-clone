@@ -30,7 +30,7 @@ export const Wrapper = styled.section<Props>`
   }
 
   div {
-    max-width: 690px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 0 4rem;
 
@@ -38,10 +38,8 @@ export const Wrapper = styled.section<Props>`
       color: ${({ theme }) => theme.colors.grey3};
       font-size: ${({ theme }) => theme.fontSize.headingMobile};
       font-weight: 500;
-      line-height: 1.1;
       opacity: 0.25;
       transition: opacity 0.3s ease-out;
-      display: block;
       padding-block: 0.2rem;
 
       &:nth-child(${({ $isHighlighted = 0 }) => $isHighlighted + 1}) {
@@ -71,7 +69,6 @@ export const Wrapper = styled.section<Props>`
 
     div {
       span {
-        display: initial;
         font-size: ${({ theme }) => theme.fontSize.headingTablet};
         padding-block: 0;
 
@@ -92,21 +89,16 @@ export const Wrapper = styled.section<Props>`
 
   ${({ theme }) => theme.mq.desktop} {
     div {
-      max-width: 950px;
+      max-width: 975px;
 
       span {
         font-size: ${({ theme }) => theme.fontSize.heading};
-        letter-spacing: ${({ theme }) => theme.letterSpacing.heading};
 
         &:last-child {
           margin-top: 8rem;
 
-          p {
-            letter-spacing: -0.6px;
-
-            &:first-child {
-              margin-top: 8rem;
-            }
+          p:first-child {
+            margin-top: 8rem;
           }
         }
       }

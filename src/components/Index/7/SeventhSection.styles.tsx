@@ -16,7 +16,6 @@ export const Wrapper = styled.section`
   h3 {
     font-size: 24px;
     width: 250px;
-    line-height: 1.1;
     padding-bottom: 16px;
   }
 

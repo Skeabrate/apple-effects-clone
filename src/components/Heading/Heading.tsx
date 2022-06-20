@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledHeading = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.headingTablet};
-  line-height: 1;
 
   span {
     display: block;

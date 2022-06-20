@@ -16,7 +16,6 @@ export const Wrapper = styled.section`
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    line-height: 1.25;
 
     h1 {
       position: absolute;
@@ -66,7 +65,6 @@ export const Wrapper = styled.section`
         }
 
         h2 {
-          letter-spacing: ${({ theme }) => theme.letterSpacing.heading};
           font-size: ${({ theme }) => theme.fontSize.heading};
         }
       }

@@ -10,10 +10,6 @@ export const Wrapper = styled.div`
   margin: 60px 20px;
   background-color: #f5f5f7;
 
-  p {
-    line-height: 1.1;
-  }
-
   button {
     display: flex;
     justify-content: center;
@@ -45,7 +41,6 @@ export const Wrapper = styled.div`
     p {
       width: 400px;
       text-align: center;
-      line-height: 1;
     }
   }
 

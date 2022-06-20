@@ -17,12 +17,18 @@ declare module 'styled-components' {
       heading64: string;
       headingTablet: string;
       headingMobile: string;
+
+      font120: Function;
+      font96: Function;
+      font80: Function;
+      font64: Function;
+      font56: Function;
+      font40: Function;
+      font32: Function;
+      font24: Function;
       paragraph: string;
       paragraphMobile: string;
       caption: string;
-    };
-    letterSpacing: {
-      heading: string;
     };
     mq: {
       tablet: string;
@@ -30,7 +36,6 @@ declare module 'styled-components' {
       bigDesktop: string;
       huge: string;
     };
-    containerStyles: Function;
     paddingMobile: Function;
   }
 }

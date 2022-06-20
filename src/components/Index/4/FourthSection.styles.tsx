@@ -5,7 +5,6 @@ interface Props {
 }
 
 export const Wrapper = styled.section`
-  ${({ theme }) => theme.containerStyles()};
   position: relative;
 `;
 

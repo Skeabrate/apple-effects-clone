@@ -9,7 +9,6 @@ export const Wrapper = styled.section`
 
   h3 {
     font-size: 3.2rem;
-    line-height: 1.1;
   }
 
   p {

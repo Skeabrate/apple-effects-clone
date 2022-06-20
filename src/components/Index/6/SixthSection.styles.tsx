@@ -16,7 +16,7 @@ export const Wrapper = styled.section`
 export const StyledContent = styled.div`
   font-size: ${({ theme }) => theme.fontSize.headingMobile};
   font-weight: 500;
-  line-height: 1.1;
+
   max-width: 690px;
   margin: 0 auto;
   padding: 15rem 4rem 30rem 4rem;
@@ -27,12 +27,13 @@ export const StyledContent = styled.div`
 
   ${({ theme }) => theme.mq.tablet} {
     font-size: ${({ theme }) => theme.fontSize.headingTablet};
+    letter-spacing: -1.5px;
     padding: 25rem 4rem 60rem 4rem;
   }
 
   ${({ theme }) => theme.mq.desktop} {
     font-size: ${({ theme }) => theme.fontSize.heading};
-    letter-spacing: ${({ theme }) => theme.letterSpacing.heading};
+    letter-spacing: -2px;
     max-width: 1050px;
     padding: 35rem 4rem 85rem 4rem;
   }

@@ -16,12 +16,50 @@ export const theme: DefaultTheme = {
     heading64: '6.4rem',
     headingTablet: '5.6rem',
     headingMobile: '3rem',
+
+    font120: () => css`
+      font-size: 12rem;
+      letter-spacing: -2px;
+      line-height: 1;
+    `,
+    font96: () => css`
+      font-size: 9.6rem;
+      letter-spacing: -2px;
+      line-height: 1;
+    `,
+    font80: () => css`
+      font-size: 8rem;
+      letter-spacing: -2px;
+      line-height: 1;
+    `,
+    font64: () => css`
+      font-size: 6.4rem;
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+    `,
+    font56: () => css`
+      font-size: 5.6rem;
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+    `,
+    font40: () => css`
+      font-size: 4rem;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    `,
+    font32: () => css`
+      font-size: 3.2rem;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    `,
+    font24: () => css`
+      font-size: 2.4rem;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    `,
     paragraph: '1.9rem',
     paragraphMobile: '1.7rem',
     caption: '1.2rem',
-  },
-  letterSpacing: {
-    heading: '-3px',
   },
   mq: {
     tablet: '@media (min-width: 768px)',
@@ -29,10 +67,6 @@ export const theme: DefaultTheme = {
     bigDesktop: '@media (min-width: 1280px)',
     huge: '@media (min-width: 1440px)',
   },
-  containerStyles: () => css`
-		maxWidth: '2000px',
-    margin: '0 auto',
-	`,
   paddingMobile: () => css`
     padding: 0 6vw;
   `,
