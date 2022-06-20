@@ -12,12 +12,6 @@ declare module 'styled-components' {
       grey4: string;
     };
     fontSize: {
-      huge: string;
-      heading: string;
-      heading64: string;
-      headingTablet: string;
-      headingMobile: string;
-
       font120: Function;
       font96: Function;
       font80: Function;

@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
   p {
     margin-top: 20px;
     font-weight: 500;
-    font-size: 3rem;
+    ${({ theme }) => theme.fontSize.font32()};
 
     span {
       display: block;
@@ -22,7 +22,6 @@ export const StyledHeader = styled.header`
 
     p {
       align-self: flex-end;
-      font-size: 3rem;
     }
   }
 
@@ -30,7 +29,7 @@ export const StyledHeader = styled.header`
     margin: 15rem auto;
 
     p {
-      font-size: 4rem;
+      ${({ theme }) => theme.fontSize.font40()};
       margin-top: 4rem;
     }
   }

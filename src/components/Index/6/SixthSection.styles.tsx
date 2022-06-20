@@ -14,7 +14,7 @@ export const Wrapper = styled.section`
 `;
 
 export const StyledContent = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.headingMobile};
+  ${({ theme }) => theme.fontSize.font32()};
   font-weight: 500;
 
   max-width: 690px;
@@ -26,14 +26,12 @@ export const StyledContent = styled.div`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    font-size: ${({ theme }) => theme.fontSize.headingTablet};
-    letter-spacing: -1.5px;
+    ${({ theme }) => theme.fontSize.font56()};
     padding: 25rem 4rem 60rem 4rem;
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    font-size: ${({ theme }) => theme.fontSize.heading};
-    letter-spacing: -2px;
+    ${({ theme }) => theme.fontSize.font80()};
     max-width: 1050px;
     padding: 35rem 4rem 85rem 4rem;
   }

@@ -91,7 +91,6 @@ export const StyledDots = styled.div<Props>`
     color: rgba(0, 0, 0, 0.25);
     font-weight: 500;
     width: 250px;
-    font-size: ${({ theme }) => theme.fontSize.paragraph};
     text-align: center;
 
     span {
@@ -100,12 +99,6 @@ export const StyledDots = styled.div<Props>`
       &:nth-child(${({ $sliderIndex }) => $sliderIndex + 1}) {
         color: #1d1d1f;
       }
-    }
-  }
-
-  ${({ theme }) => theme.mq.tablet} {
-    div {
-      font-size: 2rem;
     }
   }
 

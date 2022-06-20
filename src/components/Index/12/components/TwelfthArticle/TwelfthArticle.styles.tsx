@@ -20,7 +20,6 @@ export const Wrapper = styled.article<ThemeProps>`
   background-color: ${({ theme, $isDark }) => ($isDark ? 'black' : theme.colors.grey3)};
   color: ${({ $isDark }) => ($isDark ? 'white' : 'black')};
   font-weight: 500;
-  font-size: 1.9rem;
   ${({ theme }) => theme.paddingMobile()};
   padding-block: 6rem;
 
@@ -61,7 +60,7 @@ export const StyledAnimatedIcon = styled.p<AnimatedIconProps>`
 `;
 
 export const StyledHeader = styled.header`
-  font-size: ${({ theme }) => theme.fontSize.headingMobile};
+  ${({ theme }) => theme.fontSize.font32()};
   margin-bottom: 16px;
 
   h2 {

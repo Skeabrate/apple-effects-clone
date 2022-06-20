@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.section`
   width: 100%;
@@ -61,7 +61,7 @@ export const StyledItem = styled.div`
   }
 
   h3 {
-    font-size: ${({ theme }) => theme.fontSize.headingMobile};
+    ${({ theme }) => theme.fontSize.font32()};
     padding-bottom: 8px;
   }
 
@@ -88,10 +88,6 @@ export const StyledItem = styled.div`
     &::after {
       display: none;
     }
-
-    p {
-      font-size: 19px;
-    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
@@ -103,76 +99,76 @@ export const StyledItem = styled.div`
   }
 `;
 
+const bigStyledItem = css`
+  width: 56%;
+
+  h3 {
+    ${({ theme }) => theme.fontSize.font56()};
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: 58%;
+
+    h3 {
+      ${({ theme }) => theme.fontSize.font64()};
+    }
+  }
+`;
+
+const smallStyledItem = css`
+  width: 44%;
+
+  h3 {
+    ${({ theme }) => theme.fontSize.font24()};
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: 42%;
+
+    h3 {
+      ${({ theme }) => theme.fontSize.font32()};
+    }
+  }
+`;
+
 export const StyledItemsPair = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     display: flex;
     margin-block: 1px;
 
     ${StyledItem}:nth-child(1) {
-      width: 57%;
-
-      h3 {
-        font-size: ${({ theme }) => theme.fontSize.headingTablet};
-      }
+      ${bigStyledItem};
     }
     ${StyledItem}:nth-child(2) {
-      width: 43%;
-
-      h3 {
-        font-size: 24px;
-      }
+      ${smallStyledItem};
     }
 
     &:nth-child(2) {
       ${StyledItem}:nth-child(1) {
-        width: 43%;
-
-        h3 {
-          font-size: 24px;
-        }
+        ${smallStyledItem};
       }
       ${StyledItem}:nth-child(2) {
-        width: 57%;
-
-        h3 {
-          font-size: ${({ theme }) => theme.fontSize.headingTablet};
-        }
+        ${bigStyledItem};
       }
     }
   }
 
   ${({ theme }) => theme.mq.desktop} {
     ${StyledItem}:nth-child(1) {
-      width: 60%;
-
-      h3 {
-        font-size: 64px;
-      }
+      ${bigStyledItem};
     }
 
     ${StyledItem}:nth-child(2) {
-      width: 40%;
-
-      h3 {
-        font-size: 32px;
-      }
+      ${smallStyledItem};
     }
 
     &:nth-child(2) {
       ${StyledItem}:nth-child(1) {
-        width: 40%;
-
-        h3 {
-          font-size: 32px;
-        }
+        ${smallStyledItem};
       }
 
       ${StyledItem}:nth-child(2) {
-        width: 60%;
-
-        h3 {
-          font-size: 64px;
-        }
+        ${bigStyledItem};
       }
     }
   }

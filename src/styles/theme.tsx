@@ -11,12 +11,6 @@ export const theme: DefaultTheme = {
     grey4: '#fbfbfd',
   },
   fontSize: {
-    huge: '12rem',
-    heading: '8rem',
-    heading64: '6.4rem',
-    headingTablet: '5.6rem',
-    headingMobile: '3rem',
-
     font120: () => css`
       font-size: 12rem;
       letter-spacing: -2px;
@@ -30,7 +24,7 @@ export const theme: DefaultTheme = {
     font80: () => css`
       font-size: 8rem;
       letter-spacing: -2px;
-      line-height: 1;
+      line-height: 1.05;
     `,
     font64: () => css`
       font-size: 6.4rem;
@@ -49,13 +43,13 @@ export const theme: DefaultTheme = {
     `,
     font32: () => css`
       font-size: 3.2rem;
-      letter-spacing: -1px;
+      letter-spacing: -0.8px;
       line-height: 1.1;
     `,
     font24: () => css`
       font-size: 2.4rem;
-      letter-spacing: -1px;
-      line-height: 1.1;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
     `,
     paragraph: '1.9rem',
     paragraphMobile: '1.7rem',

@@ -19,7 +19,7 @@ export const Wrapper = styled.section`
 
     h1 {
       position: absolute;
-      font-size: 3rem;
+      ${({ theme }) => theme.fontSize.font32()};
       width: fit-content;
       top: 10%;
       left: 50%;
@@ -30,12 +30,11 @@ export const Wrapper = styled.section`
       opacity: 0;
 
       p {
-        font-size: 2rem;
         font-weight: 500;
       }
 
       h2 {
-        font-size: ${({ theme }) => theme.fontSize.headingTablet};
+        ${({ theme }) => theme.fontSize.font56()};
       }
     }
   }
@@ -55,17 +54,16 @@ export const Wrapper = styled.section`
       bottom: 400px;
 
       h1 {
-        font-size: 6rem;
-        letter-spacing: -2px;
+        ${({ theme }) => theme.fontSize.font64()};
       }
 
       div {
         p {
-          font-size: 3rem;
+          ${({ theme }) => theme.fontSize.font32()};
         }
 
         h2 {
-          font-size: ${({ theme }) => theme.fontSize.heading};
+          ${({ theme }) => theme.fontSize.font80()};
         }
       }
     }

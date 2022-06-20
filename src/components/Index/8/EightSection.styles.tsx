@@ -8,25 +8,21 @@ export const Wrapper = styled.section`
   position: relative;
 
   h3 {
-    font-size: 3.2rem;
+    ${({ theme }) => theme.fontSize.font32()};
   }
 
   p {
     color: ${({ theme }) => theme.colors.grey2};
     font-weight: 500;
-    font-size: ${({ theme }) => theme.fontSize.paragraph};
-    padding-block: 10px;
+
+    padding-block: 15px;
   }
 
   ${({ theme }) => theme.mq.tablet} {
     padding-block: 140px;
 
-    p {
-      font-size: 1.9rem;
-    }
-
     h3 {
-      font-size: ${({ theme }) => theme.fontSize.headingTablet};
+      ${({ theme }) => theme.fontSize.font56()};
     }
   }
 

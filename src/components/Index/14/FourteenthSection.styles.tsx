@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const Wrapper = styled.section``;
 
 export const StyledHeading = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.headingTablet};
+  ${({ theme }) => theme.fontSize.font56()};
   margin: 50px auto 20px;
   width: fit-content;
 
   ${({ theme }) => theme.mq.desktop} {
-    font-size: 96px;
+    ${({ theme }) => theme.fontSize.font96()};
     margin: 120px auto 40px;
   }
 `;
@@ -23,7 +23,7 @@ export const StyledFirstArticle = styled.article`
   padding-top: 30px;
 
   h3 {
-    font-size: ${({ theme }) => theme.fontSize.headingMobile};
+    ${({ theme }) => theme.fontSize.font32()};
     max-width: 232px;
     padding: 6px 0 18px;
   }
@@ -78,7 +78,7 @@ export const StyledFirstArticle = styled.article`
     }
 
     h3 {
-      font-size: 40px;
+      ${({ theme }) => theme.fontSize.font40()};
       max-width: 400px;
     }
 
@@ -120,7 +120,7 @@ export const StyledGridArticle = styled.article<{ $isLast: boolean }>`
   }
 
   h3 {
-    font-size: ${({ theme }) => theme.fontSize.headingMobile};
+    ${({ theme }) => theme.fontSize.font32()};
   }
 
   p {

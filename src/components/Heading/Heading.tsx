@@ -2,18 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.headingTablet};
+  ${({ theme }) => theme.fontSize.font56()};
 
   span {
     display: block;
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    font-size: ${({ theme }) => theme.fontSize.heading};
+    ${({ theme }) => theme.fontSize.font80()};
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    font-size: ${({ theme }) => theme.fontSize.huge};
+    ${({ theme }) => theme.fontSize.font120()};
   }
 `;
 

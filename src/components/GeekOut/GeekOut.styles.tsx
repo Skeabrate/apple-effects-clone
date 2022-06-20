@@ -5,10 +5,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   font-weight: 500;
-  font-size: 24px;
   padding: 40px 20px;
   margin: 60px 20px;
   background-color: #f5f5f7;
+  ${({ theme }) => theme.fontSize.font24()};
 
   button {
     display: flex;
@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
     border-radius: 100px;
     border: 2px solid ${({ theme }) => theme.colors.black};
     font-weight: 600;
-    font-size: 16px;
+    ${({ theme }) => theme.fontSize.paragraphMobile};
 
     svg {
       width: 18px;
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    font-size: 40px;
+    ${({ theme }) => theme.fontSize.font40()};
     align-items: center;
     padding: 100px;
     gap: 50px;

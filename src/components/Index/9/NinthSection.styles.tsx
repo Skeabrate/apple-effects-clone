@@ -14,7 +14,6 @@ export const StyledContent = styled.div<OpacityProps>`
   font-weight: 500;
   width: fit-content;
   margin: 5rem auto;
-  font-size: 18px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -31,7 +30,7 @@ export const StyledContent = styled.div<OpacityProps>`
   }
 
   p {
-    font-size: 24px;
+    ${({ theme }) => theme.fontSize.font24()};
   }
 
   ${({ theme }) => theme.mq.tablet} {

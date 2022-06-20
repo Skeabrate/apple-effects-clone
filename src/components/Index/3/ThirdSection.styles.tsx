@@ -36,7 +36,7 @@ export const StyledInnerWrapper = styled.div`
       opacity: 1;
 
       span {
-        font-size: 4rem;
+        ${({ theme }) => theme.fontSize.font40()};
       }
     }
 
@@ -50,7 +50,6 @@ export const StyledInnerWrapper = styled.div`
       justify-content: flex-end;
 
       h2 {
-        font-size: 2rem;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);

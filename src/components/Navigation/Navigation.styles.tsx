@@ -30,7 +30,6 @@ export const StyledNavInner = styled.div`
   font-weight: 300;
   max-width: 980px;
   margin: 0 auto;
-  font-size: ${({ theme }) => theme.fontSize.paragraph};
 
   svg {
     height: 24px;
@@ -341,7 +340,6 @@ export const StyledBarHideMenu = styled.div<NavProps>`
   left: 0;
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.fontSize.paragraph};
   width: 100%;
 
   button {
@@ -355,7 +353,6 @@ export const StyledBarHideMenu = styled.div<NavProps>`
     visibility: ${({ $barOptionsToggle }) => ($barOptionsToggle ? 'visible' : 'hidden')};
     transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out, color 0s 0.1s ease-in-out,
       visibility 0.6s ease-in-out;
-    font-size: ${({ theme }) => theme.fontSize.paragraph};
     color: #333333;
     border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
     background: transparent;
@@ -396,8 +393,7 @@ export const StyledBarHideMenu = styled.div<NavProps>`
       transform: unset;
       visibility: visible;
       opacity: 1;
-      font-size: 1.3rem;
-      border: none !important;
+      border: none;
     }
   }
 `;

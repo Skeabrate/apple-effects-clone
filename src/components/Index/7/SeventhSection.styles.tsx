@@ -10,11 +10,10 @@ export const Wrapper = styled.section`
   p {
     color: ${({ theme }) => theme.colors.grey1};
     font-weight: 500;
-    font-size: 1.8rem;
   }
 
   h3 {
-    font-size: 24px;
+    ${({ theme }) => theme.fontSize.font24()};
     width: 250px;
     padding-bottom: 16px;
   }
@@ -43,7 +42,7 @@ export const Wrapper = styled.section`
 
   ${({ theme }) => theme.mq.tablet} {
     h3 {
-      font-size: ${({ theme }) => theme.fontSize.headingMobile};
+      ${({ theme }) => theme.fontSize.font32()};
       width: unset;
     }
 
@@ -76,7 +75,7 @@ export const Wrapper = styled.section`
       gap: 200px;
 
       h3 {
-        font-size: 40px;
+        ${({ theme }) => theme.fontSize.font40()};
       }
 
       p {

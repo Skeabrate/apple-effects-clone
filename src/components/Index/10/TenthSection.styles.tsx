@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
 `;
 
 export const StyledHeader = styled.header`
-  font-size: ${({ theme }) => theme.fontSize.headingMobile};
+  ${({ theme }) => theme.fontSize.font32()};
   width: fit-content;
   position: relative;
   left: 50%;
@@ -22,13 +22,13 @@ export const StyledHeader = styled.header`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    font-size: ${({ theme }) => theme.fontSize.headingTablet};
+    ${({ theme }) => theme.fontSize.font56()};
     padding: 6rem 0 12rem;
     left: 58%;
   }
 
   ${({ theme }) => theme.mq.desktop} {
-    font-size: 8rem;
+    ${({ theme }) => theme.fontSize.font80()};
     padding: 10rem 0 20rem;
   }
 `;
@@ -87,7 +87,7 @@ export const StyledList = styled.div`
     row-gap: 20px;
 
     h3 {
-      font-size: 2rem;
+      ${({ theme }) => theme.fontSize.font24()};
       margin-bottom: 10px;
 
       span {
@@ -113,7 +113,7 @@ export const StyledList = styled.div`
 
     div:nth-child(3) {
       h3 span {
-        width: 391px;
+        width: 400px;
       }
     }
   }
@@ -123,17 +123,11 @@ export const StyledList = styled.div`
     row-gap: 50px;
 
     h3 {
-      font-size: 3.2rem;
+      ${({ theme }) => theme.fontSize.font32()};
       margin-bottom: 16px;
 
       span {
         bottom: -8px;
-      }
-    }
-
-    ul {
-      li {
-        font-size: 1.9rem;
       }
     }
 
@@ -153,7 +147,7 @@ export const StyledList = styled.div`
 
     div:nth-child(3) {
       h3 span {
-        width: 662px;
+        width: 654px;
       }
     }
   }
@@ -191,7 +185,7 @@ export const StyledImage = styled.div`
     max-width: 350px;
 
     p {
-      font-size: 3rem;
+      ${({ theme }) => theme.fontSize.font32()};
       bottom: 40px;
       left: 100px;
       text-align: left;

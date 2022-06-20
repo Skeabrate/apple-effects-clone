@@ -36,7 +36,7 @@ export const Wrapper = styled.section<Props>`
 
     span {
       color: ${({ theme }) => theme.colors.grey3};
-      font-size: ${({ theme }) => theme.fontSize.headingMobile};
+      ${({ theme }) => theme.fontSize.font32()};
       font-weight: 500;
       opacity: 0.25;
       transition: opacity 0.3s ease-out;
@@ -51,7 +51,8 @@ export const Wrapper = styled.section<Props>`
         display: block;
 
         p {
-          font-size: 2rem;
+          font-size: ${({ theme }) => theme.fontSize.paragraphMobile};
+          letter-spacing: -0.6px;
           display: flex;
           flex-direction: column;
           margin-top: 2rem;
@@ -69,14 +70,14 @@ export const Wrapper = styled.section<Props>`
 
     div {
       span {
-        font-size: ${({ theme }) => theme.fontSize.headingTablet};
+        ${({ theme }) => theme.fontSize.font56()};
         padding-block: 0;
 
         &:last-child {
           margin-top: 5.6rem;
 
           p {
-            font-size: 24px;
+            ${({ theme }) => theme.fontSize.font24()};
 
             &:first-child {
               margin-top: 5.6rem;
@@ -92,7 +93,7 @@ export const Wrapper = styled.section<Props>`
       max-width: 975px;
 
       span {
-        font-size: ${({ theme }) => theme.fontSize.heading};
+        ${({ theme }) => theme.fontSize.font80()};
 
         &:last-child {
           margin-top: 8rem;
