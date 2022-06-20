@@ -22,12 +22,12 @@ if (typeof window !== 'undefined') {
 }
 
 const Home: NextPage = () => {
-  const [fourthSectionRef, setFourthSectionRef] = useState(null);
-  const [fifthSectionRef, setFifthSectionRef] = useState(null);
+  const [fourthSectionRef, setFourthSectionRef] = useState<HTMLDivElement | null>(null);
+  const [fifthSectionRef, setFifthSectionRef] = useState<HTMLDivElement | null>(null);
 
   return (
     <main>
-      <HeadComponent title='Apple effects clone' />
+      <HeadComponent title='Apple Clone' />
 
       <FirstSection />
       <SecondSection />
