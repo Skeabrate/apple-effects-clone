@@ -10,7 +10,7 @@ const HeadComponent: React.FC<Props> = ({ title }) => {
     <Head>
       <title>{title}</title>
       <meta name='description' content='Apple Clone - Sebastian Świeczkowski' />
-      <link rel='icon' href='/favIcon.ico' />
+      <link rel='icon' href='/favicon.ico' />
     </Head>
   );
 };
