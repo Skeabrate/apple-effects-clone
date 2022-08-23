@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   z-index: -1;
 
   header {
-    width: fit-content;
+    width: 300px;
     text-align: center;
     position: absolute;
     bottom: 300px;
@@ -20,7 +20,7 @@ export const Wrapper = styled.section`
     h1 {
       position: absolute;
       ${({ theme }) => theme.fontSize.font32()};
-      width: fit-content;
+      width: 100%;
       top: 10%;
       left: 50%;
       transform: translateX(-50%);
@@ -52,6 +52,7 @@ export const Wrapper = styled.section`
 
     header {
       bottom: 400px;
+      width: 600px;
 
       h1 {
         ${({ theme }) => theme.fontSize.font64()};
