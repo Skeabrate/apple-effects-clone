@@ -7,7 +7,6 @@ export const useScrollPosition = () => {
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler, { passive: true });
-
     return () => document.removeEventListener('scroll', scrollHandler);
   }, [scrollHandler]);
 
