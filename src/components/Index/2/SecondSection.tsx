@@ -1,37 +1,34 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import ScrollContext from 'context/ScrollContext';
 import { Wrapper } from './SecondSection.styles';
+import HighlitedItem from './HighlitedItem';
 
 const SecondSection: React.FC = () => {
-  const [isHighlighted, setIsHighlighted] = useState<number>(0);
+  const [highlightedItem, setHighlightedItem] = useState<number>(1);
 
-  const { isSticky } = useContext(ScrollContext);
-
-  useEffect(() => {
-    document.querySelectorAll('.spans').forEach((item, index) => {
-      if (item.getBoundingClientRect().top <= window.innerHeight / 2) {
-        setIsHighlighted(index);
-      }
-    });
-  }, [isSticky]);
+  const highlightedItems = [
+    { id: 1, caption: 'A dramatically more powerful camera system.' },
+    { id: 2, caption: 'A display so responsive, every interaction feels new again.' },
+    { id: 3, caption: 'The world’s fastest smartphone chip.' },
+    { id: 4, caption: 'Exceptional durability.' },
+    { id: 5, caption: 'And a huge leap in battery life.' },
+    {
+      id: 6,
+      caption: 'Let’s Pro.',
+      subCaption: ['From £39.54/mo. or £949 before trade‑in*', 'Watch the film Watch the event'],
+    },
+  ];
 
   return (
-    <Wrapper $isHighlighted={isHighlighted}>
+    <Wrapper $highlightedItem={highlightedItem}>
       <video autoPlay loop muted playsInline preload='auto' height='1100' width='1440'>
         <source src='/images/section2.mp4' type='video/mp4' />
       </video>
 
       <div>
-        <span className='spans'>A dramatically more powerful camera system. </span>
-        <span className='spans'>A display so responsive, every interaction feels new again. </span>
-        <span className='spans'>The world’s fastest smartphone chip. </span>
-        <span className='spans'>Exceptional durability. </span>
-        <span className='spans'>And a huge leap in battery life. </span>
-        <span className='spans'>
-          Let’s Pro.
-          <p>From £39.54/mo. or £949 before trade‑in*</p>
-          <p>Watch the film Watch the event</p>
-        </span>
+        {highlightedItems.map((item) => (
+          <HighlitedItem key={item.id} item={item} setHighlightedItem={setHighlightedItem} />
+        ))}
       </div>
     </Wrapper>
   );

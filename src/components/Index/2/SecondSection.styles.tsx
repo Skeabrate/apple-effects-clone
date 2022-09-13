@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-  $isHighlighted: number;
+  $highlightedItem: number;
 }
 
 export const Wrapper = styled.section<Props>`
@@ -42,7 +42,7 @@ export const Wrapper = styled.section<Props>`
       transition: opacity 0.3s ease-out;
       padding-block: 0.2rem;
 
-      &:nth-child(${({ $isHighlighted = 0 }) => $isHighlighted + 1}) {
+      &:nth-child(${({ $highlightedItem }) => $highlightedItem}) {
         opacity: 1;
       }
 
